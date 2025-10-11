@@ -1262,8 +1262,8 @@ Main Banner Area CSS
     }
 }
 .banner-content-two {
-    padding-top: 170px;
-    padding-bottom: 170px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     span {
         color: $color-white;
         background-color: #3b75c9;
@@ -1276,12 +1276,12 @@ Main Banner Area CSS
         font-size: 15px;
     }
     h1 {
-       font-size: 66px;
+       font-size: 50px;
        color: $color-white;
        font-weight: 600;
        line-height: 1.2;
-       margin-top: 15px;
-       margin-bottom: 20px;
+       margin-top: 10px;
+       margin-bottom: 15px;
        b {
            color: $main-color;
            font-weight: 600;
@@ -1292,7 +1292,7 @@ Main Banner Area CSS
         margin-bottom: 0;
     }
     .banner-content-btn {
-        margin-top: 30px;
+        margin-top: 20px;
         .learn-btn {
             padding: 12px 65px 12px 27px;
             color: $color-white;
