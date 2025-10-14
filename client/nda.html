@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podosphere Technologies - NDA</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Theme Dark helpers (shared with index.html) -->
+    <link rel="stylesheet" href="assets/css/theme-dark.css" />
+    <style>
+      /* ---------------------------------- */
+      /* 1. THEME VARIABLES (Light Mode Default) */
+      /* ---------------------------------- */
+      :root {
+        --color-text: #0f172a;
+        --color-text-secondary: #64748b;
+        --color-bg: #f1f5f9;
+        --color-bg-primary: #ffffff;
+        --color-bg-secondary: #eef2ff;
+        --color-primary: #4f46e5;
+        --color-primary-cta: #6366f1;
+        --color-cta-end: #8b5cf6;
+        --color-accent: #2563eb;
+        --color-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        --color-border: rgba(15, 23, 42, 0.08);
+        --color-highlight-strip: #6366f1;
+      }
+
+      /* ---------------------------------- */
+      /* 2. DARK MODE OVERRIDES */
+      /* ---------------------------------- */
+      html[data-theme="dark"] {
+        --color-text: #e2e8f0;
+        --color-text-secondary: #94a3b8;
+        --color-bg: #0f172a;
+        --color-bg-primary: #1e293b;
+        --color-bg-secondary: #111827;
+        --color-primary: #818cf8;
+        --color-primary-cta: #1d4ed8;
+        --color-cta-end: #6d28d9;
+        --color-accent: #60a5fa;
+        --color-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --color-border: rgba(255, 255, 255, 0.1);
+        --color-highlight-strip: #60a5fa;
+      }
+
+      /* ---------------------------------- */
+      /* 3. BASE & LAYOUT */
+      /* ---------------------------------- */
+      * {
+        box-sizing: border-box; /* Ensure padding/border doesn't break layout */
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        transition: background-color 0.4s, color 0.4s;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      p,
+      li {
+        color: var(--color-text-secondary);
+      }
+
+      /* --- FLEXBOX FIXES for Horizontal Layout --- */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+      }
+      .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 15px;
+        margin-bottom: 30px;
+      }
+      @media (max-width: 992px) {
+        .col-lg-6 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+      /* ------------------------------------------ */
+
+      .py-100 {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+      .pt-30 {
+        padding-top: 30px;
+      }
+
+      /* ---------------------------------- */
+      /* 4. NAVBAR */
+      /* ---------------------------------- */
+      .navbar-area {
+        background-color: var(--color-bg-primary);
+        border-bottom: 1px solid var(--color-border);
+        padding: 18px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      .navbar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar-brand img {
+        height: 35px;
+        width: auto;
+      }
+      .navbar-brand .logo-two {
+        display: none;
+      }
+      html[data-theme="dark"] .navbar-brand .logo-one {
+        display: none;
+      }
+      html[data-theme="dark"] .navbar-brand .logo-two {
+        display: block;
+      }
+
+      /* ---------------------------------- */
+      /* 5. COMPONENTS */
+      /* ---------------------------------- */
+      .inner-banner {
+        padding: 100px 0 60px;
+        background: linear-gradient(
+          135deg,
+          var(--color-bg-secondary) 0%,
+          var(--color-bg) 100%
+        );
+        text-align: center;
+      }
+      .inner-title h3 {
+        font-size: 3rem;
+      }
+      .section-title {
+        margin-bottom: 50px;
+      }
+      .section-title p {
+        max-width: 800px;
+        margin: 15px auto;
+        font-size: 1.1rem;
+      }
+      .sp-after {
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+
+      .card-elevated {
+        background: var(--color-bg-primary);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: var(--color-shadow);
+        border: 1px solid var(--color-border);
+        height: 100%;
+        transition: transform 0.3s ease;
+      }
+      .card-elevated:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+      .icon-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        background: var(--color-bg-secondary);
+        color: var(--color-accent);
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      .highlight-strip {
+        border-left: 4px solid var(--color-highlight-strip);
+        padding-left: 14px;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 20px;
+      }
+
+      .cta-box {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-cta) 0%,
+          var(--color-cta-end) 100%
+        );
+        border-radius: 16px;
+        padding: 40px;
+        color: #fff;
+        margin-top: 40px;
+        text-align: center;
+      }
+      .cta-box h3 {
+        color: #fff;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      .cta-box p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 25px;
+      }
+
+      .default-btn {
+        background-color: #fff;
+        color: var(--color-primary);
+        padding: 14px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: background-color 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .default-btn:hover {
+        background-color: #f0f0f0;
+        transform: translateY(-1px);
+      }
+
+      .footer-area {
+        background-color: var(--color-bg-primary);
+        border-top: 1px solid var(--color-border);
+        padding: 30px 0;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 70px;
+      }
+      /* ---------------------------------- */
+      /* 6. THEME SWITCHER */
+      /* ---------------------------------- */
+      .switch-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: var(--color-bg-primary);
+        padding: 8px;
+        border-radius: 50px;
+        box-shadow: var(--color-shadow);
+        border: 1px solid var(--color-border);
+      }
+      .switch-box .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 28px;
+      }
+      .switch-box .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .switch-box .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+      .switch-box .slider::before {
+        position: absolute;
+        content: "🌙";
+        height: 22px;
+        width: 22px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #fff;
+        transition: 0.4s;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+      .switch-box input:checked + .slider {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+      .switch-box input:checked + .slider::before {
+        transform: translateX(22px);
+        content: "☀️";
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Theme Switcher -->
+    <div class="switch-box">
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="navbar-area">
+      <div class="container">
+        <div class="navbar-content">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="assets/img/logo/logo1.png"
+              class="logo-one"
+              alt="Podosphere Technologies Logo"
+            />
+            <img
+              src="assets/img/logo/logo2.png"
+              class="logo-two"
+              alt="Podosphere Technologies Logo Dark"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="inner-banner">
+      <div class="container">
+        <div class="inner-title">
+          <h3>Non-Disclosure Agreement (NDA)</h3>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-100 nda-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="sp-after">Confidentiality First</span>
+          <h2>Your Ideas, IP, and Data Are Safe with Us</h2>
+          <p>
+            We engage under **strict confidentiality** so you can speak freely.
+            Our NDA protects your intellectual property, business processes,
+            datasets, and any information shared during discussions.
+          </p>
+        </div>
+
+        <div class="row pt-30">
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-shield"></i></span
+                >Scope of Confidentiality
+              </h3>
+              <p class="mb-0">
+                All non-public information shared (verbal, written, or digital)
+                is confidential, including product ideas, source code, designs,
+                business strategy, and roadmaps.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-copyright"></i></span
+                >Intellectual Property
+              </h3>
+              <p class="mb-0">
+                **You retain 100% ownership of your IP.** Work products,
+                deliverables, and custom code produced under a Statement of Work
+                are assigned to you upon final payment.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-lock-alt"></i></span
+                >Data Protection
+              </h3>
+              <ul class="mb-0" style="padding-left: 20px">
+                <li>Secure access controls and least-privilege principles</li>
+                <li>Encrypted storage and transport for sensitive data</li>
+                <li>Sandboxed environments for development and testing</li>
+                <li>Regular audits and destruction of data post-engagement</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-file-find"></i></span
+                >Permitted Disclosures
+              </h3>
+              <p class="mb-2">
+                Information may be shared internally on a **need-to-know
+                basis**. No third-party disclosures are allowed without your
+                explicit written consent.
+              </p>
+              <p class="mb-0 highlight-strip">
+                *Exclusions: Information already public, independently
+                developed, or lawfully obtained from a third party without
+                confidentiality.*
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-time-five"></i></span
+                >Term & Survival
+              </h3>
+              <p class="mb-0">
+                The NDA typically remains in effect for **24–36 months** from
+                signing, and confidentiality obligations survive termination for
+                the agreed period, providing long-term security.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-elevated">
+              <h3 class="d-flex align-items-center">
+                <span class="icon-badge"><i class="bx bx-world"></i></span
+                >Jurisdiction
+              </h3>
+              <p class="mb-0">
+                We aim to use your preferred jurisdiction where possible.
+                Disputes are resolved via good-faith negotiation before
+                resorting to formal remedies.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3>Ready to Discuss Your Project Confidentially?</h3>
+          <p>Connect with our team to start the NDA process immediately.</p>
+          <a href="contact.html" class="default-btn"
+            >Request NDA <i class="bx bx-plus"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-area">
+      <div class="container">
+        <p>Copyright ©2025 Podosphere Technologies – Powers you in IT World.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Toggle Functionality (keeps CSS variables and legacy .theme-dark rules in sync)
+      const themeToggle = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+      const bodyElement = document.body;
+
+      // Check for saved theme preference or default to 'light'
+      const currentTheme = localStorage.getItem("theme") || "light";
+      htmlElement.setAttribute("data-theme", currentTheme);
+      bodyElement.setAttribute("data-theme", currentTheme);
+
+      // Keep the legacy stylesheet (.theme-dark) in sync by toggling class on body
+      if (currentTheme === "dark") {
+        themeToggle.checked = true;
+        bodyElement.classList.add("theme-dark");
+      } else {
+        bodyElement.classList.remove("theme-dark");
+      }
+
+      // Listen for theme toggle
+      themeToggle.addEventListener("change", function () {
+        if (this.checked) {
+          htmlElement.setAttribute("data-theme", "dark");
+          bodyElement.setAttribute("data-theme", "dark");
+          bodyElement.classList.add("theme-dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          htmlElement.setAttribute("data-theme", "light");
+          bodyElement.setAttribute("data-theme", "light");
+          bodyElement.classList.remove("theme-dark");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
+  </body>
+</html>
