@@ -1,211 +1,149 @@
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
-    <!-- Required Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap CSS -->
+    <title>PodoSphere - How We Work</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- Flaticon CSS -->
     <link rel="stylesheet" href="assets/fonts/flaticon.css" />
-    <!-- Boxicons CSS -->
     <link rel="stylesheet" href="assets/css/boxicons.min.css" />
-    <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
-    <!-- Animate Min CSS -->
     <link rel="stylesheet" href="assets/css/animate.min.css" />
-    <!-- Meanmenu CSS -->
     <link rel="stylesheet" href="assets/css/meanmenu.css" />
-    <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="assets/css/responsive.css" />
-    <!-- Theme Dark CSS -->
     <link rel="stylesheet" href="assets/css/theme-dark.css" />
-
-    <title>Podosphere Technologies - Our Work</title>
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
-    <!-- Custom Styles for Work Page -->
     <style>
-      :root {
-        --primary-color: #0d6efd;
-        --primary-dark: #0a58ca;
-        --secondary-color: #6c757d;
-        --text-color: #2d3748;
-        --text-light: #4a5568;
-        --bg-light: #f8f9fa;
+      /* --- GLOBAL TYPOGRAPHY/LAYOUT --- */
+      .container-max-2 {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      body {
-        padding-top: 0;
-        color: var(--text-color);
+      /* --- Hero --- */
+      .page-title-area {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 106, 0, 0.08),
+          rgba(99, 102, 241, 0.08)
+        );
+        padding: 80px 0;
       }
-
-      /* Align with site header spacing */
-      :root { --header-height: 80px; }
-      .navbar-area { z-index: 999; position: sticky; top: 0; }
-      .page-title-area { padding: calc(var(--header-height) + 40px) 0 60px; }
-
-      .work-hero {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-      }
-
-      .work-title {
-        font-size: 3.5rem;
+      .page-title-area .h2-color {
         font-weight: 800;
-        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
       }
-
-      .work-subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
+      .page-title-area p {
+        max-width: 720px;
+        margin: 10px auto 0;
+        opacity: 0.85;
       }
-
-      .work-filters {
-        background: var(--bg-light);
-        padding: 60px 0 30px;
-      }
-
-      .filter-buttons {
+      .hero-badges {
         display: flex;
         justify-content: center;
         gap: 15px;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
       }
-
-      .filter-btn {
-        padding: 10px 20px;
-        border: 2px solid var(--primary-color);
-        background: transparent;
-        color: var(--primary-color);
-        border-radius: 25px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .filter-btn:hover,
-      .filter-btn.active {
-        background: var(--primary-color);
-        color: white;
-      }
-
-      .work-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-        padding: 0 0 80px;
-      }
-
-      .work-item {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .work-item:hover {
-        transform: translateY(-10px);
-      }
-
-      .work-image {
-        width: 100%;
-        height: 250px;
-        background: var(--bg-light);
-        display: flex;
+      .hero-badge {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: var(--primary-color);
-      }
-
-      .work-content {
-        padding: 30px;
-      }
-
-      .work-category {
-        display: inline-block;
-        background: var(--primary-color);
-        color: white;
-        padding: 5px 15px;
-        border-radius: 15px;
-        font-size: 0.8rem;
+        padding: 5px 12px;
+        background: rgba(255, 106, 0, 0.1);
+        color: #ff6a00;
+        border-radius: 999px;
+        font-size: 0.9em;
         font-weight: 600;
-        margin-bottom: 1rem;
+      }
+      .hero-badge i {
+        margin-right: 5px;
+        font-size: 1.1em;
       }
 
-      .work-item-title {
+      /* --- Service Card (Icon-Based) --- */
+      .service-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 25px;
+        border: 1px solid #eef0f3;
+        box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+        height: 100%;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+        overflow: hidden;
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: #e6e9ef;
+        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+      }
+      .service-card h3 {
+        margin-top: 16px;
+        margin-bottom: 10px;
         font-size: 1.3rem;
         font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text-color);
+      }
+      .service-card p {
+        margin: 0 0 0px 0;
+        opacity: 0.85;
       }
 
-      .work-description {
-        color: var(--text-light);
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+      /* Icon Styling */
+      .solution-icon {
+        font-size: 38px;
+        color: #ff6a00;
+        background: linear-gradient(135deg, #ff6a00, #ff944d);
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
       }
 
-      .work-tech {
-        display: flex;
+      /* --- CTA - Updated to match Orange/Primary Brand Color --- */
+      .solutions-cta {
+        background: linear-gradient(135deg, #ff6a00 0%, #ff944d 100%);
+        color: #fff;
+        border-radius: 16px;
+        padding: 40px 28px;
+        box-shadow: 0 18px 48px rgba(255, 106, 0, 0.35);
+      }
+      .solutions-cta h2 {
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+      .solutions-cta p {
+        margin: 0 0 20px 0;
+        opacity: 0.95;
+      }
+      .solutions-cta .cta-btn {
+        display: inline-flex;
+        align-items: center;
         gap: 10px;
-        flex-wrap: wrap;
-        margin-bottom: 2rem;
-      }
-
-      .tech-tag {
-        background: var(--bg-light);
-        padding: 5px 12px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        color: var(--text-color);
-      }
-
-      .work-links {
-        display: flex;
-        gap: 15px;
-      }
-
-      .work-link {
-        padding: 8px 16px;
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
+        background: #fff;
+        color: #ff6a00;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 700;
         text-decoration: none;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-
-      .work-link:hover {
-        background: var(--primary-color);
-        color: white;
-      }
-
-      .cta-section {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-        color: white;
-        padding: 80px 0;
-        text-align: center;
+      .solutions-cta .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
       }
     </style>
   </head>
   <body>
-    <!-- Pre Loader -->
     <div class="preloader">
       <div class="d-table">
         <div class="d-table-cell">
@@ -213,186 +151,368 @@
         </div>
       </div>
     </div>
-
-    <!-- Navbar Area -->
     <div class="navbar-area">
       <div class="mobile-nav">
         <a href="index.html" class="logo">
-          <img src="assets/img/logo/logo.png" alt="Logo" />
+          <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
+          <img src="assets/img/logo/logo2.png" class="logo-two" alt="Logo" />
         </a>
       </div>
       <div class="main-nav">
-        <div class="container">
-          <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+          <nav class="container-max-2 navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="index.html">
-              <img src="assets/img/logo/logo.png" alt="Logo" />
+              <img
+                src="assets/img/logo/logo1.png"
+                class="logo-one"
+                alt="Logo"
+              />
+              <img
+                src="assets/img/logo/logo2.png"
+                class="logo-two"
+                alt="Logo"
+              />
             </a>
-            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
               <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                  <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a href="about.html" class="nav-link">About</a>
+                  <a href="#" class="nav-link"
+                    >Company</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="work.html" class="nav-link">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="nda.html" class="nav-link">NDA</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="service.html" class="nav-link">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a href="work.html" class="nav-link active">Work</a>
+                  <a href="solution.html" class="nav-link">Solutions</a>
+                </li>
+                <li class="nav-item">
+                  <a href="portfolio.html" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
                   <a href="contact.html" class="nav-link">Contact</a>
                 </li>
+                <li class="nav-item">
+                  <a href="blog.html" class="nav-link">Blogs</a>
+                </li>
               </ul>
-              <div class="others-options">
-                <a href="contact.html" class="default-btn">Get Started</a>
+              <div class="side-nav d-flex align-items-center">
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
               </div>
             </div>
           </nav>
         </div>
       </div>
+      <div class="side-nav-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="circle-inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="side-nav-inner">
+              <div
+                class="side-nav justify-content-center align-items-center"
+              >
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn border-radius"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Work Hero Section -->
-    <section class="work-hero">
+    <div class="page-title-area">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h1 class="work-title">Our Work</h1>
-            <p class="work-subtitle">
-              Explore our portfolio of successful projects and innovative solutions 
-              that have helped businesses transform and grow.
+        <div class="page-title-content text-center">
+          <span class="sp-after">How We Work</span>
+          <h1 class="h2-color">
+            Our Proven Process for Success
+          </h1>
+          <p>
+            We follow a systematic approach that ensures quality, efficiency, and successful project delivery. Our methodology combines best practices with innovative techniques.
+          </p>
+          <div class="hero-badges" style="margin-top: 16px">
+            <span class="hero-badge"
+              ><i class="bx bx-check-circle"></i> Quality Assured</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bx-time"></i> Time Efficient</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bx-collaboration"></i> Team Collaboration</span
+            >
+          </div>
+
+          <div style="margin-top: 22px">
+            <a href="contact.html" class="default-btn" style="margin-right: 10px"
+              >Start Project <i class="bx bx-plus"></i
+            ></a>
+            
+            <a
+              href="#process"
+              class="default-btn"
+              style="background: #111; color: #fff"
+              >Our Process <i class="bx bx-right-arrow-alt"></i
+            ></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container pt-100 pb-70" id="process">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-search-alt solution-icon"></i>
+            <h3><span class="service-title">Discovery & Analysis</span></h3>
+            <p>
+              We start by understanding your business requirements, challenges, and objectives through comprehensive analysis and stakeholder interviews.
             </p>
-            <a href="#portfolio" class="default-btn">View Portfolio</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-edit-alt solution-icon"></i>
+            <h3>
+              <span class="service-title">Planning & Strategy</span>
+            </h3>
+            <p>
+              Based on our analysis, we create detailed project plans, define scope, set timelines, and establish clear milestones for successful execution.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-code-alt solution-icon"></i>
+            <h3>
+              <span class="service-title">Design & Development</span>
+            </h3>
+            <p>
+              Our expert team designs and develops solutions using cutting-edge technologies, following agile methodologies and best coding practices.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-test-tube solution-icon"></i>
+            <h3>
+              <span class="service-title">Testing & Quality Assurance</span>
+            </h3>
+            <p>
+              Rigorous testing processes ensure reliability, security, and performance. We conduct multiple testing phases before deployment.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-rocket solution-icon"></i>
+            <h3>
+              <span class="service-title">Deployment & Launch</span>
+            </h3>
+            <p>
+              We handle seamless deployment to production environments, ensuring minimal downtime and smooth transition for your operations.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-support solution-icon"></i>
+            <h3>
+              <span class="service-title">Maintenance & Support</span>
+            </h3>
+            <p>
+              Ongoing support, monitoring, and maintenance ensure your solution continues to perform optimally and evolves with your business needs.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Work Filters -->
-    <section class="work-filters">
-      <div class="container">
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="web">Web Development</button>
-          <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-          <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
-          <button class="filter-btn" data-filter="ai">AI & Machine Learning</button>
+    <div class="container pb-100">
+      <div class="solutions-cta mt-4">
+        <div class="row align-items-center">
+          <div class="col-lg-8 col-md-7">
+            <h2>Ready to Start Your Project?</h2>
+            <p>
+              Let's discuss how our proven process can help bring your vision to life. We combine technical expertise with strategic thinking to deliver exceptional results.
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-5 text-md-end text-center">
+            <a href="contact.html" class="cta-btn"
+              >Get Started <i class="bx bx-right-arrow-alt"></i
+            ></a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="container" style="padding: 0 0 80px;">
-      <div class="work-grid">
-        <!-- Project 1 -->
-        <div class="work-item" data-category="web">
-          <div class="work-image">
-            <i class="bx bx-code-alt"></i>
-          </div>
-          <div class="work-content">
-            <span class="work-category">Web Development</span>
-            <h3 class="work-item-title">E-Commerce Platform</h3>
-            <p class="work-description">
-              Built a scalable e-commerce platform with modern technologies, 
-              featuring real-time inventory management and seamless payment integration.
-            </p>
-            <div class="work-tech">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Stripe</span>
-            </div>
-            <div class="work-links">
-              <a href="#" class="work-link">View Case Study</a>
-              <a href="#" class="work-link">Live Demo</a>
+    <footer class="footer-area footer-bg pt-100 pb-70">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-sm-6">
+              </div>
+
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-social-icon">
+                <ul class="social-link">
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-linkedin"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="work-item" data-category="mobile">
-          <div class="work-image">
-            <i class="bx bx-mobile"></i>
-          </div>
-          <div class="work-content">
-            <span class="work-category">Mobile App</span>
-            <h3 class="work-item-title">Healthcare Management App</h3>
-            <p class="work-description">
-              Developed a comprehensive healthcare management application that 
-              connects patients with healthcare providers through telemedicine features.
-            </p>
-            <div class="work-tech">
-              <span class="tech-tag">React Native</span>
-              <span class="tech-tag">Firebase</span>
-              <span class="tech-tag">WebRTC</span>
-              <span class="tech-tag">HIPAA Compliant</span>
+        <div class="footer-midal pt-45 pb-70">
+          <div class="row">
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget">
+                <h3>Our Process</h3>
+                <ul class="footer-list">
+                  <li><a href="#discovery">Discovery</a></li>
+                  <li><a href="#planning">Planning</a></li>
+                  <li><a href="#development">Development</a></li>
+                  <li><a href="#testing">Testing</a></li>
+                  <li><a href="#deployment">Deployment</a></li>
+                </ul>
+              </div>
             </div>
-            <div class="work-links">
-              <a href="#" class="work-link">View Case Study</a>
-              <a href="#" class="work-link">App Store</a>
+
+            <div class="col-lg-2 col-sm-7">
+              <div class="footer-widget">
+                <h3>Company</h3>
+                <ul class="footer-list">
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="work.html">How We Work</a></li>
+                  <li><a href="nda.html">NDA</a></li>
+                  <li><a href="career.html">Career</a></li>
+                  <li><a href="#">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget ps-5">
+                <h3>Contact</h3>
+                <ul class="footer-list">
+                  <li><a href="tel:+918595611983">+91 8595611983</a></li>
+                  <li>
+                    <a href="mailto:info@podospheretechnologies.com"
+                      >info@podospheretechnologies.com</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-7">
+              <div class="footer-widget">
+                <h3>Get in Touch</h3>
+                <p>We're here to help. Reach out today!</p>
+                <div class="newsletter-area">
+                  <a href="contact.html" class="default-btn"
+                    >Contact Us <i class="bx bx-plus"></i
+                  ></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="work-item" data-category="cloud">
-          <div class="work-image">
-            <i class="bx bx-cloud"></i>
-          </div>
-          <div class="work-content">
-            <span class="work-category">Cloud Solutions</span>
-            <h3 class="work-item-title">Cloud Migration & Optimization</h3>
-            <p class="work-description">
-              Successfully migrated legacy systems to cloud infrastructure, 
-              reducing operational costs by 40% while improving scalability and performance.
+        <div class="copy-right-area">
+          <div class="copy-right-text text-center">
+            <p>
+              Copyright ©2025 Podosphere Technologies – Powers you in IT World.
             </p>
-            <div class="work-tech">
-              <span class="tech-tag">AWS</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">Kubernetes</span>
-              <span class="tech-tag">Terraform</span>
-            </div>
-            <div class="work-links">
-              <a href="#" class="work-link">View Case Study</a>
-              <a href="#" class="work-link">Whitepaper</a>
-            </div>
           </div>
         </div>
-
-        <!-- Project 4 -->
-        <div class="work-item" data-category="ai">
-          <div class="work-image">
-            <i class="bx bx-brain"></i>
-          </div>
-          <div class="work-content">
-            <span class="work-category">AI & ML</span>
-            <h3 class="work-item-title">Predictive Analytics Platform</h3>
-            <p class="work-description">
-              Implemented machine learning algorithms to provide predictive insights 
-              for business decision-making, increasing forecast accuracy by 85%.
-            </p>
-            <div class="work-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Pandas</span>
-              <span class="tech-tag">Tableau</span>
-            </div>
-            <div class="work-links">
-              <a href="#" class="work-link">View Case Study</a>
-              <a href="#" class="work-link">Technical Details</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="work-item" data-category="web mobile">
-          <div class="work-image">
-            <i class="bx bx-palette"></i>
-          </div>
-          <div class="work-content">
-            <span class="work-category">Web & Mobile</span>
-            <h3 class="work-item-title">Social Media Management Tool</h3>
-            <p class="work-description">
-              Created a comprehensive social media management platform 
+      </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
+    <script src="assets/js/custom.js"></script>
+  </body>
+</html>

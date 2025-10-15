@@ -1,161 +1,149 @@
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
-    <!-- Required Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap CSS -->
+    <title>PodoSphere - NDA & Legal Services</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- Flaticon CSS -->
     <link rel="stylesheet" href="assets/fonts/flaticon.css" />
-    <!-- Boxicons CSS -->
     <link rel="stylesheet" href="assets/css/boxicons.min.css" />
-    <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
-    <!-- Animate Min CSS -->
     <link rel="stylesheet" href="assets/css/animate.min.css" />
-    <!-- Meanmenu CSS -->
     <link rel="stylesheet" href="assets/css/meanmenu.css" />
-    <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="assets/css/responsive.css" />
-    <!-- Theme Dark CSS -->
     <link rel="stylesheet" href="assets/css/theme-dark.css" />
-
-    <title>Podosphere Technologies - NDA Services</title>
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
-    <!-- Custom Styles for NDA Page -->
     <style>
-      :root {
-        --primary-color: #0d6efd;
-        --primary-dark: #0a58ca;
-        --secondary-color: #6c757d;
-        --text-color: #2d3748;
-        --text-light: #4a5568;
-        --bg-light: #f8f9fa;
+      /* --- GLOBAL TYPOGRAPHY/LAYOUT --- */
+      .container-max-2 {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      body {
-        padding-top: 0;
-        color: var(--text-color);
+      /* --- Hero --- */
+      .page-title-area {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 106, 0, 0.08),
+          rgba(99, 102, 241, 0.08)
+        );
+        padding: 80px 0;
       }
-
-      /* Align with site header spacing */
-      :root { --header-height: 80px; }
-      .navbar-area { z-index: 999; position: sticky; top: 0; }
-      .page-title-area { padding: calc(var(--header-height) + 40px) 0 60px; }
-
-      .nda-hero {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-      }
-
-      .nda-title {
-        font-size: 3.5rem;
+      .page-title-area .h2-color {
         font-weight: 800;
-        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
       }
-
-      .nda-subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
+      .page-title-area p {
+        max-width: 720px;
+        margin: 10px auto 0;
+        opacity: 0.85;
       }
-
-      .nda-types {
-        background: var(--bg-light);
-        padding: 80px 0;
-      }
-
-      .nda-card {
-        background: white;
-        border-radius: 15px;
-        padding: 40px;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        text-align: center;
-      }
-
-      .nda-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .nda-icon {
-        font-size: 4rem;
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-      }
-
-      .nda-card-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-      }
-
-      .process-section {
-        padding: 80px 0;
-      }
-
-      .process-step {
+      .hero-badges {
         display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .hero-badge {
+        display: inline-flex;
         align-items: center;
-        margin-bottom: 3rem;
+        padding: 5px 12px;
+        background: rgba(255, 106, 0, 0.1);
+        color: #ff6a00;
+        border-radius: 999px;
+        font-size: 0.9em;
+        font-weight: 600;
+      }
+      .hero-badge i {
+        margin-right: 5px;
+        font-size: 1.1em;
       }
 
-      .process-number {
-        background: var(--primary-color);
-        color: white;
+      /* --- Service Card (Icon-Based) --- */
+      .service-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 25px;
+        border: 1px solid #eef0f3;
+        box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+        height: 100%;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+        overflow: hidden;
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: #e6e9ef;
+        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+      }
+      .service-card h3 {
+        margin-top: 16px;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+      .service-card p {
+        margin: 0 0 0px 0;
+        opacity: 0.85;
+      }
+
+      /* Icon Styling */
+      .solution-icon {
+        font-size: 38px;
+        color: #ff6a00;
+        background: linear-gradient(135deg, #ff6a00, #ff944d);
+        color: #fff;
         width: 60px;
         height: 60px;
-        border-radius: 50%;
-        display: flex;
+        border-radius: 12px;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        margin-bottom: 15px;
+        box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
+      }
+
+      /* --- CTA - Updated to match Orange/Primary Brand Color --- */
+      .solutions-cta {
+        background: linear-gradient(135deg, #ff6a00 0%, #ff944d 100%);
+        color: #fff;
+        border-radius: 16px;
+        padding: 40px 28px;
+        box-shadow: 0 18px 48px rgba(255, 106, 0, 0.35);
+      }
+      .solutions-cta h2 {
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+      .solutions-cta p {
+        margin: 0 0 20px 0;
+        opacity: 0.95;
+      }
+      .solutions-cta .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: #ff6a00;
+        padding: 12px 22px;
+        border-radius: 999px;
         font-weight: 700;
-        margin-right: 2rem;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-
-      .protection-section {
-        background: var(--bg-light);
-        padding: 80px 0;
-      }
-
-      .protection-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 2rem;
-      }
-
-      .protection-icon {
-        color: var(--primary-color);
-        font-size: 2rem;
-        margin-right: 1rem;
-        margin-top: 0.3rem;
-      }
-
-      .cta-section {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-        color: white;
-        padding: 80px 0;
-        text-align: center;
+      .solutions-cta .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
       }
     </style>
   </head>
   <body>
-    <!-- Pre Loader -->
     <div class="preloader">
       <div class="d-table">
         <div class="d-table-cell">
@@ -163,378 +151,368 @@
         </div>
       </div>
     </div>
-
-    <!-- Navbar Area -->
     <div class="navbar-area">
       <div class="mobile-nav">
         <a href="index.html" class="logo">
-          <img src="assets/img/logo/logo.png" alt="Logo" />
+          <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
+          <img src="assets/img/logo/logo2.png" class="logo-two" alt="Logo" />
         </a>
       </div>
       <div class="main-nav">
-        <div class="container">
-          <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+          <nav class="container-max-2 navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="index.html">
-              <img src="assets/img/logo/logo.png" alt="Logo" />
+              <img
+                src="assets/img/logo/logo1.png"
+                class="logo-one"
+                alt="Logo"
+              />
+              <img
+                src="assets/img/logo/logo2.png"
+                class="logo-two"
+                alt="Logo"
+              />
             </a>
-            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
               <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                  <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a href="about.html" class="nav-link">About</a>
+                  <a href="#" class="nav-link"
+                    >Company</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="work.html" class="nav-link">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="nda.html" class="nav-link">NDA</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="service.html" class="nav-link">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a href="nda.html" class="nav-link active">NDA Work</a>
+                  <a href="solution.html" class="nav-link">Solutions</a>
+                </li>
+                <li class="nav-item">
+                  <a href="portfolio.html" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
                   <a href="contact.html" class="nav-link">Contact</a>
                 </li>
+                <li class="nav-item">
+                  <a href="blog.html" class="nav-link">Blogs</a>
+                </li>
               </ul>
-              <div class="others-options">
-                <a href="contact.html" class="default-btn">Get Started</a>
+              <div class="side-nav d-flex align-items-center">
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
               </div>
             </div>
           </nav>
         </div>
       </div>
+      <div class="side-nav-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="circle-inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="side-nav-inner">
+              <div
+                class="side-nav justify-content-center align-items-center"
+              >
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn border-radius"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- NDA Hero Section -->
-    <section class="nda-hero">
+    <div class="page-title-area">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h1 class="nda-title">NDA Services</h1>
-            <p class="nda-subtitle">
-              Protect your confidential information and intellectual property with our comprehensive 
-              Non-Disclosure Agreement services and consultation.
-            </p>
-            <a href="#contact" class="default-btn">Get Consultation</a>
+        <div class="page-title-content text-center">
+          <span class="sp-after">NDA & Legal Services</span>
+          <h1 class="h2-color">
+            Protecting Your Business with Ironclad Confidentiality
+          </h1>
+          <p>
+            Comprehensive Non-Disclosure Agreement services and legal consultation to safeguard your intellectual property, trade secrets, and sensitive business information.
+          </p>
+          <div class="hero-badges" style="margin-top: 16px">
+            <span class="hero-badge"
+              ><i class="bx bx-shield-check"></i> Legal Expertise</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bx-lock-alt"></i> Complete Protection</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bx-time-five"></i> Fast Turnaround</span
+            >
           </div>
+
+          <div style="margin-top: 22px">
+            <a href="contact.html" class="default-btn" style="margin-right: 10px"
+              >Get Protected <i class="bx bx-plus"></i
+            ></a>
+            
+            <a
+              href="#services"
+              class="default-btn"
+              style="background: #111; color: #fff"
+              >Our Services <i class="bx bx-right-arrow-alt"></i
+            ></a>
+          </div>
+
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- NDA Types -->
-    <section class="nda-types">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary-color);">
-              Types of NDA Services
-            </h2>
-            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem;">
-              We provide comprehensive NDA solutions tailored to your specific business needs.
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="nda-card">
-              <div class="nda-icon">
-                <i class="bx bx-file-blank"></i>
-              </div>
-              <h3 class="nda-card-title">NDA Drafting</h3>
-              <p>Custom NDA agreements drafted by legal experts to protect your sensitive business information, trade secrets, and intellectual property.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="nda-card">
-              <div class="nda-icon">
-                <i class="bx bx-search-alt"></i>
-              </div>
-              <h3 class="nda-card-title">NDA Review</h3>
-              <p>Comprehensive review and analysis of existing NDAs to ensure they provide adequate protection for your business interests.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="nda-card">
-              <div class="nda-icon">
-                <i class="bx bx-shield-check"></i>
-              </div>
-              <h3 class="nda-card-title">Compliance Consulting</h3>
-              <p>Expert guidance on NDA compliance, implementation strategies, and best practices for protecting confidential information.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Process -->
-    <section class="process-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary-color);">
-              Our Process
-            </h2>
-            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem;">
-              A streamlined approach to protecting your confidential information.
+    <div class="container pt-100 pb-70" id="services">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-file-blank solution-icon"></i>
+            <h3><span class="service-title">Custom NDA Drafting</span></h3>
+            <p>
+              Professionally crafted Non-Disclosure Agreements tailored to your specific industry, protecting trade secrets, proprietary information, and intellectual property.
             </p>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="process-step">
-              <div class="process-number">1</div>
-              <div>
-                <h5>Initial Consultation</h5>
-                <p>We discuss your specific needs and understand what information needs protection.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="process-number">2</div>
-              <div>
-                <h5>Information Analysis</h5>
-                <p>Our experts analyze the type of information and determine the appropriate level of protection required.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="process-number">3</div>
-              <div>
-                <h5>Custom Solution</h5>
-                <p>We draft or review NDA agreements tailored to your specific business requirements and industry standards.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="process-step">
-              <div class="process-number">4</div>
-              <div>
-                <h5>Implementation Support</h5>
-                <p>We provide guidance on implementing the NDA and training for your team on compliance procedures.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="process-number">5</div>
-              <div>
-                <h5>Ongoing Monitoring</h5>
-                <p>Regular reviews and updates to ensure your NDA protection remains current and effective.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="process-number">6</div>
-              <div>
-                <h5>Legal Support</h5>
-                <p>Access to legal experts for any questions or issues that arise regarding your NDA agreements.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Protection Benefits -->
-    <section class="protection-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary-color);">
-              Why Choose Our NDA Services?
-            </h2>
-            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem;">
-              Comprehensive protection for your valuable business assets.
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-search-alt solution-icon"></i>
+            <h3>
+              <span class="service-title">NDA Review & Audit</span>
+            </h3>
+            <p>
+              Comprehensive analysis of existing NDAs to identify gaps, ensure compliance, and strengthen protection for your valuable business assets.
             </p>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-lock-alt"></i>
-              </div>
-              <div>
-                <h5>Complete Confidentiality</h5>
-                <p>Ensure your trade secrets, business strategies, and sensitive information remain protected from unauthorized disclosure.</p>
-              </div>
-            </div>
-
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-time"></i>
-              </div>
-              <div>
-                <h5>Time-Saving Solutions</h5>
-                <p>Save valuable time with our expertly drafted agreements and streamlined processes, allowing you to focus on your core business.</p>
-              </div>
-            </div>
-
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-money"></i>
-              </div>
-              <div>
-                <h5>Cost-Effective Protection</h5>
-                <p>Avoid expensive legal disputes and potential losses from information leaks with proactive NDA management.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-user-check"></i>
-              </div>
-              <div>
-                <h5>Expert Legal Guidance</h5>
-                <p>Benefit from our team's extensive experience in intellectual property law and business confidentiality matters.</p>
-              </div>
-            </div>
-
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-customize"></i>
-              </div>
-              <div>
-                <h5>Customized Solutions</h5>
-                <p>Every NDA is tailored to your specific industry, business model, and unique confidentiality requirements.</p>
-              </div>
-            </div>
-
-            <div class="protection-item">
-              <div class="protection-icon">
-                <i class="bx bx-support"></i>
-              </div>
-              <div>
-                <h5>Ongoing Support</h5>
-                <p>Receive continuous support and updates to ensure your NDA protection evolves with your business needs.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="cta-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">
-              Ready to Protect Your Business?
-            </h2>
-            <p style="font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.9;">
-              Contact us today for a confidential consultation about your NDA needs. 
-              Let's discuss how we can safeguard your valuable information.
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-shield-check solution-icon"></i>
+            <h3>
+              <span class="service-title">Compliance Consulting</span>
+            </h3>
+            <p>
+              Expert guidance on NDA implementation, employee training, and best practices for maintaining confidentiality across your organization.
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-              <a href="contact.html" class="default-btn">Schedule Consultation</a>
-              <a href="tel:+1234567890" class="default-btn" style="background: transparent; border: 2px solid white;">
-                Call Now
-              </a>
-            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-group solution-icon"></i>
+            <h3>
+              <span class="service-title">Multi-Party Agreements</span>
+            </h3>
+            <p>
+              Specialized NDAs for partnerships, joint ventures, and complex business relationships requiring multiple party protection.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-trending-up solution-icon"></i>
+            <h3>
+              <span class="service-title">IP Protection Strategy</span>
+            </h3>
+            <p>
+              Strategic planning for intellectual property protection, including patent, trademark, and copyright considerations alongside NDA implementation.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="service-card">
+            <i class="bx bx-support solution-icon"></i>
+            <h3>
+              <span class="service-title">Ongoing Legal Support</span>
+            </h3>
+            <p>
+              Continuous legal assistance for NDA enforcement, breach response, and updates to ensure your protection evolves with your business.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer-area">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6 col-md-6">
-            <div class="single-footer-widget">
-              <div class="logo">
-                <a href="index.html">
-                  <img src="assets/img/logo/logo.png" alt="logo" />
-                </a>
-              </div>
-              <p>
-                Podosphere Technologies - Your trusted partner in innovative technology solutions and legal protection services.
-              </p>
-              <ul class="social-links">
-                <li>
-                  <a href="#" target="_blank">
-                    <i class="bx bxl-facebook"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <i class="bx bxl-twitter"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <i class="bx bxl-linkedin-square"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <i class="bx bxl-instagram"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <div class="container pb-100">
+      <div class="solutions-cta mt-4">
+        <div class="row align-items-center">
+          <div class="col-lg-8 col-md-7">
+            <h2>Ready to Secure Your Business?</h2>
+            <p>
+              Don't leave your valuable information unprotected. Let our legal experts create a comprehensive NDA strategy tailored to your specific needs and industry requirements.
+            </p>
           </div>
-          <div class="col-lg-6 col-md-6">
-            <div class="single-footer-widget">
-              <h3>Contact Info</h3>
-              <ul class="footer-contact-info">
-                <li>
-                  <i class="bx bx-map"></i>
-                  <span>Your Address Here</span>
-                </li>
-                <li>
-                  <i class="bx bx-phone-call"></i>
-                  <a href="tel:+1234567890">+1 234 567 890</a>
-                </li>
-                <li>
-                  <i class="bx bx-envelope"></i>
-                  <a href="mailto:hello@podosphere.com">hello@podosphere.com</a>
-                </li>
-              </ul>
-            </div>
+          <div class="col-lg-4 col-md-5 text-md-end text-center">
+            <a href="contact.html" class="cta-btn"
+              >Start Protecting <i class="bx bx-right-arrow-alt"></i
+            ></a>
           </div>
         </div>
-        <div class="footer-bottom-area">
+      </div>
+    </div>
+
+    <footer class="footer-area footer-bg pt-100 pb-70">
+      <div class="container">
+        <div class="footer-top">
           <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6">
-              <p>
-                © Podosphere is Proudly Owned by
-                <a href="https://podosphere.com" target="_blank">Podosphere</a>
-              </p>
+            <div class="col-lg-6 col-sm-6">
+              </div>
+
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-social-icon">
+                <ul class="social-link">
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-linkedin"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-              <ul>
-                <li>
-                  <a href="privacy-policy.html">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="terms-condition.html">Terms & Conditions</a>
-                </li>
-              </ul>
+          </div>
+        </div>
+
+        <div class="footer-midal pt-45 pb-70">
+          <div class="row">
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget">
+                <h3>Services</h3>
+                <ul class="footer-list">
+                  <li><a href="#nda-drafting">NDA Drafting</a></li>
+                  <li><a href="#nda-review">NDA Review</a></li>
+                  <li><a href="#compliance">Compliance</a></li>
+                  <li><a href="#ip-protection">IP Protection</a></li>
+                  <li><a href="#legal-support">Legal Support</a></li>
+                </ul>
+              </div>
             </div>
+
+            <div class="col-lg-2 col-sm-7">
+              <div class="footer-widget">
+                <h3>Company</h3>
+                <ul class="footer-list">
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="work.html">How We Work</a></li>
+                  <li><a href="nda.html">NDA</a></li>
+                  <li><a href="career.html">Career</a></li>
+                  <li><a href="#">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget ps-5">
+                <h3>Contact</h3>
+                <ul class="footer-list">
+                  <li><a href="tel:+918595611983">+91 8595611983</a></li>
+                  <li>
+                    <a href="mailto:info@podospheretechnologies.com"
+                      >info@podospheretechnologies.com</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-7">
+              <div class="footer-widget">
+                <h3>Get in Touch</h3>
+                <p>We're here to help. Reach out today!</p>
+                <div class="newsletter-area">
+                  <a href="contact.html" class="default-btn"
+                    >Contact Us <i class="bx bx-plus"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-right-area">
+          <div class="copy-right-text text-center">
+            <p>
+              Copyright ©2025 Podosphere Technologies – Powers you in IT World.
+            </p>
           </div>
         </div>
       </div>
     </footer>
-
-    <!-- jQuery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
-    <!-- Bootstrap Min JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Meanmenu JS -->
-    <script src="assets/js/meanmenu.js"></script>
-    <!-- Owl Carousel Min JS -->
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <!-- Wow Min JS -->
     <script src="assets/js/wow.min.js"></script>
-    <!-- Custom JS -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
     <script src="assets/js/custom.js"></script>
   </body>
 </html>

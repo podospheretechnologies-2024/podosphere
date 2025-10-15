@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
-    <!-- Required Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="assets/fonts/flaticon.css" />
-    <!-- Boxicons CSS -->
-    <link rel="stylesheet" href="assets/css/boxicons.min.css" />
-    <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
-    <!-- Animate Min CSS -->
-    <link rel="stylesheet" href="assets/css/animate.min.css" />
-    <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="assets/css/meanmenu.css" />
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-    <!-- Theme Dark CSS -->
-    <link rel="stylesheet" href="assets/css/theme-dark.css" />
-
     <title>Podosphere Technologies - Contact</title>
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
-    <!-- Custom Styles (added for hero section fix) -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fonts/flaticon.css" />
+    <link rel="stylesheet" href="assets/css/boxicons.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/meanmenu.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/theme-dark.css" />
+
     <style>
-      /* Add these styles to fix the page-title-area and hero elements */
+      /* --- Global Variables & Fixes --- */
+      :root {
+        --header-height: 80px;
+        --color-accent: #007bff; /* Example accent */
+      }
+      .navbar-area {
+        z-index: 999;
+        position: fixed;
+        width: 100%;
+        top: 0;
+      }
+      body {
+        padding-top: var(--header-height);
+      }
+
+      /* --- Hero Section Styling (Keeping original logic for consistency) --- */
       .page-title-area {
         background: linear-gradient(135deg, rgba(255, 106, 0, 0.08), rgba(99, 102, 241, 0.08));
         padding: 80px 0;
@@ -92,7 +93,6 @@
     </style>
   </head>
   <body>
-    <!-- Pre Loader -->
     <div class="preloader">
       <div class="d-table">
         <div class="d-table-cell">
@@ -100,11 +100,7 @@
         </div>
       </div>
     </div>
-    <!-- End Pre Loader -->
-
-    <!-- Start Navbar Area -->
     <div class="navbar-area">
-      <!-- Menu For Mobile Device -->
       <div class="mobile-nav">
         <a href="index.html" class="logo">
           <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
@@ -112,32 +108,18 @@
         </a>
       </div>
 
-      <!-- Menu For Desktop Device -->
       <div class="main-nav">
         <div class="container-fluid">
           <nav class="container-max-2 navbar navbar-expand-md navbar-light">
             <a class="navbar-brand" href="index.html">
-              <img
-                src="assets/img/logo/logo1.png"
-                class="logo-one"
-                alt="Logo"
-              />
-              <img
-                src="assets/img/logo/logo2.png"
-                class="logo-two"
-                alt="Logo"
-              />
+              <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
+              <img src="assets/img/logo/logo2.png" class="logo-two" alt="Logo" />
             </a>
 
-            <div
-              class="collapse navbar-collapse mean-menu"
-              id="navbarSupportedContent"
-            >
+            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
               <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Company
-                  </a>
+                  <a href="#" class="nav-link">Company</a>
                   <ul class="dropdown-menu">
                     <li class="nav-item">
                       <a href="about.html" class="nav-link">About Us</a>
@@ -154,22 +136,16 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a href="service.html" class="nav-link">
-                    Services 
-                  </a>
-
-             
+                  <a href="service.html" class="nav-link">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a href="solution.html" class="nav-link">
-                    Solutions      
-                  </a>
+                  <a href="solution.html" class="nav-link">Solutions</a>
                 </li>
                 <li class="nav-item">
                   <a href="portfolio.html" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                  <a href="contact.html" class="nav-link">Contact</a>
+                  <a href="contact.html" class="nav-link active">Contact</a>
                 </li>
                 <li class="nav-item">
                   <a href="blog.html" class="nav-link">Blogs</a>
@@ -246,9 +222,6 @@
         </div>
       </div>
     </div>
-    <!-- End Navbar Area -->
-
-    <!-- Search Overlay -->
     <div class="search-overlay">
       <div class="d-table">
         <div class="d-table-cell">
@@ -274,9 +247,6 @@
         </div>
       </div>
     </div>
-    <!-- End Search Overlay -->
-
-    <!-- Page Title Area (updated to match service/solution pages) -->
     <div class="page-title-area">
       <div class="container">
         <div class="page-title-content text-center">
@@ -301,25 +271,21 @@
             >
           </div>
 
-            <div style="margin-top: 22px">
-            <a href="contact.html" class="default-btn" style="margin-right: 10px"
+          <div style="margin-top: 22px">
+            <a href="#contact" class="default-btn" style="margin-right: 10px"
               >Get In Touch <i class="bx bx-plus"></i
             ></a>
             
             <a
-              href="#solutions"
+              href="portfolio.html"
               class="default-btn"
               style="background: #111; color: #fff"
               >Explore Projects <i class="bx bx-right-arrow-alt"></i
             ></a>
           </div>
-
         </div>
       </div>
     </div>
-    <!-- Page Title Area End -->
-
-    <!-- Contact Area (updated with ID for hero button link) -->
     <div class="contact-area pb-70" id="contact">
       <div class="container">
         <div class="section-title text-center">
@@ -378,9 +344,6 @@
         </div>
       </div>
     </div>
-    <!-- Contact Area End -->
-
-    <!-- Contact Section -->
     <div class="contact-section pt-100 pb-70">
       <div class="container-fluid">
         <div class="row">
@@ -500,9 +463,6 @@
         </div>
       </div>
     </div>
-    <!-- Contact Section End -->
-
-    <!-- Contact Map -->
     <div class="contact-map">
       <div class="container-fluid m-0 p-0">
         <iframe
@@ -517,9 +477,6 @@
         ></iframe>
       </div>
     </div>
-    <!-- Map Area End -->
-
-    <!-- Footer Area -->
     <footer class="footer-area footer-bg pt-100 pb-70">
       <div class="container">
         <div class="footer-top">
@@ -542,26 +499,10 @@
             <div class="col-lg-6 col-sm-6">
               <div class="footer-social-icon">
                 <ul class="social-link">
-                  <li>
-                    <a href="#" target="_blank"
-                      ><i class="bx bxl-facebook"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#" target="_blank"
-                      ><i class="bx bxl-instagram"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#" target="_blank"
-                      ><i class="bx bxl-twitter"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#" target="_blank"
-                      ><i class="bx bxl-linkedin"></i
-                    ></a>
-                  </li>
+                  <li><a href="#" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -601,14 +542,8 @@
                 <h3>Contact</h3>
                 <ul class="footer-list">
                   <li><a href="tel:+918595611983">+91 8595611983</a></li>
-                  <li>
-                    <a href="mailto:info@podospheretechnologies.com"
-                      >info@podospheretechnologies.com</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a>
-                  </li>
+                  <li><a href="mailto:info@podospheretechnologies.com">info@podospheretechnologies.com</a></li>
+                  <li><a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a></li>
                 </ul>
               </div>
             </div>
@@ -617,6 +552,11 @@
               <div class="footer-widget">
                 <h3>Get in Touch</h3>
                 <p>We're here to help. Reach out today!</p>
+                <div class="newsletter-area" style="margin-top: 20px;">
+                    <a href="#contact" class="default-btn border-radius">
+                        Contact Us <i class="bx bx-plus"></i>
+                    </a>
+                </div>
               </div>
             </div>
           </div>
@@ -631,27 +571,15 @@
         </div>
       </div>
     </footer>
-    <!-- Footer Area End -->
-
-    <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
-    <!-- Bootstrap Bundle Min JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Wow Min JS -->
-    <script src="assets/js/wow.min.js"></script>
-    <!-- Owl Carousel Min JS -->
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <!-- Magnific Popup Min JS -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- Meanmenu JS -->
-    <script src="assets/js/meanmenu.js"></script>
-    <!-- Ajaxchimp Min JS -->
-    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
-    <!-- Form Validator Min JS -->
-    <script src="assets/js/form-validator.min.js"></script>
-    <!-- Contact Form JS -->
-    <script src="assets/js/contact-form-script.js"></script>
-    <!-- Custom JS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/wow.min.js" defer></script>
+    <script src="assets/js/owl.carousel.min.js" defer></script>
+    <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
+    <script src="assets/js/meanmenu.js" defer></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js" defer></script>
+    <script src="assets/js/form-validator.min.js" defer></script>
+    <script src="assets/js/contact-form-script.js" defer></script>
+    <script src="assets/js/custom.js" defer></script>
   </body>
 </html>
