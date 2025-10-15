@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PodoSphere - Our Services</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fonts/flaticon.css" />
+    <link rel="stylesheet" href="assets/css/boxicons.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/meanmenu.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/theme-dark.css" />
+
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <style>
+      /* --- Global Theme Variables (Ensure custom elements follow the theme) --- */
+      :root {
+        --color-bg-light: #ffffff;
+        --color-bg-alt: #f8f8f8;
+        --color-text-light: #111111;
+        --color-bg-dark: #0f0f0f;
+        --color-bg-dark-alt: #1a1a1a;
+        --color-text-dark: #ffffff;
+        --color-accent: #6366f1; /* Indigo */
+        --color-accent-secondary: #8b5cf6; /* Violet */
+        --color-accent-success: #10b981; /* Emerald */
+        --color-border: #e5e7eb;
+        /* Define header height for content offset */
+        --header-height: 80px; 
+      }
+      
+      /* FIX: Ensure Navbar is fixed at the top */
+      .navbar-area {
+          z-index: 999;
+          position: fixed; 
+          width: 100%;
+          top: 0;
+      }
+      
+      /* FIX: Add top padding to the content following the fixed header */
+      .page-title-area {
+          padding-top: calc(var(--header-height) + 40px) !important; /* Force space below navbar + existing padding */
+      }
+      .page-title-content {
+          padding-top: 60px; /* Reset the internal padding if necessary */
+      }
+      /* End FIX */
+
+
+      /* --- Layout Utilities (for Service Grid) --- */
+      .service-main-grid { display: flex; max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+      .service-sidebar { width: 30%; padding-right: 40px; }
+      .service-details-wrapper { width: 70%; }
+      @media (max-width: 991px) { .service-main-grid { flex-direction: column; padding: 40px 20px; } .service-sidebar { width: 100%; padding-right: 0; margin-bottom: 40px; } .service-details-wrapper { width: 100%; } }
+      
+      /* Row/Column Structure for inner sections */
+      .row { display: flex; flex-wrap: wrap; align-items: center; margin: -20px; }
+      .col-half { width: 100%; padding: 20px; }
+      .flex-reverse .col-half:first-child { order: 2; } /* Reverse on mobile */
+      .flex-reverse .col-half:last-child { order: 1; }
+      @media (min-width: 992px) { 
+          .col-half { width: 50%; }
+          .flex-reverse .col-half:first-child { order: 1; } /* Reset order on desktop */
+          .flex-reverse .col-half:last-child { order: 2; }
+      }
+
+      /* --- Sidebar Styling --- */
+      .service-sidebar-nav { 
+        list-style: none; 
+        padding: 0; 
+        position: sticky; 
+        /* Adjusted sticky top position to clear the fixed header */
+        top: calc(var(--header-height) + 20px); 
+        padding-top: 10px; 
+        border-top: 1px solid var(--color-border); 
+      }
+      .service-sidebar-nav a { display: block; padding: 12px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--color-text-light); border: 1px solid var(--color-border); transition: all 0.3s ease; margin-bottom: 10px; }
+      .service-sidebar-nav a:hover { background-color: var(--color-bg-alt); color: var(--color-accent); border-color: var(--color-accent); }
+      .service-sidebar-nav a.active { background-color: var(--color-accent); color: var(--color-text-dark) !important; border-color: var(--color-accent); transform: translateX(5px); box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3); }
+
+      /* --- Service Section Details --- */
+      .service-section { border-bottom: 1px solid var(--color-border); padding: 60px 0; }
+      .service-section:first-of-type { padding-top: 0; }
+      .service-section:last-of-type { border-bottom: none; padding-bottom: 0; }
+      .service-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 25px; }
+      .service-desc { font-size: 1.15rem; margin-bottom: 30px; opacity: 0.85; }
+      .key-benefits-box { background-color: var(--color-bg-alt); padding: 30px; border-radius: 8px; border-left: 5px solid var(--color-accent); margin-top: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); }
+      .service-features { list-style: none; margin: 0; display: grid; grid-template-columns: 1fr; gap: 20px; }
+      @media (min-width: 768px) { .service-features { grid-template-columns: 1fr 1fr; } }
+      .service-features li { display: flex; align-items: flex-start; }
+      .service-list-icon { display: inline-block; margin-right: 12px; color: var(--color-accent-success); font-size: 1.5rem; line-height: 1.2; }
+      .service-img { max-width: 100%; height: auto; border-radius: 12px; display: block; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+      .text-center { text-align: center !important; }
+
+      /* --- Elegant Services Hero Enhancements --- */
+      .page-title-area {
+        background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)), url('assets/img/page-title/page-title-bg.jpg') center/cover no-repeat;
+      }
+      .page-title-content .h2-color,
+      .page-title-content h2 {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .page-title-content p {
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.15rem;
+        opacity: 0.9;
+      }
+      .hero-badges {
+        margin-top: 18px;
+        display: inline-flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #111827;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      /* --- Dark Mode Overrides for Custom Elements --- */
+      .theme-dark .service-section:nth-of-type(odd) { background-color: var(--color-bg-dark-alt); }
+      .theme-dark .service-section:nth-of-type(even) { background-color: var(--color-bg-dark); }
+      .theme-dark .service-title { color: var(--color-text-dark); }
+      .theme-dark .key-benefits-box { background-color: var(--color-bg-dark-alt); }
+      .theme-dark .service-sidebar-nav a { color: var(--color-text-dark); background-color: var(--color-bg-dark); border-color: #2a2a2a; }
+      .theme-dark .service-sidebar-nav a:hover, .theme-dark .service-sidebar-nav a.active { color: var(--color-text-dark) !important; background-color: var(--color-accent); border-color: var(--color-accent); }
+      
+      /* Enhanced Button Styles for CTA */
+      .get-btn.enhanced-btn { display: inline-flex; align-items: center; padding: 18px 45px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; position: relative; overflow: hidden; z-index: 1; text-decoration: none; background: linear-gradient(45deg, var(--color-accent), var(--color-accent-secondary)); color: white; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); border: none; }
+      .get-btn.enhanced-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.7); }
+      .get-btn.enhanced-btn i { margin-left: 10px; margin-right: 0; font-size: 20px; }
+    </style>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="d-table">
+        <div class="d-table-cell">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-area">
+      <div class="mobile-nav">
+        <a href="index.html" class="logo">
+          <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
+          <img src="assets/img/logo/logo2.png" class="logo-two" alt="Logo" />
+        </a>
+      </div>
+
+      <div class="main-nav">
+        <div class="container-fluid">
+          <nav class="container-max-2 navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+              <img
+                src="assets/img/logo/logo1.png"
+                class="logo-one"
+                alt="Logo"
+              />
+              <img
+                src="assets/img/logo/logo2.png"
+                class="logo-two"
+                alt="Logo"
+              />
+            </a>
+
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    Company
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="work.html" class="nav-link">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="nda.html" class="nav-link">NDA</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="service.html" class="nav-link active">
+                    Services
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="solution.html" class="nav-link">
+                    Solutions
+                  </a>  
+                </li>
+                
+                <li class="nav-item">
+                  <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                  <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a href="blog.html" class="nav-link">Blogs</a>
+                </li>
+              </ul>
+
+              <div class="side-nav d-flex align-items-center">
+                <div class="side-item">
+                  <div class="search-box">
+                    <i class="flaticon-loupe"></i>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#">
+                      <i class="flaticon-contact"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn">
+                      Contact us
+                      <i class="bx bx-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="side-nav-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="circle-inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="side-nav-inner">
+              <div class="side-nav justify-content-center align-items-center">
+                <div class="side-item">
+                  <div class="search-box">
+                    <i class="flaticon-loupe"></i>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#">
+                      <i class="flaticon-contact"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn border-radius">
+                      Contact us
+                      <i class="bx bx-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-overlay">
+      <div class="d-table">
+        <div class="d-table-cell">
+          <div class="search-layer"></div>
+          <div class="search-layer"></div>
+          <div class="search-layer"></div>
+
+          <div class="search-close">
+            <span class="search-close-line"></span>
+            <span class="search-close-line"></span>
+          </div>
+
+          <div class="search-form">
+            <form>
+              <input
+                type="text"
+                class="input-search"
+                placeholder="Search here..."
+              />
+              <button type="submit"><i class="flaticon-loupe"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-title-area bg-image" style="background-image: url('assets/img/page-title/page-title-bg.jpg');">
+        <div class="container">
+            <div class="page-title-content animate__animated animate__fadeIn">
+                <h2 class="animate__animated animate__fadeIn">Crafted Services for Modern Businesses</h2>
+                <p class="animate__animated animate__fadeIn animate__delay-1s">
+                    Build faster, scale safer, and deliver better experiences. From full‑stack engineering and cloud automation to data & AI, we partner with you to turn strategy into outcomes.
+                </p>
+                <div class="hero-badges animate__animated animate__fadeIn animate__delay-2s">
+                  <span class="hero-badge"><i class='bx bx-rocket'></i> Delivery Focused</span>
+                  <span class="hero-badge"><i class='bx bxs-lock-alt'></i> Security First</span>
+                  <span class="hero-badge"><i class='bx bxs-zap'></i> Performance Driven</span>
+                </div>
+                <ul class="page-breadcrumb" style="display: none;"></ul> 
+            </div>
+        </div>
+    </div>
+    <main class="service-main-grid">
+      
+      <div class="service-sidebar">
+        <h3 style="margin-bottom: 20px; font-weight: 700; font-size: 1.5rem;">Service Categories</h3>
+        <ul class="service-sidebar-nav">
+          <li class="active-on-load"><a href="#full-stack-engineering">Full-Stack Web Engineering</a></li>
+          <li><a href="#product-design">Digital Product Design & UX</a></li>
+          <li><a href="#custom-software">Bespoke Software Development</a></li>
+          <li><a href="#cloud-devops">Cloud & DevOps Automation</a></li>
+          <li><a href="#data-ai">Data Analytics & AI Integration</a></li>
+          <li><a href="#it-support">Managed IT & Security</a></li>
+          <li style="margin-top: 30px;"><a href="#consulting">Strategic Tech Consulting</a></li>
+        </ul>
+      </div>
+
+      <div class="service-details-wrapper">
+          
+        <section class="service-section" id="full-stack-engineering">
+          <div class="row">
+            <div class="col-half">
+              <h2 class="service-title">Full-Stack Web Engineering</h2>
+              <p class="service-desc">
+                We engineer **ultra-fast, scalable web platforms and e-commerce solutions** using modern headless architectures (JAMstack/MACH). We focus on **zero-latency performance, SEO optimization, and robust security** to build your digital growth engine.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bxs-bolt-circle'></i></span> Headless CMS & API-Driven Development</li>
+                  <li><span class="service-list-icon"><i class='bx bxl-react'></i></span> Next.js/React & Modern Frontend Frameworks</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-cloud-upload'></i></span> Serverless & Auto-Scaling Backends (Node.js/Go)</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-lock-alt'></i></span> WCAG & Cross-Browser Accessibility Standards</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/service/service-details.jpg" alt="Full-Stack Web Engineering" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="product-design">
+          <div class="row flex-reverse">
+            <div class="col-half">
+              <h2 class="service-title">Digital Product Design & UX</h2>
+              <p class="service-desc">
+                We translate business goals into **intuitive, high-converting interfaces**. Our process is data-led, building comprehensive **Design Systems** and leveraging user research to ensure every interaction guides the user towards a desired outcome and elevates your brand.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bxs-palette'></i></span> Figma-Based UI/UX & High-Fidelity Prototypes</li>
+                  <li><span class="service-list-icon"><i class='bx bx-sitemap'></i></span> User Journey Mapping & Information Architecture</li>
+                  <li><span class="service-list-icon"><i class='bx bx-chart'></i></span> Conversion Rate Optimization (CRO)</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-cog'></i></span> Atomic Design Systems & Component Libraries</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/mission-img.png" alt="Digital Product Design & UX" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="custom-software">
+          <div class="row">
+            <div class="col-half">
+              <h2 class="service-title">Bespoke Software Development</h2>
+              <p class="service-desc">
+                We build **custom, enterprise-grade applications** that solve your most complex operational challenges. Specializing in **microservices, robust APIs, and cloud-native architecture**, we deliver scalable solutions that are maintainable for decades.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bxs-server'></i></span> Microservices Architecture & API Gateways</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-shield-alt-2'></i></span> Application Security & Data Encryption</li>
+                  <li><span class="service-list-icon"><i class='bx bx-code-alt'></i></span> Legacy System Modernization & Migration</li>
+                  <li><span class="service-list-icon"><i class='bx bx-rocket'></i></span> End-to-End Automated QA & Testing</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/data-table-img.png" alt="Bespoke Software Development" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="cloud-devops">
+          <div class="row flex-reverse">
+            <div class="col-half">
+              <h2 class="service-title">Cloud & DevOps Automation</h2>
+              <p class="service-desc">
+                Achieve unparalleled reliability and speed through **Infrastructure as Code (IaC)** and **automated CI/CD pipelines**. We migrate, manage, and optimize your systems on AWS, Azure, or GCP, ensuring high availability and cost efficiency.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bxl-aws'></i></span> AWS, Azure, GCP Cloud Migration & Management</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-terminal'></i></span> Infrastructure as Code (Terraform, Ansible)</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-truck'></i></span> CI/CD Pipeline Implementation (GitOps)</li>
+                  <li><span class="service-list-icon"><i class='bx bxl-kubernetes'></i></span> Containerization with Docker & Kubernetes</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/home-three/home-three-img.png" alt="Cloud & DevOps Automation" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="data-ai">
+          <div class="row">
+            <div class="col-half">
+              <h2 class="service-title">Data Analytics & AI Integration</h2>
+              <p class="service-desc">
+                Unlock the value hidden in your data. We design and implement **robust data pipelines** and integrate **custom AI/ML models** to automate decision-making, forecast trends, and provide deep business intelligence that drives competitive advantage.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bx-data'></i></span> Data Pipeline & Warehouse Setup (Snowflake, BigQuery)</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-devices'></i></span> Custom Machine Learning (ML) Model Development</li>
+                  <li><span class="service-list-icon"><i class='bx bx-line-chart'></i></span> Advanced Business Intelligence (BI) Reporting</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-magic-wand'></i></span> Generative AI & Large Language Model (LLM) Integration</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/history-img.png" alt="Data Analytics & AI Integration" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="it-support">
+          <div class="row flex-reverse">
+            <div class="col-half">
+              <h2 class="service-title">Managed IT & Security</h2>
+              <p class="service-desc">
+                Protect your business and ensure continuous operation with our **24/7 managed security and maintenance services**. We provide proactive threat detection, vulnerability management, and a robust **Disaster Recovery** plan to minimize downtime.
+              </p>
+              <div class="key-benefits-box">
+                <ul class="service-features">
+                  <li><span class="service-list-icon"><i class='bx bxs-watch'></i></span> 24/7 Monitoring & Rapid Incident Response (IR)</li>
+                  <li><span class="service-list-icon"><i class='bx bxs-virus-block'></i></span> Penetration Testing & Vulnerability Auditing</li>
+                  <li><span class="service-list-icon"><i class='bx bx-redo'></i></span> Backup, Data Recovery & Business Continuity</li>
+                  <li><span class="service-list-icon"><i class='bx bx-hard-hat'></i></span> System Patching & Proactive Maintenance</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-half">
+              <img src="assets/img/counter/counter-bg.png" alt="Managed IT & Security" class="service-img"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-section" id="consulting">
+          <div class="text-center" style="padding: 40px 0;">
+            <h2 class="service-title" style="font-size: 2.5rem;">Strategic Tech Consulting</h2>
+            <p
+              class="service-desc"
+              style="max-width: 800px; margin-left: auto; margin-right: auto;"
+            >
+              Gain expert clarity with our high-level strategic guidance. We develop your **long-term technology roadmap**, perform **digital transformation assessments**, and provide leadership to align complex IT investments directly with your core business objectives and future vision.
+            </p>
+          </div>
+        </section>
+        
+        <section class="text-center" style="padding: 60px 0;">
+          <h2 class="service-title" style="margin-bottom: 10px;">
+            Ready to Build Something Exceptional?
+          </h2>
+          <p
+            class="service-desc"
+            style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 40px; font-size: 1.3rem;"
+          >
+            Schedule a free consultation today to discuss your next project and technological roadmap.
+          </p>
+          <a href="contact.html" class="get-btn enhanced-btn">
+            Schedule a Free Consultation <i class="bx bx-right-arrow-alt"></i>
+          </a>
+        </section>
+
+      </div>
+    </main>
+    <footer class="footer-area footer-bg pt-100 pb-70">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-sm-6">
+              <!-- <div class="footer-img">
+                <img
+                  src="assets/img/logo/logo1.png"
+                  class="footer-img1"
+                  alt="Logo"
+                />
+                <img
+                  src="assets/img/logo/logo2.png"
+                  class="footer-img2"
+                  alt="Logo"
+                />
+              </div> -->
+            </div>
+
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-social-icon">
+                <ul class="social-link">
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-linkedin"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-midal pt-45 pb-70">
+          <div class="row">
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget">
+                <h3>Services</h3>
+                <ul class="footer-list">
+                  <li><a href="#data-ai">AI & ML</a></li>
+                  <li><a href="#full-stack-engineering">Web Development</a></li>
+                  <li><a href="#custom-software">Software Development</a></li>
+                  <li><a href="#cloud-devops">Cloud & DevOps</a></li>
+                  <li><a href="#it-support">Managed IT</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-7">
+              <div class="footer-widget">
+                <h3>Company</h3>
+                <ul class="footer-list">
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="work.html">How We Work</a></li>
+                  <li><a href="nda.html">NDA</a></li>
+                  <li><a href="career.html">Career</a></li>
+                  <li><a href="#">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget ps-5">
+                <h3>Contact</h3>
+                <ul class="footer-list">
+                  <li><a href="tel:+918595611983">+91 8595611983</a></li>
+                  <li>
+                    <a href="mailto:info@podospheretechnologies.com"
+                      >info@podospheretechnologies.com</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-7">
+              <div class="footer-widget">
+                <h3>Get in Touch</h3>
+                <p>We're here to help. Reach out today!</p>
+                <div class="newsletter-area">
+                  <a href="contact.html" class="default-btn"
+                    >Contact Us <i class="bx bx-plus"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-right-area">
+          <div class="copy-right-text text-center">
+            <p>
+              Copyright ©2025 Podosphere Technologies – Powers you in IT World.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+             // Handle preloader
+            const preloader = document.querySelector(".preloader");
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 500); 
+            }
+            
+            // --- SIMPLE SCROLL SPY (For Sidebar Active State) ---
+            const sections = document.querySelectorAll('.service-details-wrapper section');
+            const navLinks = document.querySelectorAll('.service-sidebar-nav a');
+
+            function activateLink() {
+                let current = '';
+                // Check if sections are in viewport, favoring the ones closest to the top
+                sections.forEach(section => {
+                    // Offset to account for the sticky header
+                    const sectionTop = section.offsetTop - 150; 
+                    if (window.scrollY + window.innerHeight * 0.2 >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    // Ensure the initial link is active on load/top of page if scroll position is 0
+                    if (current === 'full-stack-engineering' && window.scrollY < 20) {
+                        document.querySelector('a[href="#full-stack-engineering"]').classList.add('active');
+                    } else if (link.getAttribute('href').includes(current) && current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', activateLink);
+            activateLink(); // Run once on load to set the initial state
+
+            // Smooth scrolling for sidebar clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        });
+    </script>
+  </body>
+</html>

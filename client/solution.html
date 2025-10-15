@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PodoSphere - Our Solutions</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fonts/flaticon.css" />
+    <link rel="stylesheet" href="assets/css/boxicons.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/meanmenu.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/theme-dark.css" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <style>
+      /* --- GLOBAL TYPOGRAPHY/LAYOUT --- */
+      .container-max-2 {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* --- Hero --- */
+      .page-title-area {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 106, 0, 0.08),
+          rgba(99, 102, 241, 0.08)
+        );
+        padding: 80px 0;
+      }
+      .page-title-area .h2-color {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .page-title-area p {
+        max-width: 720px;
+        margin: 10px auto 0;
+        opacity: 0.85;
+      }
+      .hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 12px;
+        background: rgba(255, 106, 0, 0.1);
+        color: #ff6a00;
+        border-radius: 999px;
+        font-size: 0.9em;
+        font-weight: 600;
+      }
+      .hero-badge i {
+        margin-right: 5px;
+        font-size: 1.1em;
+      }
+
+      /* --- Filter Buttons --- */
+      .sorting-options {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .sorting-options button {
+        border: 1px solid #e5e7eb;
+        background-color: #fff;
+        padding: 10px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+      }
+
+      .sorting-options button:hover,
+      .sorting-options button.active {
+        background-color: #ff6a00;
+        color: #fff;
+        border-color: #ff6a00;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(255, 106, 0, 0.3);
+      }
+
+      /* --- Service Card (Now Icon-Based) --- */
+      .service-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 25px; /* Increased padding */
+        border: 1px solid #eef0f3;
+        box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+        height: 100%;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+        overflow: hidden;
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: #e6e9ef;
+        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+      }
+      .service-card h3 {
+        margin-top: 16px;
+        margin-bottom: 10px;
+        font-size: 1.3rem; /* Larger font */
+        font-weight: 700;
+      }
+      .service-card p {
+        margin: 0 0 0px 0;
+        opacity: 0.85;
+      }
+
+      /* Icon Styling */
+      .solution-icon {
+        font-size: 38px; /* Larger icon */
+        color: #ff6a00;
+        background: linear-gradient(135deg, #ff6a00, #ff944d);
+        color: #fff;
+        width: 60px; /* New icon container size */
+        height: 60px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
+      }
+      .service-card h3 {
+        display: block;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .service-title {
+        display: block;
+        margin-top: 5px;
+      }
+
+      /* --- CTA - Updated to match Orange/Primary Brand Color --- */
+      .solutions-cta {
+        /* NEW BACKGROUND: Uses the primary orange and a dark gray/blue for professional contrast */
+        background: linear-gradient(135deg, #ff6a00 0%, #ff944d 100%);
+        color: #fff;
+        border-radius: 16px;
+        padding: 40px 28px;
+        /* Updated shadow to reflect the new orange gradient */
+        box-shadow: 0 18px 48px rgba(255, 106, 0, 0.35);
+      }
+      .solutions-cta h2 {
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+      .solutions-cta p {
+        margin: 0 0 20px 0;
+        opacity: 0.95;
+      }
+      .solutions-cta .cta-btn {
+        /* Button style matching the new orange CTA */
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: #ff6a00; /* Text color now matches the CTA background */
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .solutions-cta .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+      }
+
+      /* --- Filtering CSS (Simple Show/Hide) --- */
+      .solution-list .col-lg-4 {
+        transition: all 0.3s ease-in-out; /* Add transition for a basic effect */
+      }
+      .solution-list .col-lg-4.hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="d-table">
+        <div class="d-table-cell">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-area">
+      <div class="mobile-nav">
+        <a href="index.html" class="logo">
+          <img src="assets/img/logo/logo1.png" class="logo-one" alt="Logo" />
+          <img src="assets/img/logo/logo2.png" class="logo-two" alt="Logo" />
+        </a>
+      </div>
+      <div class="main-nav">
+        <div class="container-fluid">
+          <nav class="container-max-2 navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+              <img
+                src="assets/img/logo/logo1.png"
+                class="logo-one"
+                alt="Logo"
+              />
+              <img
+                src="assets/img/logo/logo2.png"
+                class="logo-two"
+                alt="Logo"
+              />
+            </a>
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link"
+                    >Company</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="work.html" class="nav-link">How We Work</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="nda.html" class="nav-link">NDA</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="career.html" class="nav-link">Career</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="service.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a href="solution.html" class="nav-link active">Solutions</a>
+                </li>
+                <li class="nav-item">
+                  <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                  <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a href="blog.html" class="nav-link">Blogs</a>
+                </li>
+              </ul>
+              <div class="side-nav d-flex align-items-center">
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="side-nav-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="circle-inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="side-nav-inner">
+              <div
+                class="side-nav justify-content-center align-items-center"
+              >
+                <div class="side-item">
+                  <div class="search-box"><i class="flaticon-loupe"></i></div>
+                </div>
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#"><i class="flaticon-contact"></i></a>
+                  </div>
+                </div>
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn border-radius"
+                      >Contact us <i class="bx bx-plus"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-title-area">
+      <div class="container">
+        <div class="page-title-content text-center">
+          <span class="sp-after">Solutions</span>
+          <h1 class="h2-color">
+            Empowering Your Business with Cutting-Edge AI Solutions
+          </h1>
+          <p>
+            Innovative solutions designed to drive efficiency, automation, and
+            growth. We combine advanced technology with intuitive design to
+            deliver seamless performance tailored to your needs.
+          </p>
+          <div class="hero-badges" style="margin-top: 16px">
+            <span class="hero-badge"
+              ><i class="bx bx-rocket"></i> Delivery Focused</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bxs-lock-alt"></i> Security First</span
+            >
+            <span class="hero-badge"
+              ><i class="bx bxs-zap"></i> Performance Driven</span
+            >
+          </div>
+          <div style="margin-top: 22px">
+            <a href="contact.html" class="default-btn" style="margin-right: 10px"
+              >Get In Touch <i class="bx bx-plus"></i
+            ></a>
+            <a
+              href="#solutions"
+              class="default-btn"
+              style="background: #111; color: #fff"
+              >Explore Projects <i class="bx bx-right-arrow-alt"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pt-100 pb-70" id="solutions">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="sorting-options text-center">
+            <strong>Filter by Focus Area:</strong>
+            <button data-filter="all" class="active">All Solutions</button>
+            <button data-filter="ai-ml">AI/ML & Data</button>
+            <button data-filter="web-app">Web & Custom Apps</button>
+            <button data-filter="cloud">Cloud & DevOps</button>
+            <button data-filter="industry">Industry Specific</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row solution-list">
+        <div
+          class="col-lg-4 col-md-6 mb-4"
+          data-category="web-app industry ai-ml"
+        >
+          <div class="service-card">
+            <i class="bx bx-dumbbell solution-icon"></i>
+            <h3><span class="service-title">AI-Driven Fitness Apps</span></h3>
+            <p>
+              Custom platforms with AI-powered workout plans, real-time posture
+              correction, and subscription-based progress tracking.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 mb-4"
+          data-category="web-app industry cloud"
+        >
+          <div class="service-card">
+            <i class="bx bx-store-alt solution-icon"></i>
+            <h3>
+              <span class="service-title">Retail Automation Systems</span>
+            </h3>
+            <p>
+              Mobile and web solutions for retail, featuring inventory
+              management, predictive stock alerts, and personalized customer
+              loyalty programs.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 mb-4"
+          data-category="web-app ai-ml industry"
+        >
+          <div class="service-card">
+            <i class="bx bx-conversation solution-icon"></i>
+            <h3>
+              <span class="service-title">Conversational E-Commerce</span>
+            </h3>
+            <p>
+              Building next-gen e-commerce with AI chatbots, personalized product
+              recommendations, and robust payment gateway integrations.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 mb-4"
+          data-category="ai-ml cloud industry"
+        >
+          <div class="service-card">
+            <i class="bx bx-truck solution-icon"></i>
+            <h3>
+              <span class="service-title">Predictive Logistics Software</span>
+            </h3>
+            <p>
+              Optimize supply chains using machine learning for demand
+              forecasting, dynamic route optimization, and real-time asset
+              tracking.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4" data-category="cloud">
+          <div class="service-card">
+            <i class="bx bx-cloud-upload solution-icon"></i>
+            <h3>
+              <span class="service-title">DevOps & Cloud Automation</span>
+            </h3>
+            <p>
+              Implementing scalable cloud infrastructure (AWS/Azure/GCP), CI/CD
+              pipelines, and infrastructure-as-code (IaC) for faster deployment.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4" data-category="web-app industry">
+          <div class="service-card">
+            <i class="bx bx-calendar-check solution-icon"></i>
+            <h3>
+              <span class="service-title"
+                >Custom Rental/Booking Systems</span
+              >
+            </h3>
+            <p>
+              End-to-end platforms for asset rental (cars, equipment) with
+              availability calendars, secure payments, and fleet management
+              dashboards.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4" data-category="ai-ml">
+          <div class="service-card">
+            <i class="bx bx-line-chart solution-icon"></i>
+            <h3>
+              <span class="service-title"
+                >Data Science & BI Dashboards</span
+              >
+            </h3>
+            <p>
+              Developing custom business intelligence tools and data lakes that
+              transform raw data into actionable insights for strategic
+              decision-making.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4" data-category="web-app industry">
+          <div class="service-card">
+            <i class="bx bx-mobile solution-icon"></i>
+            <h3>
+              <span class="service-title">On-Demand Service Apps</span>
+            </h3>
+            <p>
+              Building complex two-sided marketplaces (e.g., gig economy, home
+              services) with user/provider matching, geo-location, and instant
+              notifications.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4" data-category="web-app industry">
+          <div class="service-card">
+            <i class="bx bx-book-reader solution-icon"></i>
+            <h3>
+              <span class="service-title">Bespoke EdTech Solutions</span>
+            </h3>
+            <p>
+              Interactive learning management systems (LMS), virtual classrooms,
+              and gamified education apps designed for modern engagement.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 mb-4"
+          data-category="cloud web-app ai-ml"
+        >
+          <div class="service-card">
+            <i class="bx bx-brain solution-icon"></i>
+            <h3>
+              <span class="service-title"
+                >Technology & AI Strategy Consulting</span
+              >
+            </h3>
+            <p>
+              Expert guidance for digital transformation, technology stack
+              modernization, and feasibility assessment for AI/ML adoption.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-100">
+      <div class="solutions-cta mt-4">
+        <div class="row align-items-center">
+          <div class="col-lg-8 col-md-7">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>
+              Don't see your specific need listed? We specialize in custom
+              development. Let's discuss your unique vision and build it
+              together.
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-5 text-md-end text-center">
+            <a href="contact.html" class="cta-btn"
+              >Start a Conversation <i class="bx bx-right-arrow-alt"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-area footer-bg pt-100 pb-70">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-sm-6">
+              </div>
+
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-social-icon">
+                <ul class="social-link">
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-linkedin"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-midal pt-45 pb-70">
+          <div class="row">
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget">
+                <h3>Services</h3>
+                <ul class="footer-list">
+                  <li><a href="#data-ai">AI & ML</a></li>
+                  <li><a href="#full-stack-engineering">Web Development</a></li>
+                  <li><a href="#custom-software">Software Development</a></li>
+                  <li><a href="#cloud-devops">Cloud & DevOps</a></li>
+                  <li><a href="#it-support">Managed IT</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-7">
+              <div class="footer-widget">
+                <h3>Company</h3>
+                <ul class="footer-list">
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="work.html">How We Work</a></li>
+                  <li><a href="nda.html">NDA</a></li>
+                  <li><a href="career.html">Career</a></li>
+                  <li><a href="#">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-5">
+              <div class="footer-widget ps-5">
+                <h3>Contact</h3>
+                <ul class="footer-list">
+                  <li><a href="tel:+918595611983">+91 8595611983</a></li>
+                  <li>
+                    <a href="mailto:info@podospheretechnologies.com"
+                      >info@podospheretechnologies.com</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#">1st Floor, Amrapali Circle, Vaishali, Jaipur</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-7">
+              <div class="footer-widget">
+                <h3>Get in Touch</h3>
+                <p>We're here to help. Reach out today!</p>
+                <div class="newsletter-area">
+                  <a href="contact.html" class="default-btn"
+                    >Contact Us <i class="bx bx-plus"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-right-area">
+          <div class="copy-right-text text-center">
+            <p>
+              Copyright ©2025 Podosphere Technologies – Powers you in IT World.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll(
+          '.sorting-options button'
+        );
+        const solutionCards = document.querySelectorAll(
+          '.solution-list .col-lg-4'
+        );
+
+        filterButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const filterValue = button.getAttribute('data-filter');
+
+            // 1. Update active state on buttons
+            filterButtons.forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // 2. Filter the cards
+            solutionCards.forEach((card) => {
+              // Get categories, split them by space, and check if the filter is "all" OR included in the categories
+              const categories = card.getAttribute('data-category').split(' ');
+
+              if (filterValue === 'all' || categories.includes(filterValue)) {
+                // Show card
+                card.classList.remove('hidden');
+              } else {
+                // Hide card
+                card.classList.add('hidden');
+              }
+            });
+          });
+        });
+      });
+    </script>
+
+    <script src="assets/js/custom.js"></script>
+  </body>
+</html>
