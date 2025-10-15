@@ -320,6 +320,206 @@
           font-size: 2.2rem;
         }
       }
+
+      /* Leadership Section Styles */
+      .leadership-area {
+        background: var(--bg-light);
+        position: relative;
+      }
+
+      .leadership-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .leadership-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .leadership-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
+        border-color: var(--primary-color);
+      }
+
+      .leadership-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .leadership-img {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .leadership-img img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      .leadership-card:hover .leadership-img img {
+        transform: scale(1.05);
+        border-color: var(--primary-dark);
+      }
+
+      .leadership-content h3 {
+        font-size: 1.8rem;
+        color: var(--text-color);
+        margin-bottom: 8px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .leadership-content span {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .leadership-content p {
+        font-size: 1rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
+      .leadership-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .leadership-social li {
+        list-style: none;
+      }
+
+      .leadership-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      .leadership-social a:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(13, 110, 253, 0.3);
+      }
+
+      @media (max-width: 991px) {
+        .leadership-card {
+          padding: 30px;
+        }
+
+        .leadership-img img {
+          width: 180px;
+          height: 180px;
+        }
+
+        .leadership-content h3 {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .leadership-card {
+          padding: 25px;
+          margin-bottom: 25px;
+        }
+
+        .leadership-img img {
+          width: 160px;
+          height: 160px;
+        }
+
+        .leadership-content h3 {
+          font-size: 1.5rem;
+        }
+
+        .leadership-content span {
+          font-size: 1rem;
+        }
+
+        .leadership-content p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .leadership-social a {
+          width: 40px;
+          height: 40px;
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .leadership-card {
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .leadership-img img {
+          width: 140px;
+          height: 140px;
+        }
+
+        .leadership-content h3 {
+          font-size: 1.4rem;
+        }
+
+        .leadership-content span {
+          font-size: 0.95rem;
+        }
+
+        .leadership-content p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .leadership-social {
+          gap: 12px;
+        }
+
+        .leadership-social a {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+        }
+      }
     </style>
 
     <title>PodoSphere - About Us</title>
@@ -1042,7 +1242,7 @@
               </p>
               <p>
                 Our commitment to excellence has led to unprecedented growth, with significant advancements in technology, 
-                customer satisfaction, and operational efficiency. We’ve set new standards for quality, forged powerful partnerships, 
+                customer satisfaction, and operational efficiency. We have set new standards for quality, forged powerful partnerships, 
                 and empowered organizations to thrive in a digital-first world.
               </p>
               <p>
@@ -1067,6 +1267,83 @@
     </div>
     <!-- History Area End -->
 
+    <!-- Leadership Section -->
+    <div class="leadership-area pt-100 pb-70">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="sp-before sp-after">Leadership</span>
+          <h2 class="h2-color2">Meet Our Visionary Leaders</h2>
+        </div>
+
+        <div class="row pt-45">
+          <div class="col-lg-6">
+            <div class="leadership-card">
+              <div class="leadership-img">
+                <img src="assets/img/team/FOUNDER and CEO.webp" alt="CEO Image" />
+              </div>
+              <div class="leadership-content">
+                <h3>SUSHANT SINGH RAJPUT</h3>
+                <span>Founder & CEO</span>
+                <p>
+                  With over 15 years of experience in the technology industry, Sushant leads Podosphere Technologies with a vision to transform businesses through innovative digital solutions. 
+                  His strategic leadership and passion for excellence have been instrumental in establishing our company as a trusted partner for clients worldwide.
+                </p>
+                <p>
+                  Sushant holds an MBA from Harvard Business School and has previously held senior positions at leading tech companies. 
+                  He is passionate about fostering innovation and building strong client relationships that drive mutual success.
+                </p>
+                <ul class="leadership-social">
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-facebook"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="leadership-card">
+              <div class="leadership-img">
+                <img src="assets/img/team/CTO.webp" alt="CTO Image" />
+              </div>
+              <div class="leadership-content">
+                <h3>SURBHI TRIVEDI</h3>
+                <span>Chief Technology Officer</span>
+                <p>
+                  Surbhi brings extensive technical expertise and innovation to Podosphere Technologies. 
+                  With a Ph.D. in Computer Science and 12 years of experience in software architecture, 
+                  she oversees our technical strategy and ensures we stay at the forefront of emerging technologies.
+                </p>
+                <p>
+                  Her expertise spans across cloud computing, artificial intelligence, and scalable system design. 
+                  Surbhi is committed to building robust, secure, and efficient solutions that exceed client expectations and 
+                  drive digital transformation.
+                </p>
+                <ul class="leadership-social">
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-github"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank"><i class="bx bxl-twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Leadership Section End -->
+
     <!-- Team Area Two -->
     <div class="team-area-two pb-70">
       <div class="container">
@@ -1080,7 +1357,7 @@
         <div class="team-slider-two owl-carousel owl-theme">
           <div class="team-card active">
             <a href="#">
-              <img src="assets/img/team/team-01.jpg" alt="Team member 1" />
+              <img src="assets/img/team/team1.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">AJAY JAIN</a></h3>
@@ -1108,7 +1385,7 @@
 
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-02.jpg" alt="Team member 2" />
+              <img src="assets/img/team/team2.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">RAHUL JANGID</a></h3>
@@ -1136,7 +1413,7 @@
 
           <div class="team-card">
             <a href="#">
-              <img src="assets/img/team/team-03.jpg" alt="Team member 3" />
+              <img src="assets/img/team/team3.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">ANISH YADAV</a></h3>
@@ -1164,7 +1441,7 @@
 
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-04.jpg" alt="Team member 4" />
+              <img src="assets/img/team/team4.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">DEVENDRA SINGH GAHLOT</a></h3>
@@ -1192,7 +1469,7 @@
 
           <div class="team-card">
             <a href="#">
-              <img src="assets/img/team/team-05.jpg" alt="Team member 5" />
+              <img src="assets/img/team/team5.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">SAMEER MAHESHWARI</a></h3>
@@ -1220,7 +1497,7 @@
 
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-06.jpg" alt="Team member 6" />
+              <img src="assets/img/team/team6.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">JAY SHARMA</a></h3>
@@ -1248,7 +1525,7 @@
 
           <div class="team-card">
             <a href="#">
-              <img src="assets/img/team/team-07.jpg" alt="Team member 7" />
+              <img src="assets/img/team/team7.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">YUVRAJ CHAUHAN</a></h3>
@@ -1277,7 +1554,7 @@
 
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-08.jpg" alt="Team member 8" />
+              <img src="assets/img/team/team8.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">SUMIT SWAMI</a></h3>
@@ -1305,7 +1582,7 @@
 
           <div class="team-card">
             <a href="#">
-              <img src="assets/img/team/team-09.jpg" alt="Team member 9" />
+              <img src="assets/img/team/team9.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">KULDEEP TANWAR</a></h3>
@@ -1333,7 +1610,7 @@
           
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-10.jpg" alt="Team member 10" />
+              <img src="assets/img/team/team10.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">GAURAV SISODIA</a></h3>
@@ -1361,7 +1638,7 @@
 
           <div class="team-card">
             <a href="#">
-              <img src="assets/img/team/team-img8.jpg" alt="Images" />
+              <img src="assets/img/team/team11.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">TANU JANGID</a></h3>
@@ -1390,7 +1667,7 @@
 
           <div class="team-card team-rotated-2">
             <a href="#">
-              <img src="assets/img/team/team-11.jpg" alt="Team member 11" />
+              <img src="assets/img/team/team12.jpg" alt="Images" />
             </a>
             <div class="content">
               <h3><a href="team.html">SURAJ BAIRWA</a></h3>
@@ -1496,7 +1773,7 @@
             <div class="testimonial-slider owl-carousel owl-theme">
               <div class="testimonial-item">
                 <p>
-                  I chose Zinka because of their value And incredible superior
+                  I chose PodoSphere because of their value And incredible superior
                   customer Service they really awesome treated me like family
                 </p>
                 <div class="content">
@@ -1513,7 +1790,7 @@
 
               <div class="testimonial-item">
                 <p>
-                  I chose Zinka because of their value And incredible superior
+                  I chose PodoSphere because of their value And incredible superior
                   customer Service they really awesome treated me like family
                 </p>
                 <div class="content">
@@ -1530,7 +1807,7 @@
 
               <div class="testimonial-item">
                 <p>
-                  I chose Zinka because of their value And incredible superior
+                  I chose PodoSphere because of their value And incredible superior
                   customer Service they really awesome treated me like family
                 </p>
                 <div class="content">
@@ -1654,8 +1931,11 @@
                   />
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore dolore magna
+                  <b>For your next project, hire Podosphere Technologies</b>
+                  <br>
+                  We offer technical and professional services to a broad range of industries and clients. 
+                  Our target is to become a full-service software company based in India 
+                  that serves global clients and leads the technology sector.
                 </p>
                 <div class="footer-social-icon">
                   <ul class="social-link">
@@ -1741,17 +2021,17 @@
                 <ul class="footer-list-two">
                   <li>
                     <i class="flaticon-telephone"></i>
-                    <a href="tel:+4498886660000">+449 888 666 0000</a>
+                    <a href="tel:+4498886660000">+91 8595611983</a>
                   </li>
 
                   <li>
                     <i class="flaticon-email-1"></i>
-                    <a href="mailto:hello@zinka.com">hello@zinka.com</a>
+                    <a href="mailto:hello@zinka.com">Info@podosphere technologies.com</a>
                   </li>
 
                   <li>
                     <i class="flaticon-place"></i>
-                    855 road, brooklyn street new york 600
+                    1st Floor, Amarapali Circle, Vaishali, Jaipur
                   </li>
                 </ul>
               </div>
@@ -1764,7 +2044,7 @@
             <div class="col-lg-8">
               <div class="copy-right-text text-left">
                 <p>
-                  Copyright Zinka. All Rights Reserved by
+                  Copyright PODOSPHERE. All Rights Reserved by
                   <a href="https://hibootstrap.com/" target="_blank"
                     >HiBootstrap</a
                   >
