@@ -227,8 +227,7 @@
             >
               <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                  <a href="#" class="nav-link"
-                    >Company</a>
+                  <a href="#" class="nav-link">Company</a>
                   <ul class="dropdown-menu">
                     <li class="nav-item">
                       <a href="about.html" class="nav-link">About Us</a>
@@ -255,9 +254,6 @@
                 </li>
                 <li class="nav-item">
                   <a href="contact.html" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a href="blog.html" class="nav-link">Blogs</a>
                 </li>
               </ul>
               <div class="side-nav d-flex align-items-center">
@@ -292,9 +288,7 @@
           </div>
           <div class="container">
             <div class="side-nav-inner">
-              <div
-                class="side-nav justify-content-center align-items-center"
-              >
+              <div class="side-nav justify-content-center align-items-center">
                 <div class="side-item">
                   <div class="search-box"><i class="flaticon-loupe"></i></div>
                 </div>
@@ -342,10 +336,13 @@
           </div>
 
           <div style="margin-top: 22px">
-            <a href="contact.html" class="default-btn" style="margin-right: 10px"
+            <a
+              href="contact.html"
+              class="default-btn"
+              style="margin-right: 10px"
               >Get In Touch <i class="bx bx-plus"></i
             ></a>
-            
+
             <a
               href="portfolio.html"
               class="default-btn"
@@ -353,7 +350,6 @@
               >Explore Projects <i class="bx bx-right-arrow-alt"></i
             ></a>
           </div>
-
         </div>
       </div>
     </div>
@@ -414,8 +410,8 @@
               <span class="service-title">Conversational E-Commerce</span>
             </h3>
             <p>
-              Building next-gen e-commerce with AI chatbots, personalized product
-              recommendations, and robust payment gateway integrations.
+              Building next-gen e-commerce with AI chatbots, personalized
+              product recommendations, and robust payment gateway integrations.
             </p>
           </div>
         </div>
@@ -454,9 +450,7 @@
           <div class="service-card">
             <i class="bx bx-calendar-check solution-icon"></i>
             <h3>
-              <span class="service-title"
-                >Custom Rental/Booking Systems</span
-              >
+              <span class="service-title">Custom Rental/Booking Systems</span>
             </h3>
             <p>
               End-to-end platforms for asset rental (cars, equipment) with
@@ -470,9 +464,7 @@
           <div class="service-card">
             <i class="bx bx-line-chart solution-icon"></i>
             <h3>
-              <span class="service-title"
-                >Data Science & BI Dashboards</span
-              >
+              <span class="service-title">Data Science & BI Dashboards</span>
             </h3>
             <p>
               Developing custom business intelligence tools and data lakes that
@@ -509,10 +501,7 @@
           </div>
         </div>
 
-        <div
-          class="col-lg-4 col-md-6 mb-4"
-          data-category="cloud web-app ai-ml"
-        >
+        <div class="col-lg-4 col-md-6 mb-4" data-category="cloud web-app ai-ml">
           <div class="service-card">
             <i class="bx bx-brain solution-icon"></i>
             <h3>
@@ -553,8 +542,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="row align-items-center">
-            <div class="col-lg-6 col-sm-6">
-              </div>
+            <div class="col-lg-6 col-sm-6"></div>
 
             <div class="col-lg-6 col-sm-6">
               <div class="footer-social-icon">
@@ -634,11 +622,6 @@
               <div class="footer-widget">
                 <h3>Get in Touch</h3>
                 <p>We're here to help. Reach out today!</p>
-                <div class="newsletter-area">
-                  <a href="contact.html" class="default-btn"
-                    >Contact Us <i class="bx bx-plus"></i
-                  ></a>
-                </div>
               </div>
             </div>
           </div>
@@ -664,33 +647,33 @@
     <script src="assets/js/contact-form-script.js"></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         const filterButtons = document.querySelectorAll(
-          '.sorting-options button'
+          ".sorting-options button"
         );
         const solutionCards = document.querySelectorAll(
-          '.solution-list .col-lg-4'
+          ".solution-list .col-lg-4"
         );
 
         filterButtons.forEach((button) => {
-          button.addEventListener('click', () => {
-            const filterValue = button.getAttribute('data-filter');
+          button.addEventListener("click", () => {
+            const filterValue = button.getAttribute("data-filter");
 
             // 1. Update active state on buttons
-            filterButtons.forEach((btn) => btn.classList.remove('active'));
-            button.classList.add('active');
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
 
             // 2. Filter the cards
             solutionCards.forEach((card) => {
               // Get categories, split them by space, and check if the filter is "all" OR included in the categories
-              const categories = card.getAttribute('data-category').split(' ');
+              const categories = card.getAttribute("data-category").split(" ");
 
-              if (filterValue === 'all' || categories.includes(filterValue)) {
+              if (filterValue === "all" || categories.includes(filterValue)) {
                 // Show card
-                card.classList.remove('hidden');
+                card.classList.remove("hidden");
               } else {
                 // Hide card
-                card.classList.add('hidden');
+                card.classList.add("hidden");
               }
             });
           });
