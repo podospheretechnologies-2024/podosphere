@@ -1,0 +1,120 @@
+/* Shared service & solution page styles */
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #6366f1;
+  --card-bg: #f8fafc;
+}
+html[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #9aa6bf;
+  --accent: #7c3aed;
+  --card-bg: #071026;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg), rgba(0, 0, 0, 0));
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.inner-banner {
+  padding: 48px 0;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.08), transparent);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.inner-banner .inner-title h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+.inner-banner .inner-title ul {
+  display: none;
+}
+
+.service-details-area .service-left {
+  margin-bottom: 24px;
+}
+.service-content img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+.service-content h2 {
+  font-size: 26px;
+  margin-top: 18px;
+  color: var(--text);
+}
+.service-content p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.service-sidebar .service-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+.service-sidebar .service-card h3 {
+  margin-top: 0;
+  color: var(--text);
+}
+.default-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* Responsive two-column layout */
+.service-details-area .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.service-details-area .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.service-details-area .col-lg-8 {
+  flex: 1 1 65%;
+  min-width: 280px;
+}
+.service-details-area .col-lg-4 {
+  flex: 1 1 30%;
+  min-width: 220px;
+}
+
+@media (max-width: 768px) {
+  .service-details-area .row {
+    flex-direction: column;
+  }
+  .inner-banner {
+    padding: 28px 0;
+  }
+}
+
+/* Small helpers */
+.muted {
+  color: var(--muted);
+}
+.accent {
+  color: var(--accent);
+}
+
+/* Make sure the theme toggle checkbox (if present) is visible */
+#theme-toggle {
+  display: inline-block;
+  vertical-align: middle;
+}
