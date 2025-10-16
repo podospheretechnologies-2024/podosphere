@@ -1,0 +1,442 @@
+/* ========================================
+   RESPONSIVE DESIGN FIXES
+   Cross-Device Compatibility CSS
+   ======================================== */
+
+/* Mobile First Approach */
+
+/* Extra Small Devices (Portrait Phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* Typography */
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.75rem !important; }
+  h3 { font-size: 1.5rem !important; }
+  .lead { font-size: 1rem !important; }
+
+  /* Hero Sections */
+  .service-detail-hero,
+  .portfolio-hero,
+  .page-title-area {
+    padding: 60px 0 !important;
+  }
+
+  .service-detail-hero h1,
+  .portfolio-hero h1,
+  .page-title-content h1 {
+    font-size: 2rem !important;
+  }
+
+  .service-icon-large {
+    font-size: 4rem !important;
+  }
+
+  /* Buttons */
+  .default-btn,
+  .cta-btn {
+    padding: 12px 24px !important;
+    font-size: 0.95rem !important;
+    width: 100%;
+    display: block !important;
+    margin-bottom: 10px;
+  }
+
+  /* Cards */
+  .feature-box,
+  .service-card,
+  .portfolio-grid .card,
+  .value-card,
+  .why-us-card {
+    padding: 25px !important;
+    margin-bottom: 20px;
+  }
+
+  /* Service Grid */
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 20px 0 !important;
+  }
+
+  /* Process Steps */
+  .process-number {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 2rem !important;
+  }
+
+  /* Tech Badges */
+  .tech-badge {
+    padding: 10px 18px !important;
+    font-size: 0.85rem !important;
+    margin: 5px !important;
+  }
+
+  /* Featured Leaders */
+  .leader-card {
+    padding: 30px 20px !important;
+  }
+
+  .leader-card .row .col-md-5,
+  .leader-card .row .col-md-7 {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .leader-card h3 {
+    font-size: 1.75rem !important;
+  }
+
+  .leader-card img {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  /* Team Cards */
+  .team-card img {
+    height: 300px !important;
+  }
+
+  /* Hero Badges */
+  .hero-badge {
+    display: block !important;
+    margin: 8px auto !important;
+    max-width: 80%;
+  }
+
+  /* Service Filters */
+  .service-filters button {
+    padding: 10px 18px !important;
+    font-size: 0.9rem !important;
+    margin: 5px !important;
+  }
+
+  /* Banner Content */
+  .banner-content h1 {
+    font-size: 2.2rem !important;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid .card-title {
+    font-size: 1.2rem !important;
+  }
+
+  /* Container Adjustments */
+  .container-max,
+  .container-max-2 {
+    padding: 0 15px;
+  }
+}
+
+/* Small Devices (Landscape Phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 2rem !important; }
+
+  .service-detail-hero h1,
+  .portfolio-hero h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .service-icon-large {
+    font-size: 5rem !important;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+
+  .leader-card {
+    padding: 35px !important;
+  }
+
+  .process-number {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 2.2rem !important;
+  }
+}
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  h1 { font-size: 2.8rem !important; }
+  h2 { font-size: 2.2rem !important; }
+
+  .service-detail-hero h1,
+  .portfolio-hero h1 {
+    font-size: 2.8rem !important;
+  }
+
+  .service-icon-large {
+    font-size: 5.5rem !important;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+  }
+
+  .leader-card {
+    padding: 40px !important;
+  }
+
+  .leader-card img {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .process-number {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 2.5rem !important;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid .col-lg-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 35px !important;
+  }
+
+  .leader-card {
+    padding: 45px !important;
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) !important;
+  }
+}
+
+/* Landscape Orientation Fixes */
+@media (max-height: 600px) and (orientation: landscape) {
+  .service-detail-hero,
+  .portfolio-hero,
+  .page-title-area {
+    padding: 40px 0 !important;
+  }
+
+  .service-icon-large {
+    font-size: 3rem !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .feature-box:hover,
+  .service-card:hover,
+  .tech-badge:hover {
+    transform: none !important;
+  }
+
+  /* Larger touch targets */
+  .default-btn,
+  .cta-btn,
+  a.nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Increase clickable area */
+  .social-link a {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar-area,
+  .footer-area,
+  .preloader,
+  .cta-section {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure images look crisp on retina displays */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles will use theme-dark.css */
+  /* This is a placeholder for future dark mode enhancements */
+}
+
+/* iOS Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific fixes */
+  .service-detail-hero,
+  .portfolio-hero {
+    min-height: -webkit-fill-available;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents zoom on focus */
+  }
+}
+
+/* Container Max Width Responsive */
+@media (max-width: 1400px) {
+  .container-max,
+  .container-max-2 {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container-max,
+  .container-max-2 {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container-max,
+  .container-max-2 {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-max,
+  .container-max-2 {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-max,
+  .container-max-2 {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Fix Overflow Issues */
+body {
+  overflow-x: hidden !important;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* Ensure Images Don't Overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Flexible Videos */
+iframe,
+video {
+  max-width: 100%;
+}
+
+/* Contact Form Mobile Fix */
+@media (max-width: 767.98px) {
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px !important; /* Prevents iOS zoom */
+  }
+
+  .contact-img {
+    display: none; /* Hide image on mobile for better UX */
+  }
+}
+
+/* Service Filters Mobile */
+@media (max-width: 767.98px) {
+  .service-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .service-filters button {
+    flex: 0 0 auto;
+  }
+}
+
+/* Portfolio Grid Mobile */
+@media (max-width: 767.98px) {
+  .portfolio-grid .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .portfolio-grid .card img {
+    height: 200px !important;
+  }
+}
+
+/* Navigation Mobile Enhancements */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    padding: 20px 0;
+  }
+
+  .nav-item {
+    padding: 10px 0;
+  }
+
+  .side-nav {
+    flex-direction: column !important;
+    gap: 15px;
+  }
+}
+
+/* Table Responsive */
+@media (max-width: 767.98px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+

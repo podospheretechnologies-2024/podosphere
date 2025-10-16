@@ -11,13 +11,361 @@ const About = () => {
 
   return (
     <>
-      {/* Page Title Area */}
+      <style>{`
+        @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+          50% { box-shadow: 0 0 50px rgba(102, 126, 234, 0.6); }
+        }
+
+        .page-title-area {
+          background: linear-gradient(-45deg, #667eea, #764ba2, #667eea, #5a67d8);
+          background-size: 400% 400%;
+          animation: gradient-shift 15s ease infinite;
+          padding: 100px 0 80px;
+          color: #fff;
+          position: relative;
+          overflow: hidden;
+        }
+        .page-title-area::before {
+          content: '';
+          position: 'absolute';
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
+        .page-title-content {
+          position: relative;
+          z-index: 2;
+        }
+        .page-title-content h1 {
+          color: #fff !important;
+          font-size: 3rem;
+          font-weight: 900;
+          margin-bottom: 20px;
+          text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .page-title-content p {
+          font-size: 1.2rem;
+          opacity: 0.95;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .about-section {
+          padding: 80px 0;
+          background: #fff;
+        }
+        .about-subtitle {
+          font-size: 2.2rem;
+          font-weight: 800;
+          margin-bottom: 30px;
+          color: #1f2937;
+          position: relative;
+          padding-bottom: 15px;
+        }
+        .about-subtitle::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+          border-radius: 2px;
+        }
+        .about-card {
+          background: linear-gradient(145deg, #ffffff, #f9fafb);
+          border-radius: 20px;
+          padding: 40px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+          border: 2px solid #f3f4f6;
+          transition: all 0.4s ease;
+        }
+        .about-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+          border-color: #667eea;
+        }
+        .about-text {
+          font-size: 1.05rem;
+          line-height: 1.9;
+          color: #4b5563;
+          margin-bottom: 20px;
+        }
+        .highlight-text {
+          color: #667eea;
+          font-weight: 700;
+        }
+        
+        .value-card {
+          background: linear-gradient(145deg, #ffffff, #fafafa);
+          border-radius: 20px;
+          padding: 35px;
+          text-align: center;
+          margin-bottom: 30px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+          border: 2px solid #f0f0f0;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          overflow: hidden;
+        }
+        .value-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+          transition: left 0.5s;
+        }
+        .value-card:hover::before {
+          left: 100%;
+        }
+        .value-card:hover {
+          transform: translateY(-10px) scale(1.03);
+          box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+          border-color: #667eea;
+        }
+        .value-icon {
+          font-size: 4rem;
+          color: #667eea;
+          margin-bottom: 20px;
+          display: inline-block;
+          transition: all 0.3s ease;
+        }
+        .value-card:hover .value-icon {
+          transform: scale(1.2) rotate(360deg);
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .value-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          margin-bottom: 15px;
+          color: #1f2937;
+        }
+        .value-text {
+          font-size: 1rem;
+          color: #6b7280;
+          line-height: 1.7;
+        }
+
+        .why-us-section {
+          padding: 80px 0;
+          background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+        }
+        .why-us-card {
+          background: linear-gradient(145deg, #ffffff, #fafafa);
+          border-radius: 20px;
+          padding: 40px 30px;
+          text-align: center;
+          margin-bottom: 30px;
+          box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+          border: 2px solid #f0f0f0;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          overflow: hidden;
+        }
+        .why-us-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+          transition: left 0.6s;
+        }
+        .why-us-card:hover::before {
+          left: 100%;
+        }
+        .why-us-card:hover {
+          transform: translateY(-12px) scale(1.04);
+          box-shadow: 0 25px 60px rgba(16, 185, 129, 0.2);
+          border-color: #10b981;
+        }
+        .why-us-card .value-icon {
+          color: #10b981;
+        }
+        .why-us-card:hover .value-icon {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .why-us-title {
+          font-size: 1.4rem;
+          font-weight: 800;
+          margin-bottom: 15px;
+          color: #1f2937;
+        }
+        .why-us-text {
+          font-size: 1rem;
+          color: #6b7280;
+          line-height: 1.7;
+        }
+
+        .about-widget-area {
+          background: #fff;
+        }
+        .about-widget-list ul {
+          list-style: none;
+          padding: 0;
+          margin-top: 30px;
+        }
+        .about-widget-list li {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 25px;
+          padding: 20px;
+          background: linear-gradient(145deg, #ffffff, #f9fafb);
+          border-radius: 15px;
+          border-left: 4px solid #667eea;
+          transition: all 0.3s ease;
+        }
+        .about-widget-list li:hover {
+          transform: translateX(10px);
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+        .about-widget-list li i {
+          font-size: 2rem;
+          color: #10b981;
+          margin-right: 15px;
+          flex-shrink: 0;
+        }
+        .about-widget-list li span {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #667eea;
+          margin-right: 15px;
+          flex-shrink: 0;
+        }
+        .about-widget-list li p {
+          margin: 0;
+          color: #4b5563;
+          line-height: 1.7;
+        }
+
+        .counter-area-two {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          position: relative;
+        }
+        .counter-card {
+          text-align: center;
+          padding: 40px 20px;
+          background: rgba(255,255,255,0.15);
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          margin-bottom: 30px;
+          border: 2px solid rgba(255,255,255,0.2);
+          transition: all 0.4s ease;
+        }
+        .counter-card:hover {
+          transform: translateY(-10px) scale(1.05);
+          background: rgba(255,255,255,0.25);
+          box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+        .counter-card h3 {
+          font-size: 3rem;
+          font-weight: 900;
+          color: #fff;
+          margin-bottom: 10px;
+          text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .counter-card p {
+          font-size: 1.1rem;
+          color: #fff;
+          font-weight: 700;
+          opacity: 0.95;
+        }
+
+        .service-list-area {
+          background: #fff;
+        }
+        .service-list-content {
+          background: linear-gradient(145deg, #ffffff, #f9fafb);
+          border-radius: 20px;
+          padding: 35px;
+          margin-bottom: 30px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+          border: 2px solid #f0f0f0;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          height: 100%;
+        }
+        .service-list-content:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+          border-color: #667eea;
+        }
+        .service-list-content h3 {
+          font-size: 1.6rem;
+          font-weight: 800;
+          margin-bottom: 15px;
+          color: #1f2937;
+        }
+        .service-list-content p {
+          font-size: 1.05rem;
+          color: #4b5563;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+        .service-list-btn {
+          display: inline-block;
+          padding: 12px 28px;
+          background: linear-gradient(145deg, #667eea, #764ba2);
+          color: #fff;
+          border-radius: 25px;
+          text-decoration: none;
+          font-weight: 700;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        .service-list-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+          color: #fff;
+        }
+        .service-list-btn i {
+          margin-left: 8px;
+        }
+      `}</style>
+
+      {/* Page Title Area - Enhanced */}
       <div className="page-title-area">
+        {/* Floating Particles */}
+        <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1 }}>
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              style={{
+                position: 'absolute',
+                width: `${Math.random() * 8 + 4}px`,
+                height: `${Math.random() * 8 + 4}px`,
+                background: 'rgba(255,255,255,0.7)',
+                borderRadius: '50%',
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${Math.random() * 5 + 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`,
+                boxShadow: '0 0 10px rgba(255,255,255,0.5)'
+              }}
+            />
+          ))}
+        </div>
+
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after">About Us</span>
-            <h1 className="h2-color">Transforming Ideas into Digital Excellence</h1>
-            <p>We craft high-performing, secure, and scalable digital products that drive real business outcomes.</p>
+            <span className="sp-after" style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '700' }}>About Us</span>
+            <h1 className="animate-slide-up">Transforming Ideas into Digital Excellence</h1>
+            <p className="animate-slide-up delay-200">
+              We craft high-performing, secure, and scalable digital products that drive real business outcomes.
+            </p>
           </div>
         </div>
       </div>
@@ -141,7 +489,7 @@ const About = () => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="about-widget-img wow animate__animated animate__fadeInLeft" data-wow-delay="0.2s">
-                <img src="/assets/img/about/about-img4.png" alt="About" />
+                <img src="/assets/img/about/about-img4.png" alt="About" style={{ borderRadius: '20px', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }} />
               </div>
             </div>
 
@@ -149,13 +497,15 @@ const About = () => {
               <div className="about-widget-content wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">
                 <div className="section-title">
                   <span className="sp-before sp-after">About Us</span>
-                  <h2>Grow Your Business With PodoSphere</h2>
+                  <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' }}>
+                    Grow Your Business With PodoSphere
+                  </h2>
                 </div>
-                <h3>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: '700', color: '#374151', marginBottom: '20px' }}>
                   We have 30 years of experience and our strategy includes consistently evolving, to
                   ensure we are producing exceptional web and app solutions for business.
                 </h3>
-                <p>
+                <p style={{ fontSize: '1.05rem', color: '#6b7280', lineHeight: '1.8', marginBottom: '30px' }}>
                   At Podosphere Technologies, we deliver innovative web and app solutions, combining advanced technology with
                   intuitive user experiences to drive your business forward.
                 </p>
@@ -178,7 +528,7 @@ const About = () => {
       </div>
 
       {/* Counter Area */}
-      <div className="counter-area-two pt-100">
+      <div className="counter-area-two pt-100 pb-100">
         <div className="container">
           <div className="row wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
             {aboutCounters.map((counter, index) => (
@@ -202,7 +552,7 @@ const About = () => {
         <div className="container">
           <div className="section-title text-center">
             <span className="sp-before sp-after">Services</span>
-            <h2>Our Journey's Path</h2>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' }}>Our Journey's Path</h2>
           </div>
 
           <div className="row pt-45">
