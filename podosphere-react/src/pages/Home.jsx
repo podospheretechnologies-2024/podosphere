@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-//
+
 const Home = () => {
   useEffect(() => {
     // Initialize animations and plugins
@@ -59,15 +59,24 @@ const Home = () => {
         type: 'iframe'
       });
     }
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
     <>
       <style>{`
+        /* ---------------------------------------------------------------------- */
+        /* --- GLOBAL THEME VARIABLES AND TYPOGRAPHY (COPIED FROM HOME.JS) --- */
+        /* ---------------------------------------------------------------------- */
         /* Color Scheme Variables - Theme Aware */
         :root {
           --primary-orange: #f97316;
           --secondary-orange: #ff6a00;
+          --primary-blue: #2563eb;
           --text-black: #1a1b1e;
           --text-white: #ffffff;
           --text-gray: #4a5568;
@@ -100,7 +109,7 @@ const Home = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important; /* Reduced navbar height */
+          padding: 8px 0 !important;
         }
 
         /* Dark Mode Navbar */
@@ -119,31 +128,23 @@ const Home = () => {
           box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
         }
 
-        .navbar-brand {
-          transition: all 0.3s ease !important;
-          padding: 8px 0 !important;
-        }
-
-        .navbar-brand:hover {
-          transform: scale(1.05) !important;
-        }
-
+        /* Navbar Links */
         .navbar-nav .nav-link {
           font-family: 'Livvic', sans-serif !important;
           font-weight: 600 !important;
-          font-size: 1rem !important; /* Reduced font size */
+          font-size: 1rem !important;
           color: var(--text-black) !important;
           text-transform: uppercase !important;
           letter-spacing: 0.5px !important;
           position: relative !important;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          padding: 12px 18px !important; /* Reduced padding */
+          padding: 12px 18px !important;
           margin: 0 3px !important;
         }
 
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
-          color: #f97316 !important;
+          color: var(--primary-orange) !important;
           transform: translateY(-2px) !important;
         }
 
@@ -154,17 +155,17 @@ const Home = () => {
 
         .theme-dark .navbar-nav .nav-link:hover,
         .theme-dark .navbar-nav .nav-link.active {
-          color: #f97316 !important;
+          color: var(--primary-orange) !important;
         }
 
         .navbar-nav .nav-link::after {
           content: '' !important;
           position: absolute !important;
-          bottom: 8px !important; /* Adjusted for reduced height */
+          bottom: 8px !important;
           left: 50% !important;
           width: 0 !important;
           height: 2px !important;
-          background: linear-gradient(90deg, #f97316, #2563eb) !important;
+          background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue)) !important;
           transition: all 0.3s ease !important;
           transform: translateX(-50%) !important;
         }
@@ -176,7 +177,7 @@ const Home = () => {
 
         .dropdown-menu {
           border: none !important;
-          border-top: 3px solid #f97316 !important;
+          border-top: 3px solid var(--primary-orange) !important;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
           background: var(--bg-white) !important;
           border-radius: 8px !important;
@@ -186,48 +187,8 @@ const Home = () => {
 
         .theme-dark .dropdown-menu {
           background: var(--bg-dark) !important;
-          border-top: 3px solid #f97316 !important;
+          border-top: 3px solid var(--primary-orange) !important;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        .dropdown-menu .nav-link {
-          color: var(--text-black) !important;
-          padding: 10px 20px !important; /* Reduced padding */
-          font-weight: 500 !important;
-          transition: all 0.3s ease !important;
-          text-transform: none !important;
-          font-size: 0.95rem !important;
-          letter-spacing: 0.3px !important;
-        }
-
-        .theme-dark .dropdown-menu .nav-link {
-          color: #f1f5f9 !important;
-        }
-
-        .dropdown-menu .nav-link:hover {
-          background: linear-gradient(135deg, #f97316, #2563eb) !important;
-          color: #ffffff !important;
-          padding-left: 25px !important;
-          transform: translateX(5px) !important;
-        }
-
-        .nav-menu-btn {
-          background: linear-gradient(135deg, #f97316, #2563eb) !important;
-          color: #ffffff !important;
-          padding: 10px 20px !important;
-          border-radius: 25px !important;
-          font-weight: 600 !important;
-          font-size: 0.9rem !important;
-          letter-spacing: 0.5px !important;
-          transition: all 0.3s ease !important;
-          text-transform: uppercase !important;
-          box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3) !important;
-        }
-
-        .nav-menu-btn:hover {
-          transform: translateY(-2px) scale(1.05) !important;
-          box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4) !important;
-          background: linear-gradient(135deg, #2563eb, #f97316) !important;
         }
 
         /* Enhanced Typography for UI Text - Theme Aware */
@@ -254,33 +215,24 @@ const Home = () => {
           font-weight: 400 !important;
         }
 
-        .btn {
-          font-family: 'Livvic', sans-serif !important;
-          font-weight: 600 !important;
-          text-transform: uppercase !important;
-          letter-spacing: 0.5px !important;
-          transition: all 0.3s ease !important;
-          border-radius: 8px !important;
-        }
-
         .section-title h2 {
           font-size: 2.8rem !important;
           font-weight: 800 !important;
-          background: linear-gradient(135deg, var(--text-black), #2563eb) !important;
+          background: linear-gradient(135deg, var(--text-black), var(--primary-blue)) !important;
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           background-clip: text !important;
         }
 
         .theme-dark .section-title h2 {
-          background: linear-gradient(135deg, #f1f5f9, #2563eb) !important;
+          background: linear-gradient(135deg, #f1f5f9, var(--primary-blue)) !important;
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           background-clip: text !important;
         }
 
         .sp-after {
-          background: linear-gradient(135deg, #f97316, #2563eb) !important;
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue)) !important;
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           background-clip: text !important;
@@ -313,7 +265,7 @@ const Home = () => {
         .why-us-card:hover {
           transform: translateY(-8px) scale(1.02) !important;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-          border-color: #f97316 !important;
+          border-color: var(--primary-orange) !important;
         }
 
         .theme-dark .service-card:hover,
@@ -1135,6 +1087,8 @@ const Home = () => {
     </>
   );
 };
+
+
 
 // Data Arrays
 const brands = [

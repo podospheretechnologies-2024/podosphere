@@ -3,15 +3,290 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   useEffect(() => {
-    // Initialize WOW.js for animations
+    // Initialize animations and plugins
     if (window.WOW) {
       new window.WOW().init();
     }
+
+    // Navbar scroll effect logic copied from Home.js
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar-area');
+      if (navbar) {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Initialize Owl Carousel (for consistency and if a slider is added later)
+    if (window.$ && window.$.fn.owlCarousel) {
+      // General Carousel Init (can be adapted if specific sliders are added)
+      window.$('.brand-slider').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: { items: 2 },
+          600: { items: 3 },
+          1000: { items: 6 }
+        }
+      });
+
+      // Initialize Team Slider (for consistency)
+      window.$('.team-slider-two').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        responsive: {
+          0: { items: 1 },
+          600: { items: 2 },
+          1000: { items: 4 }
+        }
+      });
+    }
+
+    // Initialize Magnific Popup for video (for consistency, if video popups are used)
+    if (window.$ && window.$.fn.magnificPopup) {
+      window.$('.popup-btn').magnificPopup({
+        type: 'iframe'
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
     <>
       <style>{`
+        /* ---------------------------------------------------------------------- */
+        /* --- GLOBAL THEME VARIABLES AND TYPOGRAPHY (COPIED FROM HOME.JS) --- */
+        /* ---------------------------------------------------------------------- */
+        /* Color Scheme Variables - Theme Aware */
+        :root {
+          --primary-orange: #f97316; /* Standardized to Home.js orange (Tailwind Orange-600) */
+          --secondary-orange: #ff6a00;
+          --primary-blue: #2563eb; /* Added blue for consistency */
+          --text-black: #1a1b1e;
+          --text-white: #ffffff;
+          --text-gray: #4a5568;
+          --text-light-gray: #718096;
+          --bg-light: #f9fafb;
+          --bg-white: #ffffff;
+          --bg-dark: #0f172a;
+          --bg-dark-card: #1e293b;
+          --border-color: #e6e9ef;
+          --border-dark: #334155;
+        }
+
+        /* Dark Theme Overrides */
+        .theme-dark {
+          --text-black: #f1f5f9;
+          --text-gray: #cbd5e1;
+          --text-light-gray: #94a3b8;
+          --bg-light: #0f172a;
+          --bg-white: #1e293b;
+          --border-color: #334155;
+        }
+
+        /* Enhanced Navbar Styling - Theme Aware */
+        .navbar-area {
+          background: rgba(255, 255, 255, 0.95) !important;
+          backdrop-filter: blur(10px) !important;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+          transition: all 0.3s ease !important;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 999 !important;
+          border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
+          padding: 8px 0 !important;
+        }
+
+        /* Dark Mode Navbar */
+        .theme-dark .navbar-area {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border-bottom: 1px solid rgba(51, 65, 85, 0.3) !important;
+        }
+
+        .navbar-area.scrolled {
+          background: rgba(255, 255, 255, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .theme-dark .navbar-area.scrolled {
+          background: rgba(15, 23, 42, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Navbar Links */
+        .navbar-nav .nav-link {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 1rem !important;
+          color: var(--text-black) !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          position: relative !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          padding: 12px 18px !important;
+          margin: 0 3px !important;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+          transform: translateY(-2px) !important;
+        }
+
+        /* Dark mode link colors */
+        .theme-dark .navbar-nav .nav-link {
+          color: #f1f5f9 !important;
+        }
+
+        .theme-dark .navbar-nav .nav-link:hover,
+        .theme-dark .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+          content: '' !important;
+          position: absolute !important;
+          bottom: 8px !important;
+          left: 50% !important;
+          width: 0 !important;
+          height: 2px !important;
+          background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue)) !important;
+          transition: all 0.3s ease !important;
+          transform: translateX(-50%) !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+          width: 80% !important;
+        }
+
+        .dropdown-menu {
+          border: none !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+          background: var(--bg-white) !important;
+          border-radius: 8px !important;
+          padding: 10px 0 !important;
+          margin-top: 8px !important;
+        }
+
+        .theme-dark .dropdown-menu {
+          background: var(--bg-dark) !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Enhanced Typography for UI Text - Theme Aware */
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 700 !important;
+          line-height: 1.2 !important;
+          color: var(--text-black) !important;
+          margin-bottom: 1rem !important;
+        }
+
+        h1 { font-size: 3.2rem !important; }
+        h2 { font-size: 2.8rem !important; }
+        h3 { font-size: 2.2rem !important; }
+        h4 { font-size: 1.8rem !important; }
+        h5 { font-size: 1.5rem !important; }
+        h6 { font-size: 1.3rem !important; }
+
+        p {
+          font-family: 'Nunito Sans', sans-serif !important;
+          font-size: 1.1rem !important;
+          line-height: 1.7 !important;
+          color: var(--text-gray) !important;
+          font-weight: 400 !important;
+        }
+        
+        .section-title h2 {
+          font-size: 2.8rem !important;
+          font-weight: 800 !important;
+          background: linear-gradient(135deg, var(--text-black), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .theme-dark .section-title h2 {
+          background: linear-gradient(135deg, #f1f5f9, var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .sp-after, .sp-before {
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+          font-weight: 700 !important;
+          font-size: 1.1rem !important;
+        }
+
+        /* Enhanced Card Animations - Theme Aware (Ensuring consistency for all cards) */
+        .service-card,
+        .about-card,
+        .value-card,
+        .why-us-card {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          transform-origin: center !important;
+          background: var(--bg-white) !important;
+          border: 1px solid var(--border-color) !important;
+        }
+
+        .theme-dark .service-card,
+        .theme-dark .about-card,
+        .theme-dark .value-card,
+        .theme-dark .why-us-card {
+          background: var(--bg-dark-card) !important;
+          border: 1px solid var(--border-dark) !important;
+        }
+
+        .service-card:hover,
+        .about-card:hover,
+        .value-card:hover,
+        .why-us-card:hover {
+          transform: translateY(-8px) scale(1.01) !important;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+          border-color: var(--primary-orange) !important;
+        }
+
+        .theme-dark .service-card:hover,
+        .theme-dark .about-card:hover,
+        .theme-dark .value-card:hover,
+        .theme-dark .why-us-card:hover {
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+          scroll-behavior: smooth !important;
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* --- ABOUT.JS SPECIFIC STYLES (RETAINED & ADJUSTED) ------------------- */
+        /* ---------------------------------------------------------------------- */
+
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -22,42 +297,14 @@ const About = () => {
             transform: translateY(0);
           }
         }
-        @keyframes fadeInLeft {
-          from {
+        @keyframes fadeInScale {
+          0% {
             opacity: 0;
-            transform: translateX(-30px);
+            transform: scale(0.95) translateY(10px);
           }
-          to {
+          100% {
             opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes zoomIn {
-          from {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        @keyframes pulse {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
+            transform: scale(1) translateY(0);
           }
         }
         @keyframes slideInDown {
@@ -100,43 +347,7 @@ const About = () => {
             clip-path: inset(0 0 0 0);
           }
         }
-        @keyframes fadeInScale {
-          0% {
-            opacity: 0;
-            transform: scale(0.95) translateY(10px);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-
-        /* Color Scheme Variables - Theme Aware */
-        :root {
-          --primary-orange: #f77f00;
-          --secondary-orange: #ff6a00;
-          --text-black: #1a1b1e;
-          --text-white: #ffffff;
-          --text-gray: #4a5568;
-          --text-light-gray: #718096;
-          --bg-light: #f9fafb;
-          --bg-white: #ffffff;
-          --bg-dark: #0f172a;
-          --bg-dark-card: #1e293b;
-          --border-color: #e6e9ef;
-          --border-dark: #334155;
-        }
-
-        /* Dark Theme Overrides */
-        .theme-dark {
-          --text-black: #f1f5f9;
-          --text-gray: #cbd5e1;
-          --text-light-gray: #94a3b8;
-          --bg-light: #0f172a;
-          --bg-white: #1e293b;
-          --border-color: #334155;
-        }
-
+        
         .default-btn {
           background-color: var(--primary-orange) !important;
           color: var(--text-white) !important;
@@ -145,12 +356,12 @@ const About = () => {
           font-weight: 600 !important;
           transition: all 0.3s ease;
           border: none !important;
-          box-shadow: 0 4px 12px rgba(247, 127, 0, 0.2);
+          box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
         }
         .default-btn:hover {
           background-color: var(--secondary-orange) !important;
           transform: translateY(-2px);
-          box-shadow: 0 8px 16px rgba(247, 127, 0, 0.3);
+          box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
         }
 
         /* Page Title Area - Theme Aware Hero Section */
@@ -182,28 +393,22 @@ const About = () => {
         }
         .hero-badge {
           padding: 7px 18px;
-          background: rgba(247, 127, 0, 0.1);
+          background: rgba(249, 115, 22, 0.1);
           color: var(--primary-orange);
           font-size: 1em;
           border-radius: 20px;
           margin: 0 5px;
-          border: 1px solid rgba(247, 127, 0, 0.3);
+          border: 1px solid rgba(249, 115, 22, 0.3);
           transition: all 0.3s ease;
           animation: bounceIn 1s ease-out 0.8s both;
         }
-        .hero-badge:nth-child(1) {
-          animation-delay: 0.9s;
-        }
-        .hero-badge:nth-child(2) {
-          animation-delay: 1s;
-        }
-        .hero-badge:nth-child(3) {
-          animation-delay: 1.1s;
-        }
+        .hero-badge:nth-child(1) { animation-delay: 0.9s; }
+        .hero-badge:nth-child(2) { animation-delay: 1s; }
+        .hero-badge:nth-child(3) { animation-delay: 1.1s; }
         .hero-badge:hover {
           transform: translateY(-3px) scale(1.05);
-          background: rgba(247, 127, 0, 0.2);
-          box-shadow: 0 8px 20px rgba(247, 127, 0, 0.3);
+          background: rgba(249, 115, 22, 0.2);
+          box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
         }
         .page-title-content .default-btn {
           margin-top: 30px !important;
@@ -212,7 +417,7 @@ const About = () => {
 
         /* About Section - Theme Aware */
         .about-section {
-          padding: 240px 0 60px 0; /* Top padding increased for more space at the top */
+          padding: 240px 0 60px 0;
           background-color: var(--bg-light);
         }
         .about-subtitle {
@@ -233,21 +438,6 @@ const About = () => {
           height: 4px;
           background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
           border-radius: 2px;
-        }
-        .about-card {
-          background: var(--bg-white);
-          border-radius: 12px;
-          padding: 40px;
-          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
-          border: 1px solid var(--border-color);
-          transition: all 0.3s ease;
-          animation: fadeInUp 0.8s ease-out;
-          margin-bottom: 30px;
-        }
-        .about-card:hover {
-          transform: translateY(-4px);
-          border-color: var(--primary-orange);
-          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
         }
         .highlight-text {
           color: var(--primary-orange);
@@ -278,14 +468,8 @@ const About = () => {
         .fade-in-up[data-delay="0.2s"] { animation-delay: 0.2s; }
         .fade-in-up[data-delay="0.3s"] { animation-delay: 0.3s; }
 
+        /* .value-card styles are mostly inherited, adjusting delays */
         .value-card {
-          background: var(--bg-white);
-          border-radius: 12px;
-          padding: 30px 25px;
-          text-align: center;
-          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
-          border: 1px solid var(--border-color);
-          transition: all 0.3s ease;
           animation: fadeInScale 0.8s ease-out forwards;
           opacity: 0;
         }
@@ -293,11 +477,6 @@ const About = () => {
         .value-card:nth-child(2) { animation-delay: 0.5s; }
         .value-card:nth-child(3) { animation-delay: 0.6s; }
         .value-card:nth-child(4) { animation-delay: 0.7s; }
-        .value-card:hover {
-          transform: translateY(-4px);
-          border-color: var(--primary-orange);
-          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
-        }
         .value-icon {
           font-size: 3rem;
           color: var(--primary-orange);
@@ -305,10 +484,6 @@ const About = () => {
           transition: all 0.3s ease;
           animation: zoomIn 0.6s ease-out forwards;
         }
-        .value-card:nth-child(1) .value-icon { animation-delay: 0.6s; }
-        .value-card:nth-child(2) .value-icon { animation-delay: 0.7s; }
-        .value-card:nth-child(3) .value-icon { animation-delay: 0.8s; }
-        .value-card:nth-child(4) .value-icon { animation-delay: 0.9s; }
         .value-card:hover .value-icon {
           color: var(--primary-orange);
           transform: rotateY(180deg);
@@ -331,10 +506,6 @@ const About = () => {
           opacity: 0;
           animation: slideInText 0.6s ease-out forwards;
         }
-        .value-card:nth-child(1) .value-text { animation-delay: 1.0s; }
-        .value-card:nth-child(2) .value-text { animation-delay: 1.1s; }
-        .value-card:nth-child(3) .value-text { animation-delay: 1.2s; }
-        .value-card:nth-child(4) .value-text { animation-delay: 1.3s; }
 
         /* Why Partner Section - Theme Aware */
         .why-us-section {
@@ -348,24 +519,7 @@ const About = () => {
         .why-us-section .about-text {
           color: var(--text-gray);
         }
-        .why-us-card {
-          background: var(--bg-white);
-          border-radius: 12px;
-          padding: 30px;
-          text-align: center;
-          border: 1px solid var(--border-color);
-          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
-          transition: all 0.3s ease;
-          animation: fadeInUp 0.8s ease-out;
-        }
-        .why-us-card:hover {
-          transform: translateY(-4px);
-          border-color: var(--primary-orange);
-          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
-        }
-        .why-us-card .value-icon {
-          color: var(--primary-orange);
-        }
+
         .why-us-title {
           color: var(--text-black);
           font-size: 1.3rem;
@@ -388,11 +542,6 @@ const About = () => {
         }
         .about-widget-img:hover img {
           transform: scale(1.03) rotate(1deg);
-        }
-        .section-title h2 {
-          color: var(--text-black);
-          font-size: 2.5rem;
-          margin-bottom: 20px;
         }
         .about-widget-content h3 {
           color: var(--text-gray);
@@ -520,24 +669,24 @@ const About = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span className="sp-after" style={{ color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600' }}>
               About Us
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Transforming Ideas into <span style={{color: 'var(--primary-orange)'}}>Digital Excellence</span>
+            <h1 className="h2-color" style={{ color: 'var(--text-black)' }}>
+              Transforming Ideas into <span style={{ color: 'var(--primary-orange)' }}>Digital Excellence</span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
+            <p style={{ color: 'var(--text-gray)' }}>
               We craft high-performing, secure, and scalable digital products that drive real business outcomes.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Innovation Driven</span>
+                <i className="bx bx-rocket"></i> <span style={{ color: 'var(--text-black)' }}>Innovation Driven</span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Quality Assured</span>
+                <i className="bx bxs-lock-alt"></i> <span style={{ color: 'var(--text-black)' }}>Quality Assured</span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Performance Focused</span>
+                <i className="bx bxs-zap"></i> <span style={{ color: 'var(--text-black)' }}>Performance Focused</span>
               </span>
             </div>
             <div>
@@ -546,14 +695,14 @@ const About = () => {
                 className="default-btn"
                 style={{ marginRight: '15px' }}
               >
-                <span style={{color: 'var(--text-white)'}}>Get In Touch</span> <i className="bx bx-plus"></i>
+                <span style={{ color: 'var(--text-white)' }}>Get In Touch</span> <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/service"
                 className="default-btn"
                 style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
               >
-                <span style={{color: 'var(--text-white)'}}>Explore Services</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: 'var(--text-white)' }}>Explore Services</span> <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -687,13 +836,13 @@ const About = () => {
               <div className="about-widget-content">
                 <div className="section-title">
                   <span className="sp-before sp-after">About Us</span>
-                  <h2>Grow Your Business With <span style={{color: 'var(--primary-orange)'}}>PodoSphere</span></h2>
+                  <h2>Grow Your Business With <span style={{ color: 'var(--primary-orange)' }}>PodoSphere</span></h2>
                 </div>
-                <h3 style={{color: 'var(--text-gray)'}}>
+                <h3 style={{ color: 'var(--text-gray)' }}>
                   We have 30 years of experience and our strategy includes consistently evolving, to
                   ensure we are producing exceptional web and app solutions for business.
                 </h3>
-                <p style={{color: 'var(--text-gray)'}}>
+                <p style={{ color: 'var(--text-gray)' }}>
                   At Podosphere Technologies, we deliver innovative web and app solutions, combining advanced technology with
                   intuitive user experiences to drive your business forward.
                 </p>
@@ -703,7 +852,7 @@ const About = () => {
                     {aboutWidgetList.map((item, index) => (
                       <li key={index}>
                         <i className="bx bx-check"></i>
-                        <span style={{color: 'var(--primary-orange)'}}>{item.number}</span>
+                        <span style={{ color: 'var(--primary-orange)' }}>{item.number}</span>
                         <p>{item.text}</p>
                       </li>
                     ))}
@@ -722,7 +871,7 @@ const About = () => {
             {aboutCounters.map((counter, index) => (
               <div className="col-lg-3 col-sm-6 col-md-3" key={index}>
                 <div className="counter-card">
-                  <h3 style={{color: 'var(--primary-orange)'}}>{counter.value}</h3>
+                  <h3 style={{ color: 'var(--primary-orange)' }}>{counter.value}</h3>
                   <p>{counter.label}</p>
                 </div>
               </div>
@@ -747,10 +896,10 @@ const About = () => {
             {journeyData.map((item, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
                 <div className="service-list-content">
-                  <h3 style={{color: 'var(--text-black)'}}>{item.title}</h3>
-                  <p style={{color: 'var(--text-gray)'}}>{item.description}</p>
+                  <h3 style={{ color: 'var(--text-black)' }}>{item.title}</h3>
+                  <p style={{ color: 'var(--text-gray)' }}>{item.description}</p>
                   <Link to="/service" className="service-list-btn">
-                    <span style={{color: 'var(--primary-orange)'}}>Read More</span><i className="bx bx-plus"></i>
+                    <span style={{ color: 'var(--primary-orange)' }}>Read More</span><i className="bx bx-plus"></i>
                   </Link>
                 </div>
               </div>
@@ -762,7 +911,8 @@ const About = () => {
   );
 };
 
-// ... existing data arrays ...
+
+// Data Arrays
 const coreValues = [
   {
     icon: 'bx-diamond',
