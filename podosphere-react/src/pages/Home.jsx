@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //
@@ -8,6 +7,18 @@ const Home = () => {
     if (window.WOW) {
       new window.WOW().init();
     }
+
+    // Navbar scroll effect
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar-area');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
 
     // Initialize Owl Carousel for brand slider
     if (window.$ && window.$.fn.owlCarousel) {
@@ -53,6 +64,287 @@ const Home = () => {
   return (
     <>
       <style>{`
+        /* Color Scheme Variables - Theme Aware */
+        :root {
+          --primary-orange: #f97316;
+          --secondary-orange: #ff6a00;
+          --text-black: #1a1b1e;
+          --text-white: #ffffff;
+          --text-gray: #4a5568;
+          --text-light-gray: #718096;
+          --bg-light: #f9fafb;
+          --bg-white: #ffffff;
+          --bg-dark: #0f172a;
+          --bg-dark-card: #1e293b;
+          --border-color: #e6e9ef;
+          --border-dark: #334155;
+        }
+
+        /* Dark Theme Overrides */
+        .theme-dark {
+          --text-black: #f1f5f9;
+          --text-gray: #cbd5e1;
+          --text-light-gray: #94a3b8;
+          --bg-light: #0f172a;
+          --bg-white: #1e293b;
+          --border-color: #334155;
+        }
+
+        /* Enhanced Navbar Styling - Theme Aware */
+        .navbar-area {
+          background: rgba(255, 255, 255, 0.95) !important;
+          backdrop-filter: blur(10px) !important;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+          transition: all 0.3s ease !important;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 999 !important;
+          border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
+          padding: 8px 0 !important; /* Reduced navbar height */
+        }
+
+        /* Dark Mode Navbar */
+        .theme-dark .navbar-area {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border-bottom: 1px solid rgba(51, 65, 85, 0.3) !important;
+        }
+
+        .navbar-area.scrolled {
+          background: rgba(255, 255, 255, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .theme-dark .navbar-area.scrolled {
+          background: rgba(15, 23, 42, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .navbar-brand {
+          transition: all 0.3s ease !important;
+          padding: 8px 0 !important;
+        }
+
+        .navbar-brand:hover {
+          transform: scale(1.05) !important;
+        }
+
+        .navbar-nav .nav-link {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 1rem !important; /* Reduced font size */
+          color: var(--text-black) !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          position: relative !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          padding: 12px 18px !important; /* Reduced padding */
+          margin: 0 3px !important;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+          color: #f97316 !important;
+          transform: translateY(-2px) !important;
+        }
+
+        /* Dark mode link colors */
+        .theme-dark .navbar-nav .nav-link {
+          color: #f1f5f9 !important;
+        }
+
+        .theme-dark .navbar-nav .nav-link:hover,
+        .theme-dark .navbar-nav .nav-link.active {
+          color: #f97316 !important;
+        }
+
+        .navbar-nav .nav-link::after {
+          content: '' !important;
+          position: absolute !important;
+          bottom: 8px !important; /* Adjusted for reduced height */
+          left: 50% !important;
+          width: 0 !important;
+          height: 2px !important;
+          background: linear-gradient(90deg, #f97316, #2563eb) !important;
+          transition: all 0.3s ease !important;
+          transform: translateX(-50%) !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+          width: 80% !important;
+        }
+
+        .dropdown-menu {
+          border: none !important;
+          border-top: 3px solid #f97316 !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+          background: var(--bg-white) !important;
+          border-radius: 8px !important;
+          padding: 10px 0 !important;
+          margin-top: 8px !important;
+        }
+
+        .theme-dark .dropdown-menu {
+          background: var(--bg-dark) !important;
+          border-top: 3px solid #f97316 !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .dropdown-menu .nav-link {
+          color: var(--text-black) !important;
+          padding: 10px 20px !important; /* Reduced padding */
+          font-weight: 500 !important;
+          transition: all 0.3s ease !important;
+          text-transform: none !important;
+          font-size: 0.95rem !important;
+          letter-spacing: 0.3px !important;
+        }
+
+        .theme-dark .dropdown-menu .nav-link {
+          color: #f1f5f9 !important;
+        }
+
+        .dropdown-menu .nav-link:hover {
+          background: linear-gradient(135deg, #f97316, #2563eb) !important;
+          color: #ffffff !important;
+          padding-left: 25px !important;
+          transform: translateX(5px) !important;
+        }
+
+        .nav-menu-btn {
+          background: linear-gradient(135deg, #f97316, #2563eb) !important;
+          color: #ffffff !important;
+          padding: 10px 20px !important;
+          border-radius: 25px !important;
+          font-weight: 600 !important;
+          font-size: 0.9rem !important;
+          letter-spacing: 0.5px !important;
+          transition: all 0.3s ease !important;
+          text-transform: uppercase !important;
+          box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3) !important;
+        }
+
+        .nav-menu-btn:hover {
+          transform: translateY(-2px) scale(1.05) !important;
+          box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4) !important;
+          background: linear-gradient(135deg, #2563eb, #f97316) !important;
+        }
+
+        /* Enhanced Typography for UI Text - Theme Aware */
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 700 !important;
+          line-height: 1.2 !important;
+          color: var(--text-black) !important;
+          margin-bottom: 1rem !important;
+        }
+
+        h1 { font-size: 3.2rem !important; }
+        h2 { font-size: 2.8rem !important; }
+        h3 { font-size: 2.2rem !important; }
+        h4 { font-size: 1.8rem !important; }
+        h5 { font-size: 1.5rem !important; }
+        h6 { font-size: 1.3rem !important; }
+
+        p {
+          font-family: 'Nunito Sans', sans-serif !important;
+          font-size: 1.1rem !important;
+          line-height: 1.7 !important;
+          color: var(--text-gray) !important;
+          font-weight: 400 !important;
+        }
+
+        .btn {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 600 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          transition: all 0.3s ease !important;
+          border-radius: 8px !important;
+        }
+
+        .section-title h2 {
+          font-size: 2.8rem !important;
+          font-weight: 800 !important;
+          background: linear-gradient(135deg, var(--text-black), #2563eb) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .theme-dark .section-title h2 {
+          background: linear-gradient(135deg, #f1f5f9, #2563eb) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .sp-after {
+          background: linear-gradient(135deg, #f97316, #2563eb) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+          font-weight: 700 !important;
+          font-size: 1.1rem !important;
+        }
+
+        /* Enhanced Card Animations - Theme Aware */
+        .service-card,
+        .about-card,
+        .value-card,
+        .why-us-card {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          transform-origin: center !important;
+          background: var(--bg-white) !important;
+          border: 1px solid var(--border-color) !important;
+        }
+
+        .theme-dark .service-card,
+        .theme-dark .about-card,
+        .theme-dark .value-card,
+        .theme-dark .why-us-card {
+          background: var(--bg-dark-card) !important;
+          border: 1px solid var(--border-dark) !important;
+        }
+
+        .service-card:hover,
+        .about-card:hover,
+        .value-card:hover,
+        .why-us-card:hover {
+          transform: translateY(-8px) scale(1.02) !important;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+          border-color: #f97316 !important;
+        }
+
+        .theme-dark .service-card:hover,
+        .theme-dark .about-card:hover,
+        .theme-dark .value-card:hover,
+        .theme-dark .why-us-card:hover {
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+          scroll-behavior: smooth !important;
+        }
+
+        /* Loading animation for elements */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fadeInUp 0.6s ease-out !important;
+        }
+
+        /* Theme-Aware AI Heading */
         .ai-heading {
           text-align: left;
           margin: 0;
@@ -61,16 +353,23 @@ const Home = () => {
           font-weight: 700;
           line-height: 1.3;
         }
-        .ai-heading .gradient-text {
-          background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef);
+        .ai-heading .main-text {
+          color: var(--text-black);
+          font-weight: 600;
+        }
+        .ai-heading .emphasis {
+          color: var(--primary-orange);
+          font-weight: 700;
+          font-style: italic;
+        }
+        .ai-heading .ai-solutions {
+          color: #2563eb;
+          font-weight: 700;
+          background: linear-gradient(135deg, #2563eb, #1d4ed8);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
           display: inline-block;
-        }
-        .ai-heading .emphasis {
-          color: #f97316;
-          font-style: italic;
         }
         .container-max {
           max-width: 1400px;
@@ -96,9 +395,9 @@ const Home = () => {
                 </div>
 
                 <h1 className="hero-title ai-heading">
-                  <span className="gradient-text">Empowering Your Business</span> with{' '}
+                  <span className="main-text">Empowering Your Business</span> with{' '}
                   <span className="emphasis">Cutting-Edge</span>{' '}
-                  <span className="gradient-text glow">AI Solutions</span>
+                  <span className="ai-solutions">AI Solutions</span>
                 </h1>
 
                 <div className="banner-btn">
@@ -291,7 +590,7 @@ const Home = () => {
               <div className="service-card-into">
                 <div className="service-card">
                   <Link to="/service">
-                    <i className="bx bx-brain" style={{ fontSize: '48px', color: '#6366f1' }}></i>
+                    <i className="bx bx-brain" style={{ fontSize: '48px', color: '#2563eb' }}></i>
                   </Link>
                   <h3><Link to="/service">AI & ML</Link></h3>
                   <p>
@@ -311,7 +610,7 @@ const Home = () => {
             <div className="col-lg-4">
               <div className="service-card">
                 <Link to="/service">
-                  <i className="bx bx-code-alt" style={{ fontSize: '48px', color: '#6366f1' }}></i>
+                  <i className="bx bx-code-alt" style={{ fontSize: '48px', color: '#2563eb' }}></i>
                 </Link>
                 <h3><Link to="/service">Web Design & Development</Link></h3>
                 <p>
@@ -327,7 +626,7 @@ const Home = () => {
 
               <div className="service-card">
                 <Link to="/service">
-                  <i className="bx bx-grid-alt" style={{ fontSize: '48px', color: '#6366f1' }}></i>
+                  <i className="bx bx-grid-alt" style={{ fontSize: '48px', color: '#2563eb' }}></i>
                 </Link>
                 <h3><Link to="/service">CRM & ERP</Link></h3>
                 <p>
@@ -343,7 +642,7 @@ const Home = () => {
             <div className="col-lg-4">
               <div className="service-card">
                 <Link to="/service">
-                  <i className="bx bx-mobile" style={{ fontSize: '48px', color: '#6366f1' }}></i>
+                  <i className="bx bx-mobile" style={{ fontSize: '48px', color: '#2563eb' }}></i>
                 </Link>
                 <h3><Link to="/service">App Development</Link></h3>
                 <p>
@@ -357,7 +656,7 @@ const Home = () => {
 
               <div className="service-card">
                 <Link to="/service">
-                  <i className="bx bx-cube" style={{ fontSize: '48px', color: '#6366f1' }}></i>
+                  <i className="bx bx-cube" style={{ fontSize: '48px', color: '#2563eb' }}></i>
                 </Link>
                 <h3><Link to="/service">Blockchain & NFT</Link></h3>
                 <p>
@@ -414,14 +713,14 @@ const Home = () => {
       {/* Work Area End */}
 
       {/* Featured Leadership Section */}
-      <div className="featured-leadership-area pt-100 pb-70" style={{ background: 'linear-gradient(180deg, #f9fafb 0%, #ffffff 100%)' }}>
+      <div className="featured-leadership-area pt-100 pb-70" style={{ background: 'linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%)' }}>
         <div className="container">
           <div className="section-title text-center mb-5">
             <span className="sp-before sp-after">Leadership</span>
             <h2 className="h2-color2" style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '20px' }}>
               Meet Our Visionary Leaders
             </h2>
-            <p style={{ fontSize: '1.2rem', color: '#6b7280', maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--text-gray)', maxWidth: '800px', margin: '0 auto' }}>
               Driving innovation and excellence with strategic vision and technical expertise
             </p>
           </div>
@@ -429,10 +728,10 @@ const Home = () => {
           <div className="row align-items-stretch">
             {/* Sushant Singh - Founder & CEO */}
             <div className="col-lg-6 mb-4">
-              <div 
+              <div
                 className="leader-card"
                 style={{
-                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  background: 'linear-gradient(145deg, var(--bg-white), var(--bg-light))',
                   borderRadius: '30px',
                   padding: '50px',
                   boxShadow: '0 20px 60px rgba(102, 126, 234, 0.2)',
@@ -464,7 +763,7 @@ const Home = () => {
                   backgroundSize: '200% 100%',
                   animation: 'gradient-shift 4s ease infinite'
                 }} />
-                
+
                 {/* CEO Badge */}
                 <div style={{
                   position: 'absolute',
@@ -493,13 +792,13 @@ const Home = () => {
                       overflow: 'hidden',
                       border: '6px solid',
                       borderImage: 'linear-gradient(135deg, #667eea, #764ba2) 1',
-                     
+
                       boxShadow: '0 20px 60px rgba(102, 126, 234, 0.5)',
                       position: 'relative',
                       animation: 'pulse-glow 3s ease-in-out infinite'
                     }}>
-                      <img 
-                        src="/assets/img/team/FOUNDER-CEO.webp" 
+                      <img
+                        src="/assets/img/team/FOUNDER-CEO.webp"
                         alt="Sushant Singh"
                         style={{
                           width: '100%',
@@ -525,20 +824,20 @@ const Home = () => {
                     </h3>
                     <span style={{
                       fontSize: '1.2rem',
-                      color: '#f59e0b',
+                      color: 'var(--primary-orange)',
                       fontWeight: '700',
                       display: 'block',
                       marginBottom: '20px'
                     }}>
                       Founder & CEO
                     </span>
-                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', marginBottom: '15px' }}>
-                      With over 15 years of experience in the technology industry, Sushant leads Podosphere Technologies 
-                      with a vision to transform businesses through innovative digital solutions. His strategic leadership 
-                      and passion for excellence have been instrumental in establishing our company as a trusted partner 
+                    <p style={{ fontSize: '1rem', color: 'var(--text-gray)', lineHeight: '1.8', marginBottom: '15px' }}>
+                      With over 15 years of experience in the technology industry, Sushant leads Podosphere Technologies
+                      with a vision to transform businesses through innovative digital solutions. His strategic leadership
+                      and passion for excellence have been instrumental in establishing our company as a trusted partner
                       for clients worldwide.
                     </p>
-                    <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.7', fontStyle: 'italic' }}>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-light-gray)', lineHeight: '1.7', fontStyle: 'italic' }}>
                       Sushant is passionate about fostering innovation and building strong client relationships that drive mutual success.
                     </p>
 
@@ -598,10 +897,10 @@ const Home = () => {
 
             {/* Surbhi Trivedi - CTO */}
             <div className="col-lg-6 mb-4">
-              <div 
+              <div
                 className="leader-card"
                 style={{
-                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  background: 'linear-gradient(145deg, var(--bg-white), var(--bg-light))',
                   borderRadius: '30px',
                   padding: '50px',
                   boxShadow: '0 20px 60px rgba(16, 185, 129, 0.2)',
@@ -633,7 +932,7 @@ const Home = () => {
                   backgroundSize: '200% 100%',
                   animation: 'gradient-shift 4s ease infinite'
                 }} />
-                
+
                 {/* CTO Badge */}
                 <div style={{
                   position: 'absolute',
@@ -665,8 +964,8 @@ const Home = () => {
                       position: 'relative',
                       animation: 'pulse-glow 3s ease-in-out infinite'
                     }}>
-                      <img 
-                        src="/assets/img/team/CTO.webp" 
+                      <img
+                        src="/assets/img/team/CTO.webp"
                         alt="Surbhi Trivedi"
                         style={{
                           width: '100%',
@@ -699,14 +998,14 @@ const Home = () => {
                     }}>
                       Chief Technology Officer
                     </span>
-                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', marginBottom: '15px' }}>
-                      Surbhi brings extensive technical expertise and innovation to Podosphere Technologies. 
-                      With 12 years of experience in software architecture, she oversees our technical strategy 
+                    <p style={{ fontSize: '1rem', color: 'var(--text-gray)', lineHeight: '1.8', marginBottom: '15px' }}>
+                      Surbhi brings extensive technical expertise and innovation to Podosphere Technologies.
+                      With 12 years of experience in software architecture, she oversees our technical strategy
                       and ensures we stay at the forefront of emerging technologies.
                     </p>
-                    <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.7', fontStyle: 'italic' }}>
-                      Her expertise spans across cloud computing, artificial intelligence, and scalable system design. 
-                      Surbhi is committed to building robust, secure, and efficient solutions that exceed client 
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-light-gray)', lineHeight: '1.7', fontStyle: 'italic' }}>
+                      Her expertise spans across cloud computing, artificial intelligence, and scalable system design.
+                      Surbhi is committed to building robust, secure, and efficient solutions that exceed client
                       expectations and drive digital transformation.
                     </p>
 
@@ -781,8 +1080,8 @@ const Home = () => {
             {teamMembers.map((member, index) => (
               <div className={`team-card ${index === 0 ? 'active' : ''} ${index % 2 !== 0 ? 'team-rotated-2' : ''}`} key={index}>
                 <a href="#">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.name}
                     style={{
                       width: '100%',

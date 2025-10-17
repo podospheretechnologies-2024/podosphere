@@ -88,6 +88,28 @@ const About = () => {
             transform: translate3d(0, -4px, 0);
           }
         }
+        @keyframes slideInText {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+            clip-path: inset(0 100% 0 0);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+        @keyframes fadeInScale {
+          0% {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
 
         /* Color Scheme Variables - Theme Aware */
         :root {
@@ -190,13 +212,13 @@ const About = () => {
 
         /* About Section - Theme Aware */
         .about-section {
-          padding: 80px 0;
+          padding: 240px 0 60px 0; /* Top padding increased for more space at the top */
           background-color: var(--bg-light);
         }
         .about-subtitle {
           font-size: 2.5rem;
           color: var(--text-black);
-          margin-bottom: 30px;
+          margin-bottom: 40px;
           text-align: center;
           position: relative;
           animation: fadeInUp 0.8s ease-out;
@@ -215,11 +237,12 @@ const About = () => {
         .about-card {
           background: var(--bg-white);
           border-radius: 12px;
-          padding: 30px;
+          padding: 40px;
           box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
           border: 1px solid var(--border-color);
           transition: all 0.3s ease;
           animation: fadeInUp 0.8s ease-out;
+          margin-bottom: 30px;
         }
         .about-card:hover {
           transform: translateY(-4px);
@@ -233,9 +256,27 @@ const About = () => {
         .about-text {
           color: var(--text-gray);
           line-height: 1.8;
-          margin-bottom: 20px;
+          margin-bottom: 24px;
           font-size: 1.1rem;
+          opacity: 0;
+          animation: slideInText 0.8s ease-out forwards;
         }
+        .fade-in-text {
+          animation: slideInText 0.8s ease-out forwards;
+        }
+        .fade-in-text[data-delay="0.1s"] { animation-delay: 0.1s; }
+        .fade-in-text[data-delay="0.2s"] { animation-delay: 0.2s; }
+        .fade-in-text[data-delay="0.3s"] { animation-delay: 0.3s; }
+        .fade-in-text[data-delay="0.4s"] { animation-delay: 0.4s; }
+        .fade-in-text[data-delay="0.5s"] { animation-delay: 0.5s; }
+        .fade-in-text[data-delay="0.6s"] { animation-delay: 0.6s; }
+        .fade-in-text[data-delay="0.7s"] { animation-delay: 0.7s; }
+
+        .fade-in-up[data-delay] {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .fade-in-up[data-delay="0.2s"] { animation-delay: 0.2s; }
+        .fade-in-up[data-delay="0.3s"] { animation-delay: 0.3s; }
 
         .value-card {
           background: var(--bg-white);
@@ -245,8 +286,13 @@ const About = () => {
           box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
           border: 1px solid var(--border-color);
           transition: all 0.3s ease;
-          animation: zoomIn 0.8s ease-out;
+          animation: fadeInScale 0.8s ease-out forwards;
+          opacity: 0;
         }
+        .value-card:nth-child(1) { animation-delay: 0.4s; }
+        .value-card:nth-child(2) { animation-delay: 0.5s; }
+        .value-card:nth-child(3) { animation-delay: 0.6s; }
+        .value-card:nth-child(4) { animation-delay: 0.7s; }
         .value-card:hover {
           transform: translateY(-4px);
           border-color: var(--primary-orange);
@@ -257,7 +303,12 @@ const About = () => {
           color: var(--primary-orange);
           margin-bottom: 20px;
           transition: all 0.3s ease;
+          animation: zoomIn 0.6s ease-out forwards;
         }
+        .value-card:nth-child(1) .value-icon { animation-delay: 0.6s; }
+        .value-card:nth-child(2) .value-icon { animation-delay: 0.7s; }
+        .value-card:nth-child(3) .value-icon { animation-delay: 0.8s; }
+        .value-card:nth-child(4) .value-icon { animation-delay: 0.9s; }
         .value-card:hover .value-icon {
           color: var(--primary-orange);
           transform: rotateY(180deg);
@@ -267,11 +318,23 @@ const About = () => {
           font-size: 1.4rem;
           margin-bottom: 15px;
           font-weight: 600;
+          opacity: 0;
+          animation: slideInText 0.6s ease-out forwards;
         }
+        .value-card:nth-child(1) .value-title { animation-delay: 0.8s; }
+        .value-card:nth-child(2) .value-title { animation-delay: 0.9s; }
+        .value-card:nth-child(3) .value-title { animation-delay: 1.0s; }
+        .value-card:nth-child(4) .value-title { animation-delay: 1.1s; }
         .value-text {
           color: var(--text-light-gray);
           line-height: 1.6;
+          opacity: 0;
+          animation: slideInText 0.6s ease-out forwards;
         }
+        .value-card:nth-child(1) .value-text { animation-delay: 1.0s; }
+        .value-card:nth-child(2) .value-text { animation-delay: 1.1s; }
+        .value-card:nth-child(3) .value-text { animation-delay: 1.2s; }
+        .value-card:nth-child(4) .value-text { animation-delay: 1.3s; }
 
         /* Why Partner Section - Theme Aware */
         .why-us-section {
@@ -505,14 +568,14 @@ const About = () => {
               <h2 className="about-subtitle">Who We Are</h2>
               <div className="about-card">
                 <div className="welcome-text-container">
-                  <p className="about-text">
+                  <p className="about-text fade-in-text" data-delay="0.1s">
                     Welcome to <strong className="highlight-text">Podosphere Technologies</strong> - where <em>innovation meets expertise</em>.
                     As a dynamic IT solutions provider, we specialize in creating cutting-edge digital experiences that drive business growth.
                   </p>
-                  <p className="about-text">
+                  <p className="about-text fade-in-text" data-delay="0.3s">
                     Our passion lies in transforming complex challenges into elegant, efficient solutions that deliver real results for our clients worldwide.
                   </p>
-                  <p className="about-text">
+                  <p className="about-text fade-in-text" data-delay="0.5s">
                     With a proven track record of delivering exceptional web design, development, and mobile applications,
                     we've earned the trust of clients globally. Our commitment to excellence, coupled with our innovative approach,
                     makes us your ideal technology partner for the digital age.
@@ -526,7 +589,7 @@ const About = () => {
           <div className="row mt-5">
             <div className="col-lg-12">
               <h2 className="about-subtitle">Core Values</h2>
-              <p className="about-text text-center mb-5">
+              <p className="about-text text-center mb-5 fade-in-text" data-delay="0.2s">
                 Our values are the foundation of everything we do, guiding us in
                 delivering exceptional solutions and service to our clients.
               </p>
@@ -545,16 +608,16 @@ const About = () => {
           {/* Mission & Vision - Theme Aware Cards */}
           <div className="row mt-5">
             <div className="col-lg-6">
-              <h2 className="about-subtitle">Our Mission</h2>
+              <h2 className="about-subtitle fade-in-up" data-delay="0.2s">Our Mission</h2>
               <div className="about-card h-100">
-                <p className="about-text">
+                <p className="about-text fade-in-text" data-delay="0.4s">
                   Our mission is to consistently deliver top-tier solutions that exceed client expectations in quality and service,
                   ensuring customer satisfaction remains our highest priority. We are committed to continuous improvement and innovation,
                   building long-term partnerships that foster mutual success.
                   By cultivating a workplace defined by exceptional performance, teamwork, and respect,
                   we empower our team to tackle new challenges and celebrate every contribution.
                 </p>
-                <p className="about-text mb-0">
+                <p className="about-text mb-0 fade-in-text" data-delay="0.6s">
                   We foster lasting partnerships with our clients, understanding
                   their unique challenges and delivering tailored solutions that
                   exceed expectations.
@@ -562,9 +625,9 @@ const About = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <h2 className="about-subtitle">Our Vision</h2>
+              <h2 className="about-subtitle fade-in-up" data-delay="0.3s">Our Vision</h2>
               <div className="about-card h-100">
-                <p className="about-text">
+                <p className="about-text fade-in-text" data-delay="0.5s">
                   Our vision is to be the driving force behind global digital transformation,
                   setting the benchmark for innovation and excellence in the technology industry.
                   We aspire to empower organizations of all sizes, from emerging startups to established enterprises,
@@ -572,7 +635,7 @@ const About = () => {
                   Through relentless pursuit of new ideas and best practices, we strive to make cutting-edge technology
                   more accessible, efficient, and impactful for businesses across the world.
                 </p>
-                <p className="about-text mb-0">
+                <p className="about-text mb-0 fade-in-text" data-delay="0.7s">
                   By fostering a culture of ingenuity, collaboration, and inclusivity,
                   we are committed to shaping a future where technology bridges gaps, solves complex challenges,
                   and enables every business to thrive in a rapidly evolving digital landscape
@@ -699,7 +762,7 @@ const About = () => {
   );
 };
 
-// Data Arrays
+// ... existing data arrays ...
 const coreValues = [
   {
     icon: 'bx-diamond',
