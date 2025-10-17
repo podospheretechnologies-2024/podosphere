@@ -25,6 +25,30 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (version 20.19+ or 22.12+)
 - **npm** (comes with Node.js)
 
+## 📂 Go to Project (cd into the directory)
+
+Use one of the following depending on your OS/shell:
+
+- Windows PowerShell:
+```powershell
+cd "C:\Users\Admin\OneDrive\Desktop\Documents\GitHub\podosphere\podosphere-react"
+```
+
+- Windows Command Prompt (CMD):
+```cmd
+cd C:\Users\Admin\OneDrive\Desktop\Documents\GitHub\podosphere\podosphere-react
+```
+
+- macOS/Linux (if cloned elsewhere):
+```bash
+cd /path/to/your/repos/podosphere/podosphere-react
+```
+
+- From repo root (if you're already in `podosphere`):
+```bash
+cd podosphere-react
+```
+
 ## 🛠️ Installation
 
 1. **Navigate to the project directory:**
