@@ -52,26 +52,47 @@ const About = () => {
             transform: scale(1);
           }
         }
-
-        body {
-          font-size: 16px;
-          line-height: 1.7;
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
         }
-        .container-max-2 {
-          max-width: 1400px;
-          margin-left: auto;
-          margin-right: auto;
+        @keyframes slideInDown {
+          from {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
         }
-        h1, h2, h3, h4, h5, h6 {
-          font-weight: 700 !important;
+        @keyframes bounceIn {
+          0%, 20%, 53%, 80%, 100% {
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform: translate3d(0, 0, 0);
+          }
+          40%, 43% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate3d(0, -30px, 0);
+          }
+          70% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate3d(0, -15px, 0);
+          }
+          90% {
+            transform: translate3d(0, -4px, 0);
+          }
         }
 
         /* Color Scheme Variables - Theme Aware */
         :root {
           --primary-orange: #f77f00;
           --secondary-orange: #ff6a00;
-          --primary-blue: #2563eb;
-          --secondary-blue: #1d4ed8;
           --text-black: #1a1b1e;
           --text-white: #ffffff;
           --text-gray: #4a5568;
@@ -109,25 +130,20 @@ const About = () => {
           transform: translateY(-2px);
           box-shadow: 0 8px 16px rgba(247, 127, 0, 0.3);
         }
-        .default-btn[style*="background: #111"] {
-          background: var(--text-black) !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        .default-btn[style*="background: #111"]:hover {
-          background: #333 !important;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-        }
 
-        /* Page Title Area - Theme Aware */
+        /* Page Title Area - Theme Aware Hero Section */
         .page-title-area {
           background: var(--bg-white);
           padding: 100px 0 80px;
-          position: relative;
+        }
+        .page-title-content {
+          animation: fadeInUp 0.8s ease-out;
         }
         .page-title-content h1 {
           font-size: 3.2rem;
           margin-bottom: 15px;
           color: var(--text-black) !important;
+          animation: slideInDown 1s ease-out 0.2s both;
         }
         .page-title-content p {
           max-width: 800px;
@@ -135,10 +151,12 @@ const About = () => {
           margin-right: auto;
           font-size: 1.15rem;
           color: var(--text-gray);
+          animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         .hero-badges {
           margin-top: 25px;
           margin-bottom: 25px;
+          animation: fadeInUp 0.8s ease-out 0.6s both;
         }
         .hero-badge {
           padding: 7px 18px;
@@ -149,29 +167,39 @@ const About = () => {
           margin: 0 5px;
           border: 1px solid rgba(247, 127, 0, 0.3);
           transition: all 0.3s ease;
+          animation: bounceIn 1s ease-out 0.8s both;
+        }
+        .hero-badge:nth-child(1) {
+          animation-delay: 0.9s;
+        }
+        .hero-badge:nth-child(2) {
+          animation-delay: 1s;
+        }
+        .hero-badge:nth-child(3) {
+          animation-delay: 1.1s;
         }
         .hero-badge:hover {
           transform: translateY(-3px) scale(1.05);
           background: rgba(247, 127, 0, 0.2);
+          box-shadow: 0 8px 20px rgba(247, 127, 0, 0.3);
         }
         .page-title-content .default-btn {
           margin-top: 30px !important;
+          animation: fadeInUp 0.8s ease-out 1.2s both;
         }
 
-        /* Content Sections - Theme Aware */
-        .about-section,
-        .about-widget-area,
-        .service-list-area {
+        /* About Section - Theme Aware */
+        .about-section {
           padding: 80px 0;
           background-color: var(--bg-light);
         }
-
         .about-subtitle {
           font-size: 2.5rem;
           color: var(--text-black);
           margin-bottom: 30px;
           text-align: center;
           position: relative;
+          animation: fadeInUp 0.8s ease-out;
         }
         .about-subtitle::after {
           content: '';
@@ -181,28 +209,23 @@ const About = () => {
           transform: translateX(-50%);
           width: 80px;
           height: 4px;
-          background: var(--primary-orange);
+          background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
           border-radius: 2px;
         }
-
-        .about-card,
-        .value-card,
-        .service-list-content {
+        .about-card {
           background: var(--bg-white);
           border-radius: 12px;
           padding: 30px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
           border: 1px solid var(--border-color);
           transition: all 0.3s ease;
+          animation: fadeInUp 0.8s ease-out;
         }
-        .about-card:hover,
-        .value-card:hover,
-        .service-list-content:hover {
+        .about-card:hover {
           transform: translateY(-4px);
           border-color: var(--primary-orange);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
         }
-
         .highlight-text {
           color: var(--primary-orange);
           font-weight: 700;
@@ -214,10 +237,30 @@ const About = () => {
           font-size: 1.1rem;
         }
 
+        .value-card {
+          background: var(--bg-white);
+          border-radius: 12px;
+          padding: 30px 25px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          animation: zoomIn 0.8s ease-out;
+        }
+        .value-card:hover {
+          transform: translateY(-4px);
+          border-color: var(--primary-orange);
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
+        }
         .value-icon {
           font-size: 3rem;
           color: var(--primary-orange);
           margin-bottom: 20px;
+          transition: all 0.3s ease;
+        }
+        .value-card:hover .value-icon {
+          color: var(--primary-orange);
+          transform: rotateY(180deg);
         }
         .value-title {
           color: var(--text-black);
@@ -248,13 +291,14 @@ const About = () => {
           padding: 30px;
           text-align: center;
           border: 1px solid var(--border-color);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
           transition: all 0.3s ease;
+          animation: fadeInUp 0.8s ease-out;
         }
         .why-us-card:hover {
           transform: translateY(-4px);
           border-color: var(--primary-orange);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
         }
         .why-us-card .value-icon {
           color: var(--primary-orange);
@@ -269,9 +313,15 @@ const About = () => {
           line-height: 1.6;
         }
 
+        /* About Widget Area - Theme Aware */
+        .about-widget-area {
+          background: var(--bg-light);
+          padding: 80px 0;
+        }
         .about-widget-img img {
           border-radius: 12px;
           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
         }
         .about-widget-img:hover img {
           transform: scale(1.03) rotate(1deg);
@@ -340,6 +390,7 @@ const About = () => {
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.2);
           transition: all 0.3s ease;
+          animation: fadeInUp 0.8s ease-out;
         }
         .counter-card:hover {
           transform: translateY(-8px);
@@ -358,6 +409,25 @@ const About = () => {
           letter-spacing: 1px;
         }
 
+        /* Service List - Theme Aware */
+        .service-list-area {
+          padding: 80px 0;
+          background: var(--bg-light);
+        }
+        .service-list-content {
+          background: var(--bg-white);
+          border-radius: 12px;
+          padding: 30px;
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          animation: fadeInUp 0.8s ease-out;
+        }
+        .service-list-content:hover {
+          transform: translateY(-4px);
+          border-color: var(--primary-orange);
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1);
+        }
         .service-list-content h3 {
           color: var(--text-black);
           font-size: 1.4rem;
@@ -614,8 +684,8 @@ const About = () => {
             {journeyData.map((item, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
                 <div className="service-list-content">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <h3 style={{color: 'var(--text-black)'}}>{item.title}</h3>
+                  <p style={{color: 'var(--text-gray)'}}>{item.description}</p>
                   <Link to="/service" className="service-list-btn">
                     <span style={{color: 'var(--primary-orange)'}}>Read More</span><i className="bx bx-plus"></i>
                   </Link>
@@ -629,7 +699,7 @@ const About = () => {
   );
 };
 
-// Data Arrays (unchanged)
+// Data Arrays
 const coreValues = [
   {
     icon: 'bx-diamond',

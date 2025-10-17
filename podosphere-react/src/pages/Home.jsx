@@ -493,6 +493,7 @@ const Home = () => {
                       overflow: 'hidden',
                       border: '6px solid',
                       borderImage: 'linear-gradient(135deg, #667eea, #764ba2) 1',
+                     
                       boxShadow: '0 20px 60px rgba(102, 126, 234, 0.5)',
                       position: 'relative',
                       animation: 'pulse-glow 3s ease-in-out infinite'
