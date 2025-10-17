@@ -1,6 +1,7 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+//
 const Home = () => {
   useEffect(() => {
     // Initialize animations and plugins
@@ -412,6 +413,359 @@ const Home = () => {
       </div>
       {/* Work Area End */}
 
+      {/* Featured Leadership Section */}
+      <div className="featured-leadership-area pt-100 pb-70" style={{ background: 'linear-gradient(180deg, #f9fafb 0%, #ffffff 100%)' }}>
+        <div className="container">
+          <div className="section-title text-center mb-5">
+            <span className="sp-before sp-after">Leadership</span>
+            <h2 className="h2-color2" style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '20px' }}>
+              Meet Our Visionary Leaders
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6b7280', maxWidth: '800px', margin: '0 auto' }}>
+              Driving innovation and excellence with strategic vision and technical expertise
+            </p>
+          </div>
+
+          <div className="row align-items-stretch">
+            {/* Sushant Singh - Founder & CEO */}
+            <div className="col-lg-6 mb-4">
+              <div 
+                className="leader-card"
+                style={{
+                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  borderRadius: '30px',
+                  padding: '50px',
+                  boxShadow: '0 20px 60px rgba(102, 126, 234, 0.2)',
+                  border: '3px solid rgba(102, 126, 234, 0.15)',
+                  transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  height: '100%'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-15px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 30px 80px rgba(102, 126, 234, 0.35)';
+                  e.currentTarget.style.borderColor = '#667eea';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(102, 126, 234, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(102, 126, 234, 0.15)';
+                }}
+              >
+                {/* Animated Gradient Border */}
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '6px',
+                  background: 'linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea)',
+                  backgroundSize: '200% 100%',
+                  animation: 'gradient-shift 4s ease infinite'
+                }} />
+                
+                {/* CEO Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '25px',
+                  right: '25px',
+                  background: 'linear-gradient(145deg, #f59e0b, #ea580c)',
+                  color: '#fff',
+                  padding: '10px 22px',
+                  borderRadius: '25px',
+                  fontSize: '0.9rem',
+                  fontWeight: '800',
+                  boxShadow: '0 8px 25px rgba(245, 158, 11, 0.4)',
+                  letterSpacing: '0.5px'
+                }}>
+                  👑 FOUNDER & CEO
+                </div>
+
+                <div className="row align-items-center">
+                  <div className="col-md-5">
+                    {/* Image Container with Animation */}
+                    <div style={{
+                      width: '220px',
+                      height: '220px',
+                      margin: '0 auto 20px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '6px solid',
+                      borderImage: 'linear-gradient(135deg, #667eea, #764ba2) 1',
+                      boxShadow: '0 20px 60px rgba(102, 126, 234, 0.5)',
+                      position: 'relative',
+                      animation: 'pulse-glow 3s ease-in-out infinite'
+                    }}>
+                      <img 
+                        src="/assets/img/team/FOUNDER-CEO.webp" 
+                        alt="Sushant Singh"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '50%'
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-md-7">
+                    <h3 style={{
+                      fontSize: '2.2rem',
+                      fontWeight: '900',
+                      marginBottom: '10px',
+                      background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}>
+                      SUSHANT SINGH
+                    </h3>
+                    <span style={{
+                      fontSize: '1.2rem',
+                      color: '#f59e0b',
+                      fontWeight: '700',
+                      display: 'block',
+                      marginBottom: '20px'
+                    }}>
+                      Founder & CEO
+                    </span>
+                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', marginBottom: '15px' }}>
+                      With over 15 years of experience in the technology industry, Sushant leads Podosphere Technologies 
+                      with a vision to transform businesses through innovative digital solutions. His strategic leadership 
+                      and passion for excellence have been instrumental in establishing our company as a trusted partner 
+                      for clients worldwide.
+                    </p>
+                    <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.7', fontStyle: 'italic' }}>
+                      Sushant is passionate about fostering innovation and building strong client relationships that drive mutual success.
+                    </p>
+
+                    <div style={{ marginTop: '25px' }}>
+                      <a href="#" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #667eea, #764ba2)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        marginRight: '12px',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)'
+                      }}>
+                        <i className="bx bxl-linkedin"></i>
+                      </a>
+                      <a href="#" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #667eea, #764ba2)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        marginRight: '12px',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)'
+                      }}>
+                        <i className="bx bxl-twitter"></i>
+                      </a>
+                      <a href="mailto:sushant@podospheretechnologies.com" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #667eea, #764ba2)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)'
+                      }}>
+                        <i className="bx bx-envelope"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Surbhi Trivedi - CTO */}
+            <div className="col-lg-6 mb-4">
+              <div 
+                className="leader-card"
+                style={{
+                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  borderRadius: '30px',
+                  padding: '50px',
+                  boxShadow: '0 20px 60px rgba(16, 185, 129, 0.2)',
+                  border: '3px solid rgba(16, 185, 129, 0.15)',
+                  transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  height: '100%'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-15px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 30px 80px rgba(16, 185, 129, 0.35)';
+                  e.currentTarget.style.borderColor = '#10b981';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(16, 185, 129, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.15)';
+                }}
+              >
+                {/* Animated Gradient Border */}
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '6px',
+                  background: 'linear-gradient(90deg, #10b981, #059669, #34d399, #10b981)',
+                  backgroundSize: '200% 100%',
+                  animation: 'gradient-shift 4s ease infinite'
+                }} />
+                
+                {/* CTO Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '25px',
+                  right: '25px',
+                  background: 'linear-gradient(145deg, #ec4899, #db2777)',
+                  color: '#fff',
+                  padding: '10px 22px',
+                  borderRadius: '25px',
+                  fontSize: '0.9rem',
+                  fontWeight: '800',
+                  boxShadow: '0 8px 25px rgba(236, 72, 153, 0.4)',
+                  letterSpacing: '0.5px'
+                }}>
+                  ⚡ CTO
+                </div>
+
+                <div className="row align-items-center">
+                  <div className="col-md-5">
+                    {/* Image Container with Animation */}
+                    <div style={{
+                      width: '220px',
+                      height: '220px',
+                      margin: '0 auto 20px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '6px solid #10b981',
+                      boxShadow: '0 20px 60px rgba(16, 185, 129, 0.5)',
+                      position: 'relative',
+                      animation: 'pulse-glow 3s ease-in-out infinite'
+                    }}>
+                      <img 
+                        src="/assets/img/team/CTO.webp" 
+                        alt="Surbhi Trivedi"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '50%'
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-md-7">
+                    <h3 style={{
+                      fontSize: '2.2rem',
+                      fontWeight: '900',
+                      marginBottom: '10px',
+                      background: 'linear-gradient(135deg, #10b981, #059669)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}>
+                      SURBHI TRIVEDI
+                    </h3>
+                    <span style={{
+                      fontSize: '1.2rem',
+                      color: '#ec4899',
+                      fontWeight: '700',
+                      display: 'block',
+                      marginBottom: '20px'
+                    }}>
+                      Chief Technology Officer
+                    </span>
+                    <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', marginBottom: '15px' }}>
+                      Surbhi brings extensive technical expertise and innovation to Podosphere Technologies. 
+                      With 12 years of experience in software architecture, she oversees our technical strategy 
+                      and ensures we stay at the forefront of emerging technologies.
+                    </p>
+                    <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.7', fontStyle: 'italic' }}>
+                      Her expertise spans across cloud computing, artificial intelligence, and scalable system design. 
+                      Surbhi is committed to building robust, secure, and efficient solutions that exceed client 
+                      expectations and drive digital transformation.
+                    </p>
+
+                    <div style={{ marginTop: '25px' }}>
+                      <a href="#" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #10b981, #059669)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        marginRight: '12px',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(16, 185, 129, 0.3)'
+                      }}>
+                        <i className="bx bxl-linkedin"></i>
+                      </a>
+                      <a href="#" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #10b981, #059669)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        marginRight: '12px',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(16, 185, 129, 0.3)'
+                      }}>
+                        <i className="bx bxl-twitter"></i>
+                      </a>
+                      <a href="mailto:surbhi@podospheretechnologies.com" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50px',
+                        height: '50px',
+                        background: 'linear-gradient(145deg, #10b981, #059669)',
+                        borderRadius: '50%',
+                        color: '#fff',
+                        fontSize: '1.3rem',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 25px rgba(16, 185, 129, 0.3)'
+                      }}>
+                        <i className="bx bx-envelope"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Team Area */}
       <div className="team-area-two pb-70">
         <div className="container">
@@ -426,7 +780,17 @@ const Home = () => {
             {teamMembers.map((member, index) => (
               <div className={`team-card ${index === 0 ? 'active' : ''} ${index % 2 !== 0 ? 'team-rotated-2' : ''}`} key={index}>
                 <a href="#">
-                  <img src={member.image} alt={member.name} />
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    style={{
+                      width: '100%',
+                      height: '350px',
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      borderRadius: '15px'
+                    }}
+                  />
                 </a>
                 <div className="content">
                   <h3><Link to="/team">{member.name}</Link></h3>
@@ -516,18 +880,16 @@ const workProcess = [
 ];
 
 const teamMembers = [
-  { name: 'AJAY JAIN', position: 'Team Lead, Website Development', image: '/assets/img/team/team1.jpg' },
-  { name: 'RAHUL JANGID', position: 'FULLSTACK DEVELOPER', image: '/assets/img/team/team2.jpg' },
-  { name: 'ANISH YADAV', position: 'MERNSTACK DEVELOPER', image: '/assets/img/team/team3.jpg' },
-  { name: 'DEVENDRA SINGH GAHLOT', position: 'GRAPHIC & FRONTEND DEVELOPER', image: '/assets/img/team/team4.jpg' },
-  { name: 'SAMEER MAHESHWARI', position: 'FRONTEND DEVELOPER', image: '/assets/img/team/team5.jpg' },
-  { name: 'JAY SHARMA', position: 'UI/UX DESIGNER', image: '/assets/img/team/team6.jpg' },
-  { name: 'YUVRAJ CHAUHAN', position: 'E-COMMERCE MANAGER', image: '/assets/img/team/team7.jpg' },
-  { name: 'SUMIT SWAMI', position: 'FRONTEND DEVELOPER', image: '/assets/img/team/team8.jpg' },
-  { name: 'KULDEEP TANWAR', position: 'VIDEO EDITOR', image: '/assets/img/team/team9.jpg' },
-  { name: 'GAURAV SISODIA', position: '3d Generalist & TL of design Department', image: '/assets/img/team/team10.jpg' },
-  { name: 'TANU JANGID', position: 'HUMAN RESOURCE', image: '/assets/img/team/team11.jpg' },
-  { name: 'SURAJ BAIRWA', position: 'SENIOR GRAPHIC DESIGNER', image: '/assets/img/team/team12.jpg' }
+  { name: 'AJAY JAIN', position: 'Team Lead, Website Development', image: '/assets/img/team/ajayjain.jpeg' },
+  { name: 'RAHUL JANGID', position: 'Full Stack Developer', image: '/assets/img/team/team2.jpg' },
+  { name: 'DEVENDRA SINGH GAHLOT', position: 'Graphic & Frontend Developer', image: '/assets/img/team/team4.jpg' },
+  { name: 'SAMEER MAHESHWARI', position: 'Frontend Developer', image: '/assets/img/team/team5.jpg' },
+  { name: 'JAY SHARMA', position: 'UI/UX Designer', image: '/assets/img/team/team6.jpg' },
+  { name: 'YUVRAJ CHAUHAN', position: 'E-Commerce Manager', image: '/assets/img/team/team7.jpg' },
+  { name: 'KULDEEP TANWAR', position: 'Video Editor', image: '/assets/img/team/team9.jpg' },
+  { name: 'GAURAV SISODIA', position: '3D Generalist & TL of Design', image: '/assets/img/team/team10.jpg' },
+  { name: 'TANU JANGID', position: 'Human Resource', image: '/assets/img/team/team11.jpg' },
+  { name: 'SURAJ BAIRWA', position: 'Senior Graphic Designer', image: '/assets/img/team/team12.jpg' }
 ];
 
 export default Home;

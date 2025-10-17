@@ -16,85 +16,173 @@ const Service = () => {
   return (
     <>
       <style>{`
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
-        @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 25px rgba(247, 127, 0, 0.4); }
-          50% { box-shadow: 0 0 60px rgba(247, 127, 0, 0.8); }
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes zoomIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
-        @keyframes rotate-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
         }
-        
+        @keyframes slideInDown {
+          from {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+        @keyframes bounceIn {
+          0%, 20%, 53%, 80%, 100% {
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform: translate3d(0, 0, 0);
+          }
+          40%, 43% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate3d(0, -30px, 0);
+          }
+          70% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate3d(0, -15px, 0);
+          }
+          90% {
+            transform: translate3d(0, -4px, 0);
+          }
+        }
+
+        /* Color Scheme Variables - Portfolio Theme */
+        :root {
+          --primary-orange: #f77f00;
+          --secondary-orange: #ff6a00;
+          --text-black: #1a1b1e;
+          --text-white: #ffffff;
+          --text-gray: #4a5568;
+          --text-light-gray: #718096;
+          --bg-light: #f9fafb;
+          --bg-white: #ffffff;
+          --border-color: #e6e9ef;
+        }
+
+        .default-btn {
+          background-color: var(--primary-orange) !important;
+          color: var(--text-white) !important;
+          padding: 12px 28px !important;
+          border-radius: 8px !important;
+          font-weight: 600 !important;
+          transition: all 0.3s ease;
+          border: none !important;
+          box-shadow: 0 4px 12px rgba(247, 127, 0, 0.2);
+        }
+        .default-btn:hover {
+          background-color: var(--secondary-orange) !important;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 16px rgba(247, 127, 0, 0.3);
+        }
+
+        /* Page Title Area - Portfolio Style Hero Section */
         .page-title-area {
-          background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #667eea);
-          background-size: 400% 400%;
-          animation: gradient-shift 15s ease infinite;
-          padding: 100px 0;
-          position: relative;
-          overflow: hidden;
-        }
-        .page-title-area::before {
-          content: '';
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
-          background-size: 50px 50px;
-          animation: rotate-slow 60s linear infinite;
+          background: var(--bg-white);
+          padding: 100px 0 80px;
         }
         .page-title-content {
-          position: relative;
-          z-index: 2;
-          color: #fff;
+          animation: fadeInUp 0.8s ease-out;
         }
         .page-title-content h1 {
-          color: #fff !important;
-          font-size: 3.5rem;
-          font-weight: 900;
-          margin-bottom: 25px;
-          text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+          font-size: 3.2rem;
+          margin-bottom: 15px;
+          color: var(--text-black) !important;
+          animation: slideInDown 1s ease-out 0.2s both;
         }
         .page-title-content p {
-          font-size: 1.3rem;
-          opacity: 0.95;
           max-width: 800px;
-          margin: 0 auto 30px;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+          margin-left: auto;
+          margin-right: auto;
+          font-size: 1.15rem;
+          color: var(--text-gray);
+          animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         .hero-badges {
-          margin-top: 30px;
-          margin-bottom: 30px;
+          margin-top: 25px;
+          margin-bottom: 25px;
+          animation: fadeInUp 0.8s ease-out 0.6s both;
         }
         .hero-badge {
-          padding: 12px 28px;
-          background: rgba(255,255,255,0.25);
-          backdrop-filter: blur(10px);
-          color: #fff;
-          font-size: 1.1rem;
-          border-radius: 30px;
-          display: inline-block;
-          margin: 0 10px;
-          border: 2px solid rgba(255,255,255,0.3);
-          font-weight: 700;
-          box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+          padding: 7px 18px;
+          background: rgba(247, 127, 0, 0.1);
+          color: var(--primary-orange);
+          font-size: 1em;
+          border-radius: 20px;
+          margin: 0 5px;
+          border: 1px solid rgba(247, 127, 0, 0.3);
           transition: all 0.3s ease;
+          animation: bounceIn 1s ease-out 0.8s both;
+        }
+        .hero-badge:nth-child(1) {
+          animation-delay: 0.9s;
+        }
+        .hero-badge:nth-child(2) {
+          animation-delay: 1s;
+        }
+        .hero-badge:nth-child(3) {
+          animation-delay: 1.1s;
         }
         .hero-badge:hover {
-          transform: translateY(-5px) scale(1.1);
-          background: rgba(255,255,255,0.35);
+          transform: translateY(-3px) scale(1.05);
+          background: rgba(247, 127, 0, 0.2);
+          box-shadow: 0 8px 20px rgba(247, 127, 0, 0.3);
+        }
+        .page-title-content .default-btn {
+          margin-top: 30px !important;
+          animation: fadeInUp 0.8s ease-out 1.2s both;
+        }
+
+        /* Services Container - Portfolio Style */
+        .services-container {
+          padding: 80px 0;
+          background-color: var(--bg-light);
         }
         .service-filters {
           margin: 50px 0;
@@ -125,10 +213,7 @@ const Service = () => {
           transform: translateY(-5px);
           box-shadow: 0 12px 35px rgba(247, 127, 0, 0.4);
         }
-        .services-container {
-          padding: 60px 0;
-          background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
-        }
+
         .service-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -136,15 +221,15 @@ const Service = () => {
           padding: 50px 0;
         }
         .service-card {
-          background: linear-gradient(145deg, #ffffff, #fafafa);
-          border-radius: 25px;
-          padding: 45px;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          border: 3px solid #f0f0f0;
+          background: var(--bg-white);
+          border-radius: 12px;
+          padding: 30px;
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04);
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          animation: fadeInUp 0.8s ease-out;
           position: relative;
           overflow: hidden;
-          animation: slide-up 0.6s ease-out forwards;
         }
         .service-card::before {
           content: '';
@@ -153,199 +238,124 @@ const Service = () => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(247, 127, 0, 0.15), transparent);
+          background: linear-gradient(90deg, transparent, rgba(247, 127, 0, 0.1), transparent);
           transition: left 0.6s;
         }
         .service-card:hover::before {
           left: 100%;
         }
         .service-card:hover {
-          transform: translateY(-15px) scale(1.03);
-          box-shadow: 0 25px 70px rgba(247, 127, 0, 0.25);
-          border-color: #f77f00;
+          transform: translateY(-6px) scale(1.02);
+          border-color: var(--primary-orange);
+          box-shadow: 0 15px 40px rgba(247, 127, 0, 0.15);
         }
         .service-icon {
-          font-size: 5rem;
-          margin-bottom: 25px;
+          font-size: 4rem;
+          margin-bottom: 20px;
           display: inline-block;
-          animation: float 4s ease-in-out infinite;
-          filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2));
-        }
-        .service-card:hover .service-icon {
-          animation: pulse-glow 2s ease-in-out infinite;
-          transform: scale(1.2) rotate(10deg);
+          animation: pulse 2s infinite;
         }
         .service-card h3 {
-          font-size: 1.8rem;
-          font-weight: 800;
-          margin-bottom: 20px;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--text-black);
+          font-size: 1.5rem;
+          margin-bottom: 15px;
+          font-weight: 600;
         }
         .service-card p {
-          color: #4b5563;
-          line-height: 1.8;
-          margin-bottom: 25px;
-          font-size: 1.05rem;
+          color: var(--text-gray);
+          line-height: 1.6;
+          margin-bottom: 20px;
         }
         .service-features {
           list-style: none;
           padding: 0;
-          margin: 25px 0;
+          margin: 20px 0;
         }
         .service-features li {
-          padding: 12px 0;
+          padding: 8px 0;
           display: flex;
           align-items: center;
-          color: #374151;
-          font-weight: 600;
+          color: var(--text-gray);
+          font-weight: 500;
           transition: all 0.3s ease;
         }
         .service-features li:hover {
-          transform: translateX(10px);
-          color: #10b981;
+          transform: translateX(5px);
+          color: var(--primary-orange);
         }
         .service-features li i {
-          color: #10b981;
-          font-size: 1.4rem;
-          margin-right: 12px;
+          color: var(--primary-orange);
+          font-size: 1.2rem;
+          margin-right: 10px;
           transition: transform 0.3s ease;
         }
         .service-features li:hover i {
-          transform: scale(1.3) rotate(360deg);
+          transform: scale(1.2) rotate(360deg);
         }
         .service-detail-link {
           display: inline-block;
-          margin-top: 20px;
-          padding: 12px 30px;
-          background: linear-gradient(145deg, #f77f00, #ff6a00);
-          color: #fff;
+          margin-top: 15px;
+          padding: 10px 25px;
+          background: var(--primary-orange);
+          color: var(--text-white);
           border-radius: 25px;
           text-decoration: none;
-          font-weight: 700;
+          font-weight: 600;
           transition: all 0.3s ease;
-          box-shadow: 0 5px 20px rgba(247, 127, 0, 0.3);
         }
         .service-detail-link:hover {
-          transform: translateY(-5px) scale(1.05);
-          box-shadow: 0 12px 35px rgba(247, 127, 0, 0.5);
-          color: #fff;
-        }
-        .service-cta {
-          background: linear-gradient(-45deg, #f77f00, #ff6a00, #ff8c00, #ff6a00);
-          background-size: 400% 400%;
-          animation: gradient-shift 12s ease infinite;
-          border-radius: 30px;
-          padding: 80px 50px;
-          text-align: center;
-          margin: 80px 0;
-          color: #fff;
-          position: relative;
-          overflow: hidden;
-        }
-        .service-cta::before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 20px,
-            rgba(255,255,255,0.08) 20px,
-            rgba(255,255,255,0.08) 40px
-          );
-          animation: rotate-slow 30s linear infinite;
-        }
-        .service-cta h2 {
-          color: #ffffff !important;
-          font-weight: 900 !important;
-          font-size: 3rem !important;
-          margin-bottom: 25px !important;
-          text-shadow: 0 8px 30px rgba(0,0,0,0.3);
-          position: relative;
-          z-index: 1;
-        }
-        .service-cta p {
-          color: #ffffff !important;
-          font-size: 1.3rem !important;
-          opacity: 1 !important;
-          margin-bottom: 40px !important;
-          line-height: 1.6;
-          position: relative;
-          z-index: 1;
-        }
-        .cta-btn {
-          background: #fff;
-          color: #ff6a00;
-          padding: 20px 45px;
-          border-radius: 999px;
-          font-weight: 800;
-          text-decoration: none;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-          transition: all 0.4s ease;
-          font-size: 1.2rem;
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          position: relative;
-          z-index: 1;
-          border: 3px solid rgba(255,255,255,0.5);
-        }
-        .cta-btn:hover {
-          transform: translateY(-8px) scale(1.08);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-          color: #ff6a00;
+          background: var(--secondary-orange);
+          transform: translateY(-2px);
+          color: var(--text-white);
+          box-shadow: 0 8px 20px rgba(247, 127, 0, 0.3);
         }
       `}</style>
 
-      {/* Page Title Area - Enhanced */}
+      {/* Page Title Area - Portfolio Style Hero Section */}
       <div className="page-title-area">
-        {/* Floating Particles */}
-        <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1 }}>
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                width: `${Math.random() * 10 + 5}px`,
-                height: `${Math.random() * 10 + 5}px`,
-                background: 'rgba(255,255,255,0.7)',
-                borderRadius: '50%',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${Math.random() * 6 + 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 3}s`,
-                boxShadow: '0 0 15px rgba(255,255,255,0.5)'
-              }}
-            />
-          ))}
-        </div>
-
         <div className="container">
           <div className="page-title-content text-center">
-            <h1 className="animate-slide-up">Expert Services for Digital Excellence</h1>
-            <p className="animate-slide-up delay-200">
+            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+              Our Services
+            </span>
+            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
+              Expert Services for <span style={{color: 'var(--primary-orange)'}}>Digital Excellence</span>
+            </h1>
+            <p style={{color: 'var(--text-gray)'}}>
               From web development to AI integration, we deliver cutting-edge solutions that drive business growth and technological innovation.
             </p>
-            <div className="hero-badges animate-slide-up delay-400">
+            <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> Innovation Driven
+                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Innovation Driven</span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> Security First
+                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Security First</span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> Performance Focused
+                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Performance Focused</span>
               </span>
+            </div>
+            <div>
+              <Link
+                to="/contact"
+                className="default-btn"
+                style={{ marginRight: '15px' }}
+              >
+                <span style={{color: 'var(--text-white)'}}>Get In Touch</span> <i className="bx bx-plus"></i>
+              </Link>
+              <Link
+                to="/portfolio"
+                className="default-btn"
+                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+              >
+                <span style={{color: 'var(--text-white)'}}>View Portfolio</span> <i className="bx bx-right-arrow-alt"></i>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Services Container */}
+      {/* Services Container - Portfolio Style */}
       <div className="services-container">
         <div className="container-fluid">
           {/* Service Filters */}
@@ -365,10 +375,10 @@ const Service = () => {
           <div className="container">
             <div className="service-grid">
               {filteredServices.map((service, index) => (
-                <div 
-                  key={index} 
-                  id={service.id} 
-                  className="service-card" 
+                <div
+                  key={index}
+                  id={service.id}
+                  className="service-card"
                   data-category={service.category}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -391,39 +401,6 @@ const Service = () => {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Service CTA */}
-      <div className="container">
-        <div className="service-cta">
-          {/* Animated Particles in CTA */}
-          <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}>
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  position: 'absolute',
-                  width: '6px',
-                  height: '6px',
-                  background: 'rgba(255,255,255,0.8)',
-                  borderRadius: '50%',
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animation: `float ${Math.random() * 5 + 3}s ease-in-out infinite`,
-                  animationDelay: `${Math.random() * 2}s`
-                }}
-              />
-            ))}
-          </div>
-          
-          <h2>Ready to Transform Your Business?</h2>
-          <p>
-            Let's discuss your project requirements and explore how our expertise can drive your digital success.
-          </p>
-          <Link to="/contact" className="cta-btn">
-            Start Your Project <i className="bx bx-right-arrow-alt"></i>
-          </Link>
         </div>
       </div>
     </>

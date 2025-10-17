@@ -39,7 +39,8 @@ const Navbar = () => {
               className="collapse navbar-collapse mean-menu"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav m-auto">
+
+              {/* <ul className="navbar-nav m-auto">
                 <li className="nav-item">
                   <a href="#" className="nav-link">
                     Company
@@ -50,6 +51,53 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                       <Link to="/work" className="nav-link">How We Work</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/nda" className="nav-link">NDA</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/career" className="nav-link">Career</Link>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item">
+                  <Link to="/service" className={`nav-link ${isActive('/service')}`}>
+                    Services
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/solution" className={`nav-link ${isActive('/solution')}`}>
+                    Solutions
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/portfolio" className={`nav-link ${isActive('/portfolio')}`}>
+                    Portfolio
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>
+                    Contact
+                  </Link>
+                </li>
+              </ul> */}
+
+<ul className="navbar-nav m-auto">
+                <li className="nav-item">
+                  <Link to="/about" className={`nav-link ${isActive('/about')}`}>
+                    About Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    Company
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li className="nav-item">
+                      <Link to="/work" className="nav-link">How We Work</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/team" className="nav-link">Our Team</Link>
                     </li>
                     <li className="nav-item">
                       <Link to="/nda" className="nav-link">NDA</Link>
