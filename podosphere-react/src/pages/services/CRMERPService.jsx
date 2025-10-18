@@ -1,151 +1,486 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const CRMERPService = () => {
+  useEffect(() => {
+    // Initialize animations and plugins
+    if (window.WOW) {
+      new window.WOW().init();
+    }
+
+    // Navbar scroll effect logic copied from Portfolio.jsx
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar-area");
+      if (navbar) {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <style>{`
-        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-32px); } }
-        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.5); } 50% { box-shadow: 0 0 90px rgba(245, 158, 11, 0.9); } }
-        @keyframes slide-up { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes rotate-3d { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+        /* ---------------------------------------------------------------------- */
+        /* --- GLOBAL THEME VARIABLES AND TYPOGRAPHY (FROM PORTFOLIO.JSX) --- */
+        /* ---------------------------------------------------------------------- */
+        :root {
+          --primary-orange: #f97316;
+          --secondary-orange: #ff6a00;
+          --primary-blue: #2563eb;
+          --text-black: #1a1b1e;
+          --text-white: #ffffff;
+          --text-gray: #4a5568;
+          --text-light-gray: #718096;
+          --bg-light: #f9fafb;
+          --bg-white: #ffffff;
+          --bg-dark: #0f172a;
+          --bg-dark-card: #1e293b;
+          --border-color: #e6e9ef;
+          --border-dark: #334155;
+        }
+
+        /* Dark Theme Overrides */
+        .theme-dark {
+          --text-black: #f1f5f9;
+          --text-gray: #cbd5e1;
+          --text-light-gray: #94a3b8;
+          --bg-light: #0f172a;
+          --bg-white: #1e293b;
+          --border-color: #334155;
+        }
+
+        /* Enhanced Navbar Styling - Theme Aware */
+        .navbar-area {
+          background: rgba(255, 255, 255, 0.95) !important;
+          backdrop-filter: blur(10px) !important;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+          transition: all 0.3s ease !important;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 999 !important;
+          border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          min-height: auto !important;
+        }
+
+        .theme-dark .navbar-area {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border-bottom: 1px solid rgba(51, 65, 85, 0.3) !important;
+        }
+
+        .navbar-area.scrolled {
+          background: rgba(255, 255, 255, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .theme-dark .navbar-area.scrolled {
+          background: rgba(15, 23, 42, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+        }
         
-        .service-detail-hero {
-          background: linear-gradient(-45deg, #f59e0b, #ea580c, #fb923c, #d97706);
-          background-size: 400% 400%;
-          animation: gradient-shift 15s ease infinite;
-          padding: 135px 0;
-          color: #fff;
-          position: relative;
-          overflow: hidden;
+        /* Navbar Links */
+        .navbar-nav .nav-link {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 1rem !important;
+          color: var(--text-black) !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          position: relative !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          padding: 12px 18px !important;
+          margin: 0 3px !important;
         }
-        .service-detail-hero::before {
-          content: '';
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          background: repeating-conic-gradient(from 0deg, transparent 0deg, transparent 30deg, rgba(255,255,255,0.06) 30deg, rgba(255,255,255,0.06) 60deg);
-          animation: rotate-3d 50s linear infinite;
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+          transform: translateY(-2px) !important;
         }
-        .service-icon-large { font-size: 8rem; margin-bottom: 30px; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 30px 70px rgba(0,0,0,0.5)); }
+
+        .theme-dark .navbar-nav .nav-link {
+          color: #f1f5f9 !important;
+        }
+
+        .theme-dark .navbar-nav .nav-link:hover,
+        .theme-dark .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+          content: '' !important;
+          position: absolute !important;
+          bottom: 8px !important;
+          left: 50% !important;
+          width: 0 !important;
+          height: 2px !important;
+          background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue)) !important;
+          transition: all 0.3s ease !important;
+          transform: translateX(-50%) !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+          width: 80% !important;
+        }
+
+        .dropdown-menu {
+          border: none !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+          background: var(--bg-white) !important;
+          border-radius: 8px !important;
+          padding: 10px 0 !important;
+          margin-top: 8px !important;
+        }
+
+        .theme-dark .dropdown-menu {
+          background: var(--bg-dark) !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Enhanced Typography for UI Text - Theme Aware */
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 700 !important;
+          line-height: 1.2 !important;
+          color: var(--text-black) !important;
+          margin-bottom: 1rem !important;
+        }
+
+        h1 { font-size: 3.2rem !important; }
+        h2 { font-size: 2.8rem !important; }
+        h3 { font-size: 2.2rem !important; }
+        h4 { font-size: 1.8rem !important; }
+        h5 { font-size: 1.5rem !important; }
+        h6 { font-size: 1.3rem !important; }
+
+        p {
+          font-family: 'Nunito Sans', sans-serif !important;
+          font-size: 1.1rem !important;
+          line-height: 1.7 !important;
+          color: var(--text-gray) !important;
+          font-weight: 400 !important;
+        }
+        
+        .section-title h2 {
+          font-size: 2.8rem !important;
+          font-weight: 800 !important;
+          background: linear-gradient(135deg, var(--text-black), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .theme-dark .section-title h2 {
+          background: linear-gradient(135deg, #f1f5f9, var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .sp-after {
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+          font-weight: 700 !important;
+          font-size: 1.1rem !important;
+        }
+
+        .default-btn {
+          background-color: var(--primary-orange) !important;
+          color: var(--text-white) !important;
+          padding: 12px 28px !important;
+          border-radius: 8px !important;
+          font-weight: 600 !important;
+          transition: all 0.3s ease !important;
+          border: none !important;
+          box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2) !important;
+          font-family: 'Livvic', sans-serif !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+        }
+
+        .default-btn:hover {
+          background-color: var(--secondary-orange) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3) !important;
+        }
+
+        /* Service specific styles */
+        .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 140px !important;
+          margin-top: 70px !important;
+          margin-bottom: 0 !important;
+        }
+
+        .service-detail-content {
+          padding: 80px 0;
+        }
+
         .feature-box {
-          background: linear-gradient(145deg, #ffffff, #fffbeb);
-          border-radius: 25px;
-          padding: 42px;
-          margin-bottom: 35px;
-          box-shadow: 0 18px 55px rgba(245, 158, 11, 0.22);
-          transition: all 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          border: 3px solid rgba(245, 158, 11, 0.15);
-          position: relative;
-          overflow: hidden;
+          background: var(--bg-white) !important;
+          border-radius: 12px !important;
+          padding: 30px !important;
+          margin-bottom: 30px !important;
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04) !important;
+          transition: all 0.3s ease !important;
+          border: 1px solid var(--border-color) !important;
         }
-        .feature-box::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
-          transition: left 0.9s;
-        }
-        .feature-box:hover::before { left: 100%; }
+
         .feature-box:hover {
-          transform: translateY(-20px) scale(1.06);
-          box-shadow: 0 40px 100px rgba(245, 158, 11, 0.45);
-          border-color: #f59e0b;
+          transform: translateY(-4px) !important;
+          border-color: var(--primary-orange) !important;
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1) !important;
         }
-        .feature-box:hover i { transform: scale(1.6) rotate(25deg); animation: pulse-glow 1.5s infinite; }
-        .feature-box h3 {
-          background: linear-gradient(135deg, #f59e0b, #ea580c);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: 900;
-          font-size: 1.7rem;
-          margin-top: 20px;
+
+        .tech-stack {
+          background-color: var(--bg-light);
+          padding: 80px 0;
         }
+
         .tech-badge {
-          background: linear-gradient(145deg, #f59e0b, #ea580c);
-          color: #fff;
-          padding: 17px 35px;
-          border-radius: 42px;
-          margin: 12px;
-          box-shadow: 0 14px 40px rgba(245, 158, 11, 0.4);
-          font-weight: 900;
-          font-size: 1.08rem;
-          transition: all 0.4s ease;
-          cursor: pointer;
           display: inline-block;
+          background: var(--bg-white);
+          color: var(--text-black);
+          padding: 10px 20px;
+          margin: 8px;
+          border-radius: 25px;
+          font-weight: 600;
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          cursor: pointer;
         }
+
         .tech-badge:hover {
-          transform: translateY(-14px) rotate(-6deg) scale(1.3);
-          box-shadow: 0 25px 70px rgba(245, 158, 11, 0.75);
+          transform: translateY(-3px) scale(1.05);
+          background: var(--primary-orange);
+          color: var(--text-white);
+          border-color: var(--primary-orange);
         }
+
+        .process-step {
+          text-align: center;
+          padding: 30px;
+          background: var(--bg-white);
+          border-radius: 12px;
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          margin-bottom: 20px;
+        }
+
+        .process-step:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
         .process-number {
-          width: 130px;
-          height: 130px;
-          background: linear-gradient(135deg, #f59e0b, #ea580c);
-          color: #fff;
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue));
+          color: var(--text-white);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 3.5rem;
-          font-weight: 900;
-          margin: 0 auto 35px;
-          box-shadow: 0 30px 80px rgba(245, 158, 11, 0.65);
-          animation: pulse-glow 3s ease-in-out infinite;
+          font-size: 2rem;
+          font-weight: bold;
+          margin: 0 auto 20px;
+          box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
         }
-        .cta-section {
-          background: linear-gradient(-45deg, #f77f00, #ff6a00, #ff8c00, #ff6a00);
-          background-size: 400% 400%;
-          animation: gradient-shift 12s ease infinite;
-          padding: 120px 0;
-          color: #fff;
-          text-align: center;
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        html {
+          scroll-behavior: smooth !important;
         }
       `}</style>
 
-      <div className="service-detail-hero">
-        <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}>
-          {[...Array(22)].map((_, i) => (
-            <div key={i} style={{ position: 'absolute', width: `${Math.random() * 14 + 7}px`, height: `${Math.random() * 14 + 7}px`, background: 'rgba(255,255,255,0.75)', borderRadius: '50%', top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animation: `float ${Math.random() * 8 + 5}s ease-in-out infinite`, animationDelay: `${Math.random() * 4}s`, boxShadow: '0 0 20px rgba(255,255,255,0.7)' }} />
-          ))}
-        </div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="col-lg-8 mx-auto text-center">
-            <div className="service-icon-large">📊</div>
-            <h1 className="animate-slide-up" style={{ fontSize: '4rem', marginBottom: '30px', fontWeight: '900', textShadow: '0 15px 50px rgba(0,0,0,0.5)' }}>
+      {/* Page Title Area */}
+      <div className="page-title-area">
+        <div className="container">
+          <div className="page-title-content text-center">
+            <span className="sp-after">
               CRM & ERP Solutions
+            </span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Integrated Business{' '}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Management Systems
+              </span>
             </h1>
-            <p className="animate-slide-up delay-200" style={{ fontSize: '1.4rem', opacity: 0.97, maxWidth: '800px', margin: '0 auto' }}>
-              Streamline your business operations with integrated CRM and ERP systems that unify data, automate workflows, and drive growth.
+            <p style={{ color: "var(--text-gray)" }}>
+              Streamline your business operations with custom CRM and ERP solutions that unify data,
+              automate workflows, and provide actionable insights for better decision-making.
             </p>
-            <div className="animate-slide-up delay-400" style={{ marginTop: '45px' }}>
-              <Link to="/contact" className="default-btn" style={{ background: '#fff', color: '#f59e0b', padding: '22px 55px', fontSize: '1.2rem', fontWeight: '900', boxShadow: '0 18px 60px rgba(255,255,255,0.45)' }}>
-                Transform Your Business <i className="bx bx-right-arrow-alt"></i>
+            <div>
+              <Link to="/contact" className="default-btn" style={{ marginRight: "15px" }}>
+                Get In Touch <i className="bx bx-plus"></i>
+              </Link>
+              <Link
+                to="/portfolio"
+                className="default-btn"
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
+              >
+                View Portfolio <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="service-detail-content">
         <div className="container">
-          <h2 className="mb-5 text-center" style={{ fontSize: '3rem', fontWeight: '800' }}>Unified Business Management Systems</h2>
           <div className="row">
-            {[
-              { icon: 'bx-user-circle', title: 'Customer Relationship Management', desc: 'Manage leads, contacts, sales pipeline, and customer interactions in one place.' },
-              { icon: 'bx-line-chart-down', title: 'Enterprise Resource Planning', desc: 'Streamline operations across finance, inventory, HR, and supply chain management.' },
-              { icon: 'bx-analytics', title: 'Business Intelligence', desc: 'Real-time dashboards and reports for data-driven decision making.' },
-              { icon: 'bx-sync', title: 'Process Automation', desc: 'Automate repetitive tasks and workflows to boost productivity.' }
-            ].map((f, i) => (
-              <div className="col-md-6" key={i}>
-                <div className={`feature-box animate-slide-up delay-${(i + 1) * 150}`}>
-                  <i className={f.icon} style={{ fontSize: '4rem', color: '#f59e0b' }}></i>
-                  <h3>{f.title}</h3>
-                  <p>{f.desc}</p>
+            <div className="col-lg-8">
+              <h2 className="mb-4">Why Choose Our CRM & ERP Solutions?</h2>
+              <p className="lead" style={{ color: "var(--text-gray)", fontSize: "1.2rem" }}>
+                Our integrated business management systems help organizations streamline operations,
+                improve customer relationships, and make data-driven decisions for sustainable growth.
+              </p>
+
+              <div className="row mt-5">
+                {features.map((feature, index) => (
+                  <div className="col-md-6" key={index}>
+                    <div className="feature-box animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                      <i className={`${feature.icon}`} style={{ 
+                        fontSize: '3rem', 
+                        color: 'var(--primary-orange)',
+                        marginBottom: '20px'
+                      }}></i>
+                      <h3>{feature.title}</h3>
+                      <p>{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <h3 className="mt-5 mb-4">What We Deliver</h3>
+              <ul className="list-unstyled" style={{ color: "var(--text-gray)" }}>
+                {deliverables.map((item, index) => (
+                  <li key={index} className="mb-3 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <i className="bx bx-check-circle" style={{ 
+                      color: "var(--primary-orange)", 
+                      marginRight: "10px" 
+                    }}></i> 
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="sidebar">
+                <div className="widget animate-fade-in" style={{ 
+                  padding: '30px', 
+                  borderRadius: '12px', 
+                  marginBottom: '30px',
+                  background: 'var(--bg-light)',
+                  border: `1px solid var(--border-color)`
+                }}>
+                  <h4 style={{ color: "var(--text-black)" }}>Quick Facts</h4>
+                  <ul className="list-unstyled mt-3" style={{ color: "var(--text-gray)" }}>
+                    <li className="mb-2"><strong>⏱️ Timeline:</strong> 12-24 weeks</li>
+                    <li className="mb-2"><strong>💰 Starting at:</strong> Contact us</li>
+                    <li className="mb-2"><strong>🎯 Best for:</strong> Medium to Large Businesses</li>
+                    <li className="mb-2"><strong>🔧 Support:</strong> 24/7 Technical Support</li>
+                  </ul>
+                </div>
+
+                <div className="widget animate-fade-in" style={{ 
+                  padding: '30px', 
+                  borderRadius: '12px',
+                  background: 'var(--primary-orange)',
+                  color: 'var(--text-white)',
+                  boxShadow: '0 10px 30px rgba(249, 115, 22, 0.3)'
+                }}>
+                  <h4 style={{ color: "var(--text-white)" }}>Ready to Transform?</h4>
+                  <p style={{ opacity: 0.9 }}>Let's build systems that scale with your business.</p>
+                  <Link 
+                    to="/contact" 
+                    className="default-btn" 
+                    style={{ 
+                      background: "var(--text-white)", 
+                      color: "var(--primary-orange)",
+                      width: "100%",
+                      textAlign: "center",
+                      marginTop: "15px"
+                    }}
+                  >
+                    Schedule Consultation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="tech-stack">
+        <div className="container">
+          <div className="section-title text-center">
+            <span className="sp-after">Technologies</span>
+            <h2>Our CRM & ERP Tech Stack</h2>
+          </div>
+          <div className="text-center" style={{ marginTop: "40px" }}>
+            {techStack.map((tech, index) => (
+              <span 
+                key={index}
+                className="tech-badge animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Process Section */}
+      <div className="service-detail-content">
+        <div className="container">
+          <div className="section-title text-center">
+            <span className="sp-after">Process</span>
+            <h2>Our Implementation Process</h2>
+          </div>
+          <div className="row" style={{ marginTop: "50px" }}>
+            {processSteps.map((step, index) => (
+              <div className="col-md-3" key={index}>
+                <div className="process-step animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="process-number">
+                    {index + 1}
+                  </div>
+                  <h4 style={{ color: "var(--text-black)", marginBottom: "15px" }}>{step.title}</h4>
+                  <p style={{ color: "var(--text-gray)" }}>{step.description}</p>
                 </div>
               </div>
             ))}
@@ -153,57 +488,82 @@ const CRMERPService = () => {
         </div>
       </div>
 
-      <div className="tech-stack" style={{ background: 'linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%)' }}>
+      {/* CTA Section */}
+      <div style={{
+        background: "linear-gradient(135deg, var(--primary-orange), var(--primary-blue))",
+        padding: "100px 0",
+        color: "var(--text-white)",
+        textAlign: "center"
+      }}>
         <div className="container">
-          <h2 className="text-center mb-5" style={{ fontSize: '3rem', fontWeight: '800' }}>Platform & Technologies</h2>
-          <div className="text-center">
-            {['Salesforce', 'Microsoft Dynamics', 'SAP', 'Oracle', 'Odoo', 'Custom Solutions', 'Cloud-Based', 'API Integrations', 'Mobile Apps', 'Analytics'].map((tech, i) => (
-              <span key={i} className={`tech-badge animate-bounce-in delay-${i * 100}`}>{tech}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="service-detail-content">
-        <div className="container">
-          <h2 className="text-center mb-5" style={{ fontSize: '3rem', fontWeight: '800' }}>Implementation Process</h2>
-          <div className="row">
-            {[
-              { title: 'Assessment', desc: 'Analyze current processes and identify requirements' },
-              { title: 'Configuration', desc: 'Customize CRM/ERP modules for your business needs' },
-              { title: 'Migration', desc: 'Migrate data and integrate with existing systems' },
-              { title: 'Training', desc: 'Train team and provide ongoing support & optimization' }
-            ].map((step, i) => (
-              <div className="col-md-3" key={i}>
-                <div className="process-step">
-                  <div className="process-number">{i + 1}</div>
-                  <h4 style={{ fontWeight: '800', fontSize: '1.5rem' }}>{step.title}</h4>
-                  <p style={{ fontSize: '1.05rem' }}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="cta-section">
-        <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}>
-          {[...Array(12)].map((_, i) => (
-            <div key={i} style={{ position: 'absolute', width: '8px', height: '8px', background: 'rgba(255,255,255,0.85)', borderRadius: '50%', top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animation: `float ${Math.random() * 6 + 4}s ease-in-out infinite`, animationDelay: `${Math.random() * 3}s` }} />
-          ))}
-        </div>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h2 style={{ fontSize: '3.3rem', marginBottom: '25px', fontWeight: '900', textShadow: '0 10px 35px rgba(0,0,0,0.35)' }}>
-            Transform Your Business with CRM & ERP
+          <h2 style={{ fontSize: "2.5rem", marginBottom: "20px", fontWeight: "900" }}>
+            Ready to Streamline Your Operations?
           </h2>
-          <p style={{ fontSize: '1.4rem', marginBottom: '45px' }}>Unify your operations and accelerate growth with integrated systems</p>
-          <Link to="/contact" className="default-btn" style={{ background: '#fff', color: '#f77f00', padding: '22px 60px', fontSize: '1.25rem', fontWeight: '900' }}>
-            Start Your Digital Transformation <i className="bx bx-right-arrow-alt"></i>
+          <p style={{ fontSize: "1.2rem", marginBottom: "30px" }}>
+            Transform your business processes with intelligent CRM and ERP solutions.
+          </p>
+          <Link 
+            to="/contact" 
+            className="default-btn" 
+            style={{ 
+              background: "var(--text-white)", 
+              color: "var(--primary-orange)",
+              padding: "15px 40px",
+              fontSize: "1.1rem",
+              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)"
+            }}
+          >
+            Start Your CRM/ERP Project <i className="bx bx-right-arrow-alt"></i>
           </Link>
         </div>
       </div>
     </>
   );
 };
+
+
+// Data Arrays
+const features = [
+  { 
+    icon: 'bx-data', 
+    title: 'Unified Data Management', 
+    description: 'Centralize customer data, sales information, and operational metrics in a single, accessible platform.' 
+  },
+  { 
+    icon: 'bx-automation', 
+    title: 'Process Automation', 
+    description: 'Automate repetitive tasks, workflows, and business processes to improve efficiency and reduce errors.' 
+  },
+  { 
+    icon: 'bx-line-chart', 
+    title: 'Advanced Analytics', 
+    description: 'Gain actionable insights with comprehensive reporting, dashboards, and predictive analytics.' 
+  },
+  { 
+    icon: 'bx-integration', 
+    title: 'Seamless Integration', 
+    description: 'Connect with existing tools, databases, and third-party applications for unified operations.' 
+  }
+];
+
+const deliverables = [
+  'Custom CRM Systems',
+  'Enterprise Resource Planning (ERP)',
+  'Customer Portal Development',
+  'Sales Force Automation',
+  'Inventory Management Systems',
+  'Financial Management Tools',
+  'Business Intelligence Dashboards',
+  'API Development & Integration'
+];
+
+const techStack = ['Salesforce', 'Microsoft Dynamics', 'SAP', 'Oracle', 'Zoho', 'HubSpot', 'Pipedrive', 'Freshworks'];
+
+const processSteps = [
+  { title: 'Business Analysis', description: 'Assess current processes, identify pain points, and define requirements' },
+  { title: 'System Design', description: 'Design scalable architecture and create detailed technical specifications' },
+  { title: 'Development & Integration', description: 'Build custom solutions and integrate with existing systems' },
+  { title: 'Training & Deployment', description: 'Provide comprehensive training and ensure smooth system deployment' }
+];
 
 export default CRMERPService;

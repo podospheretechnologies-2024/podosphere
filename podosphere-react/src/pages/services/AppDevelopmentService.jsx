@@ -1,152 +1,370 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const AppDevelopmentService = () => {
+  useEffect(() => {
+    // Initialize animations and plugins
+    if (window.WOW) {
+      new window.WOW().init();
+    }
+
+    // Navbar scroll effect logic copied from Portfolio.jsx
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar-area");
+      if (navbar) {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <style>{`
-        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes float { 0%, 100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-25px) scale(1.05); } }
-        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.4); } 50% { box-shadow: 0 0 70px rgba(16, 185, 129, 0.8); } }
-        @keyframes slide-up { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* ---------------------------------------------------------------------- */
+        /* --- GLOBAL THEME VARIABLES AND TYPOGRAPHY (FROM PORTFOLIO.JSX) --- */
+        /* ---------------------------------------------------------------------- */
+        :root {
+          --primary-orange: #f97316;
+          --secondary-orange: #ff6a00;
+          --primary-blue: #2563eb;
+          --text-black: #1a1b1e;
+          --text-white: #ffffff;
+          --text-gray: #4a5568;
+          --text-light-gray: #718096;
+          --bg-light: #f9fafb;
+          --bg-white: #ffffff;
+          --bg-dark: #0f172a;
+          --bg-dark-card: #1e293b;
+          --border-color: #e6e9ef;
+          --border-dark: #334155;
+        }
+
+        /* Dark Theme Overrides */
+        .theme-dark {
+          --text-black: #f1f5f9;
+          --text-gray: #cbd5e1;
+          --text-light-gray: #94a3b8;
+          --bg-light: #0f172a;
+          --bg-white: #1e293b;
+          --border-color: #334155;
+        }
+
+        /* Enhanced Navbar Styling - Theme Aware */
+        .navbar-area {
+          background: rgba(255, 255, 255, 0.95) !important;
+          backdrop-filter: blur(10px) !important;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+          transition: all 0.3s ease !important;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 999 !important;
+          border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          min-height: auto !important;
+        }
+
+        .theme-dark .navbar-area {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border-bottom: 1px solid rgba(51, 65, 85, 0.3) !important;
+        }
+
+        .navbar-area.scrolled {
+          background: rgba(255, 255, 255, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .theme-dark .navbar-area.scrolled {
+          background: rgba(15, 23, 42, 0.98) !important;
+          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+        }
         
-        .service-detail-hero {
-          background: linear-gradient(-45deg, #10b981, #059669, #34d399, #047857);
-          background-size: 400% 400%;
-          animation: gradient-shift 15s ease infinite;
-          padding: 130px 0;
-          color: #fff;
-          position: relative;
-          overflow: hidden;
+        /* Navbar Links */
+        .navbar-nav .nav-link {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 1rem !important;
+          color: var(--text-black) !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          position: relative !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          padding: 12px 18px !important;
+          margin: 0 3px !important;
         }
-        .service-detail-hero::before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: repeating-linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.05) 1px, transparent 2px, transparent 40px);
-          animation: rotate-slow 40s linear infinite;
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+          transform: translateY(-2px) !important;
         }
-        .service-icon-large { font-size: 7rem; margin-bottom: 25px; animation: float 5s ease-in-out infinite; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5)); }
+
+        .theme-dark .navbar-nav .nav-link {
+          color: #f1f5f9 !important;
+        }
+
+        .theme-dark .navbar-nav .nav-link:hover,
+        .theme-dark .navbar-nav .nav-link.active {
+          color: var(--primary-orange) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+          content: '' !important;
+          position: absolute !important;
+          bottom: 8px !important;
+          left: 50% !important;
+          width: 0 !important;
+          height: 2px !important;
+          background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue)) !important;
+          transition: all 0.3s ease !important;
+          transform: translateX(-50%) !important;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+          width: 80% !important;
+        }
+
+        .dropdown-menu {
+          border: none !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+          background: var(--bg-white) !important;
+          border-radius: 8px !important;
+          padding: 10px 0 !important;
+          margin-top: 8px !important;
+        }
+
+        .theme-dark .dropdown-menu {
+          background: var(--bg-dark) !important;
+          border-top: 3px solid var(--primary-orange) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Enhanced Typography for UI Text - Theme Aware */
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Livvic', sans-serif !important;
+          font-weight: 700 !important;
+          line-height: 1.2 !important;
+          color: var(--text-black) !important;
+          margin-bottom: 1rem !important;
+        }
+
+        h1 { font-size: 3.2rem !important; }
+        h2 { font-size: 2.8rem !important; }
+        h3 { font-size: 2.2rem !important; }
+        h4 { font-size: 1.8rem !important; }
+        h5 { font-size: 1.5rem !important; }
+        h6 { font-size: 1.3rem !important; }
+
+        p {
+          font-family: 'Nunito Sans', sans-serif !important;
+          font-size: 1.1rem !important;
+          line-height: 1.7 !important;
+          color: var(--text-gray) !important;
+          font-weight: 400 !important;
+        }
+        
+        .section-title h2 {
+          font-size: 2.8rem !important;
+          font-weight: 800 !important;
+          background: linear-gradient(135deg, var(--text-black), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .theme-dark .section-title h2 {
+          background: linear-gradient(135deg, #f1f5f9, var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+        }
+
+        .sp-after {
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue)) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+          font-weight: 700 !important;
+          font-size: 1.1rem !important;
+        }
+
+        .default-btn {
+          background-color: var(--primary-orange) !important;
+          color: var(--text-white) !important;
+          padding: 12px 28px !important;
+          border-radius: 8px !important;
+          font-weight: 600 !important;
+          transition: all 0.3s ease !important;
+          border: none !important;
+          box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2) !important;
+          font-family: 'Livvic', sans-serif !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+        }
+
+        .default-btn:hover {
+          background-color: var(--secondary-orange) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3) !important;
+        }
+
+        /* Service specific styles */
+        .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 140px !important;
+          margin-top: 70px !important;
+          margin-bottom: 0 !important;
+        }
+
+        .service-detail-content {
+          padding: 80px 0;
+        }
+
         .feature-box {
-          background: linear-gradient(145deg, #ffffff, #f0fdf4);
-          border-radius: 22px;
-          padding: 38px;
-          margin-bottom: 30px;
-          box-shadow: 0 12px 45px rgba(16, 185, 129, 0.18);
-          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          border: 2px solid rgba(16, 185, 129, 0.15);
-          position: relative;
-          overflow: hidden;
+          background: var(--bg-white) !important;
+          border-radius: 12px !important;
+          padding: 30px !important;
+          margin-bottom: 30px !important;
+          box-shadow: 0 4px 16px rgba(16, 24, 40, 0.04) !important;
+          transition: all 0.3s ease !important;
+          border: 1px solid var(--border-color) !important;
         }
-        .feature-box::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.25), transparent);
-          transition: left 0.7s;
-        }
-        .feature-box:hover::before { left: 100%; }
+
         .feature-box:hover {
-          transform: translateY(-15px) scale(1.04);
-          box-shadow: 0 30px 80px rgba(16, 185, 129, 0.35);
-          border-color: #10b981;
+          transform: translateY(-4px) !important;
+          border-color: var(--primary-orange) !important;
+          box-shadow: 0 12px 30px rgba(16, 24, 40, 0.1) !important;
         }
-        .feature-box:hover i { animation: pulse-glow 1.5s ease-in-out infinite; transform: scale(1.4) rotate(20deg); }
-        .feature-box h3 {
-          background: linear-gradient(135deg, #10b981, #34d399);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: 900;
-          font-size: 1.6rem;
+
+        .tech-stack {
+          background-color: var(--bg-light);
+          padding: 80px 0;
         }
+
         .tech-badge {
-          background: linear-gradient(145deg, #10b981, #059669);
-          color: #fff;
-          padding: 15px 30px;
-          border-radius: 35px;
-          margin: 10px;
-          box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
-          font-weight: 800;
-          transition: all 0.35s ease;
-          cursor: pointer;
           display: inline-block;
+          background: var(--bg-white);
+          color: var(--text-black);
+          padding: 10px 20px;
+          margin: 8px;
+          border-radius: 25px;
+          font-weight: 600;
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          cursor: pointer;
         }
+
         .tech-badge:hover {
-          transform: translateY(-10px) rotate(-5deg) scale(1.2);
-          box-shadow: 0 18px 50px rgba(16, 185, 129, 0.6);
+          transform: translateY(-3px) scale(1.05);
+          background: var(--primary-orange);
+          color: var(--text-white);
+          border-color: var(--primary-orange);
         }
+
+        .process-step {
+          text-align: center;
+          padding: 30px;
+          background: var(--bg-white);
+          border-radius: 12px;
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          margin-bottom: 20px;
+        }
+
+        .process-step:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
         .process-number {
-          width: 110px;
-          height: 110px;
-          background: linear-gradient(135deg, #10b981, #059669);
-          color: #fff;
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue));
+          color: var(--text-white);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 3rem;
-          font-weight: 900;
-          margin: 0 auto 25px;
-          box-shadow: 0 20px 60px rgba(16, 185, 129, 0.5);
-          animation: pulse-glow 3s ease-in-out infinite;
-          position: relative;
+          font-size: 2rem;
+          font-weight: bold;
+          margin: 0 auto 20px;
+          box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
         }
-        .process-number::after {
-          content: '';
-          position: absolute;
-          top: -18px;
-          left: -18px;
-          right: -18px;
-          bottom: -18px;
-          border: 5px solid rgba(16, 185, 129, 0.3);
-          border-radius: 50%;
-          animation: pulse-glow 3s ease-in-out infinite reverse;
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        .cta-section {
-          background: linear-gradient(-45deg, #f77f00, #ff6a00, #ff8c00, #ff6a00);
-          background-size: 400% 400%;
-          animation: gradient-shift 12s ease infinite;
-          padding: 100px 0;
-          color: #fff;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
+
+        html {
+          scroll-behavior: smooth !important;
         }
       `}</style>
 
-      <div className="service-detail-hero">
-        <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}>
-          {[...Array(18)].map((_, i) => (
-            <div key={i} style={{ position: 'absolute', width: `${Math.random() * 10 + 5}px`, height: `${Math.random() * 10 + 5}px`, background: 'rgba(255,255,255,0.8)', borderRadius: '50%', top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animation: `float ${Math.random() * 6 + 4}s ease-in-out infinite`, animationDelay: `${Math.random() * 3}s` }} />
-          ))}
-        </div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="col-lg-8 mx-auto text-center">
-            <div className="service-icon-large">📱</div>
-            <h1 className="animate-slide-up" style={{ fontSize: '3.5rem', marginBottom: '25px', fontWeight: '900', textShadow: '0 10px 40px rgba(0,0,0,0.4)' }}>Mobile App Development</h1>
-            <p className="animate-slide-up delay-200" style={{ fontSize: '1.3rem', opacity: 0.95 }}>
-              Create powerful, intuitive mobile apps for iOS and Android that users love with native performance and seamless user experience.
+      {/* Page Title Area */}
+      <div className="page-title-area">
+        <div className="container">
+          <div className="page-title-content text-center">
+            <span className="sp-after">
+              Mobile App Development
+            </span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Native & Cross-Platform{' '}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Mobile Solutions
+              </span>
+            </h1>
+            <p style={{ color: "var(--text-gray)" }}>
+              Create powerful, intuitive mobile apps for iOS and Android that users love 
+              with native performance and seamless user experience.
             </p>
-            <div className="animate-slide-up delay-400" style={{ marginTop: '35px' }}>
-              <Link to="/contact" className="default-btn" style={{ background: '#fff', color: '#10b981', padding: '18px 45px', fontSize: '1.1rem', fontWeight: '700' }}>
-                Build Your App <i className="bx bx-right-arrow-alt"></i>
+            <div>
+              <Link to="/contact" className="default-btn" style={{ marginRight: "15px" }}>
+                Build Your App <i className="bx bx-plus"></i>
+              </Link>
+              <Link
+                to="/portfolio"
+                className="default-btn"
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
+              >
+                View Portfolio <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="service-detail-content">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h2 className="mb-4 text-center" style={{ fontSize: '2.5rem', fontWeight: '800' }}>Native & Cross-Platform Mobile Solutions</h2>
-              <p className="lead text-center mb-5">High-performance mobile applications with exceptional user experiences.</p>
+              <h2 className="mb-4 text-center">Native & Cross-Platform Mobile Solutions</h2>
+              <p className="lead text-center mb-5" style={{ color: "var(--text-gray)", fontSize: "1.2rem" }}>
+                High-performance mobile applications with exceptional user experiences.
+              </p>
               <div className="row">
                 {[
                   { icon: 'bx-mobile-alt', title: 'Native Apps', desc: 'iOS and Android native apps with platform-specific features and optimal performance.' },
@@ -155,8 +373,8 @@ const AppDevelopmentService = () => {
                   { icon: 'bx-shield-alt-2', title: 'Secure & Scalable', desc: 'Enterprise-grade security and scalability to grow with your user base.' }
                 ].map((f, i) => (
                   <div className="col-md-6" key={i}>
-                    <div className={`feature-box animate-slide-up delay-${(i + 1) * 100}`}>
-                      <i className={f.icon} style={{ fontSize: '3.5rem', color: '#10b981' }}></i>
+                    <div className={`feature-box animate-fade-in`} style={{ animationDelay: `${i * 0.1}s` }}>
+                      <i className={f.icon} style={{ fontSize: '3rem', color: 'var(--primary-orange)' }}></i>
                       <h3>{f.title}</h3>
                       <p>{f.desc}</p>
                     </div>
@@ -168,20 +386,28 @@ const AppDevelopmentService = () => {
         </div>
       </div>
 
+      {/* Tech Stack */}
       <div className="tech-stack">
         <div className="container">
-          <h2 className="text-center mb-5" style={{ fontSize: '2.5rem', fontWeight: '800' }}>Mobile Technologies</h2>
+          <div className="section-title text-center">
+            <span className="sp-after">Technologies</span>
+            <h2>Mobile Technologies</h2>
+          </div>
           <div className="text-center">
             {['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'AWS Amplify', 'Redux', 'Push Notifications'].map((tech, i) => (
-              <span key={i} className={`tech-badge animate-bounce-in delay-${i * 100}`}>{tech}</span>
+              <span key={i} className={`tech-badge animate-fade-in`} style={{ animationDelay: `${i * 0.1}s` }}>{tech}</span>
             ))}
           </div>
         </div>
       </div>
 
+      {/* Process */}
       <div className="service-detail-content">
         <div className="container">
-          <h2 className="text-center mb-5" style={{ fontSize: '2.5rem', fontWeight: '800' }}>App Development Process</h2>
+          <div className="section-title text-center">
+            <span className="sp-after">Process</span>
+            <h2>App Development Process</h2>
+          </div>
           <div className="row">
             {[
               { title: 'Strategy', desc: 'Define app features, target audience, and platform selection' },
@@ -190,10 +416,10 @@ const AppDevelopmentService = () => {
               { title: 'Launch', desc: 'Deploy to app stores with ASO and marketing support' }
             ].map((step, i) => (
               <div className="col-md-3" key={i}>
-                <div className="process-step">
+                <div className="process-step animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
                   <div className="process-number">{i + 1}</div>
-                  <h4>{step.title}</h4>
-                  <p>{step.desc}</p>
+                  <h4 style={{ color: "var(--text-black)", marginBottom: "15px" }}>{step.title}</h4>
+                  <p style={{ color: "var(--text-gray)" }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -201,11 +427,31 @@ const AppDevelopmentService = () => {
         </div>
       </div>
 
-      <div className="cta-section">
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h2 style={{ fontSize: '3rem', marginBottom: '20px', fontWeight: '900' }}>Turn Your App Idea Into Reality</h2>
-          <p style={{ fontSize: '1.3rem', marginBottom: '35px' }}>Build a mobile app that stands out in the app store</p>
-          <Link to="/contact" className="default-btn" style={{ background: '#fff', color: '#f77f00', padding: '18px 50px', fontSize: '1.15rem', fontWeight: '800' }}>
+      {/* CTA */}
+      <div style={{
+        background: "linear-gradient(135deg, var(--primary-orange), var(--primary-blue))",
+        padding: "100px 0",
+        color: "var(--text-white)",
+        textAlign: "center"
+      }}>
+        <div className="container">
+          <h2 style={{ fontSize: "2.5rem", marginBottom: "20px", fontWeight: "900" }}>
+            Turn Your App Idea Into Reality
+          </h2>
+          <p style={{ fontSize: "1.2rem", marginBottom: "30px" }}>
+            Build a mobile app that stands out in the app store
+          </p>
+          <Link 
+            to="/contact" 
+            className="default-btn" 
+            style={{ 
+              background: "var(--text-white)", 
+              color: "var(--primary-orange)",
+              padding: "15px 40px",
+              fontSize: "1.1rem",
+              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)"
+            }}
+          >
             Start App Development <i className="bx bx-right-arrow-alt"></i>
           </Link>
         </div>
