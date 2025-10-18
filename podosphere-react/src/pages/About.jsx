@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   useEffect(() => {
@@ -10,22 +10,22 @@ const About = () => {
 
     // Navbar scroll effect logic copied from Home.js
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar-area');
+      const navbar = document.querySelector(".navbar-area");
       if (navbar) {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Initialize Owl Carousel (for consistency and if a slider is added later)
     if (window.$ && window.$.fn.owlCarousel) {
       // General Carousel Init (can be adapted if specific sliders are added)
-      window.$('.brand-slider').owlCarousel({
+      window.$(".brand-slider").owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -36,12 +36,12 @@ const About = () => {
         responsive: {
           0: { items: 2 },
           600: { items: 3 },
-          1000: { items: 6 }
-        }
+          1000: { items: 6 },
+        },
       });
 
       // Initialize Team Slider (for consistency)
-      window.$('.team-slider-two').owlCarousel({
+      window.$(".team-slider-two").owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -51,21 +51,21 @@ const About = () => {
         responsive: {
           0: { items: 1 },
           600: { items: 2 },
-          1000: { items: 4 }
-        }
+          1000: { items: 4 },
+        },
       });
     }
 
     // Initialize Magnific Popup for video (for consistency, if video popups are used)
     if (window.$ && window.$.fn.magnificPopup) {
-      window.$('.popup-btn').magnificPopup({
-        type: 'iframe'
+      window.$(".popup-btn").magnificPopup({
+        type: "iframe",
       });
     }
 
     // Cleanup function
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -103,7 +103,7 @@ const About = () => {
         }
 
         /* Enhanced Navbar Styling - Theme Aware */
-        .navbar-area {
+         .navbar-area {
           background: rgba(255, 255, 255, 0.95) !important;
           backdrop-filter: blur(10px) !important;
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
@@ -112,7 +112,9 @@ const About = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -365,9 +367,13 @@ const About = () => {
         }
 
         /* Page Title Area - Theme Aware Hero Section */
+               /* Page Title Area - Theme Aware Hero Section */
+                /* Page Title Area - Theme Aware Hero Section */
         .page-title-area {
           background: var(--bg-white);
-          padding: 100px 0 80px;
+          padding: 60px 0 140px;
+          margin-top: 70px; /* Large top margin to ensure separation */
+          margin-bottom: 0; /* Added for proper section separation */
         }
         .page-title-content {
           animation: fadeInUp 0.8s ease-out;
@@ -417,8 +423,9 @@ const About = () => {
 
         /* About Section - Theme Aware */
         .about-section {
-          padding: 240px 0 60px 0;
+          padding: 100px 0 60px 0; 
           background-color: var(--bg-light);
+          margin-bottom: 80px; /* Added for proper section separation */
         }
         .about-subtitle {
           font-size: 2.5rem;
@@ -512,6 +519,7 @@ const About = () => {
           padding: 80px 0;
           background-color: var(--bg-white);
           color: var(--text-black);
+          margin-bottom: 80px; /* Added for proper section separation */
         }
         .why-us-section .about-subtitle {
           color: var(--text-black);
@@ -534,6 +542,7 @@ const About = () => {
         .about-widget-area {
           background: var(--bg-light);
           padding: 80px 0;
+          margin-bottom: 80px; /* Added for proper section separation */
         }
         .about-widget-img img {
           border-radius: 12px;
@@ -593,6 +602,7 @@ const About = () => {
           padding: 80px 0;
           position: relative;
           overflow: hidden;
+          margin-bottom: 80px; /* Added for proper section separation */
         }
         .counter-card {
           text-align: center;
@@ -625,6 +635,7 @@ const About = () => {
         .service-list-area {
           padding: 80px 0;
           background: var(--bg-light);
+          /* No margin-bottom for the last section */
         }
         .service-list-content {
           background: var(--bg-white);
@@ -669,40 +680,67 @@ const About = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{ color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600' }}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               About Us
             </span>
-            <h1 className="h2-color" style={{ color: 'var(--text-black)' }}>
-              Transforming Ideas into <span style={{ color: 'var(--primary-orange)' }}>Digital Excellence</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Transforming Ideas into{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Digital Excellence
+              </span>
             </h1>
-            <p style={{ color: 'var(--text-gray)' }}>
-              We craft high-performing, secure, and scalable digital products that drive real business outcomes.
+            <p style={{ color: "var(--text-gray)" }}>
+              We craft high-performing, secure, and scalable digital products
+              that drive real business outcomes.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{ color: 'var(--text-black)' }}>Innovation Driven</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Innovation Driven
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{ color: 'var(--text-black)' }}>Quality Assured</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Quality Assured
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{ color: 'var(--text-black)' }}>Performance Focused</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Performance Focused
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{ color: 'var(--text-white)' }}>Get In Touch</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Get In Touch</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/service"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{ color: 'var(--text-white)' }}>Explore Services</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>
+                  Explore Services
+                </span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -718,16 +756,25 @@ const About = () => {
               <div className="about-card">
                 <div className="welcome-text-container">
                   <p className="about-text fade-in-text" data-delay="0.1s">
-                    Welcome to <strong className="highlight-text">Podosphere Technologies</strong> - where <em>innovation meets expertise</em>.
-                    As a dynamic IT solutions provider, we specialize in creating cutting-edge digital experiences that drive business growth.
+                    Welcome to{" "}
+                    <strong className="highlight-text">
+                      Podosphere Technologies
+                    </strong>{" "}
+                    - where <em>innovation meets expertise</em>. As a dynamic IT
+                    solutions provider, we specialize in creating cutting-edge
+                    digital experiences that drive business growth.
                   </p>
                   <p className="about-text fade-in-text" data-delay="0.3s">
-                    Our passion lies in transforming complex challenges into elegant, efficient solutions that deliver real results for our clients worldwide.
+                    Our passion lies in transforming complex challenges into
+                    elegant, efficient solutions that deliver real results for
+                    our clients worldwide.
                   </p>
                   <p className="about-text fade-in-text" data-delay="0.5s">
-                    With a proven track record of delivering exceptional web design, development, and mobile applications,
-                    we've earned the trust of clients globally. Our commitment to excellence, coupled with our innovative approach,
-                    makes us your ideal technology partner for the digital age.
+                    With a proven track record of delivering exceptional web
+                    design, development, and mobile applications, we've earned
+                    the trust of clients globally. Our commitment to excellence,
+                    coupled with our innovative approach, makes us your ideal
+                    technology partner for the digital age.
                   </p>
                 </div>
               </div>
@@ -738,7 +785,10 @@ const About = () => {
           <div className="row mt-5">
             <div className="col-lg-12">
               <h2 className="about-subtitle">Core Values</h2>
-              <p className="about-text text-center mb-5 fade-in-text" data-delay="0.2s">
+              <p
+                className="about-text text-center mb-5 fade-in-text"
+                data-delay="0.2s"
+              >
                 Our values are the foundation of everything we do, guiding us in
                 delivering exceptional solutions and service to our clients.
               </p>
@@ -757,14 +807,19 @@ const About = () => {
           {/* Mission & Vision - Theme Aware Cards */}
           <div className="row mt-5">
             <div className="col-lg-6">
-              <h2 className="about-subtitle fade-in-up" data-delay="0.2s">Our Mission</h2>
+              <h2 className="about-subtitle fade-in-up" data-delay="0.2s">
+                Our Mission
+              </h2>
               <div className="about-card h-100">
                 <p className="about-text fade-in-text" data-delay="0.4s">
-                  Our mission is to consistently deliver top-tier solutions that exceed client expectations in quality and service,
-                  ensuring customer satisfaction remains our highest priority. We are committed to continuous improvement and innovation,
-                  building long-term partnerships that foster mutual success.
-                  By cultivating a workplace defined by exceptional performance, teamwork, and respect,
-                  we empower our team to tackle new challenges and celebrate every contribution.
+                  Our mission is to consistently deliver top-tier solutions that
+                  exceed client expectations in quality and service, ensuring
+                  customer satisfaction remains our highest priority. We are
+                  committed to continuous improvement and innovation, building
+                  long-term partnerships that foster mutual success. By
+                  cultivating a workplace defined by exceptional performance,
+                  teamwork, and respect, we empower our team to tackle new
+                  challenges and celebrate every contribution.
                 </p>
                 <p className="about-text mb-0 fade-in-text" data-delay="0.6s">
                   We foster lasting partnerships with our clients, understanding
@@ -774,20 +829,27 @@ const About = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <h2 className="about-subtitle fade-in-up" data-delay="0.3s">Our Vision</h2>
+              <h2 className="about-subtitle fade-in-up" data-delay="0.3s">
+                Our Vision
+              </h2>
               <div className="about-card h-100">
                 <p className="about-text fade-in-text" data-delay="0.5s">
-                  Our vision is to be the driving force behind global digital transformation,
-                  setting the benchmark for innovation and excellence in the technology industry.
-                  We aspire to empower organizations of all sizes, from emerging startups to established enterprises,
-                  with powerful digital tools that unlock their full potential and fuel sustainable growth.
-                  Through relentless pursuit of new ideas and best practices, we strive to make cutting-edge technology
-                  more accessible, efficient, and impactful for businesses across the world.
+                  Our vision is to be the driving force behind global digital
+                  transformation, setting the benchmark for innovation and
+                  excellence in the technology industry. We aspire to empower
+                  organizations of all sizes, from emerging startups to
+                  established enterprises, with powerful digital tools that
+                  unlock their full potential and fuel sustainable growth.
+                  Through relentless pursuit of new ideas and best practices, we
+                  strive to make cutting-edge technology more accessible,
+                  efficient, and impactful for businesses across the world.
                 </p>
                 <p className="about-text mb-0 fade-in-text" data-delay="0.7s">
-                  By fostering a culture of ingenuity, collaboration, and inclusivity,
-                  we are committed to shaping a future where technology bridges gaps, solves complex challenges,
-                  and enables every business to thrive in a rapidly evolving digital landscape
+                  By fostering a culture of ingenuity, collaboration, and
+                  inclusivity, we are committed to shaping a future where
+                  technology bridges gaps, solves complex challenges, and
+                  enables every business to thrive in a rapidly evolving digital
+                  landscape
                 </p>
               </div>
             </div>
@@ -800,11 +862,15 @@ const About = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h2 className="about-subtitle text-center">Why Partner With Us</h2>
+              <h2 className="about-subtitle text-center">
+                Why Partner With Us
+              </h2>
               <p className="about-text text-center mb-5">
-                Our expertise is in creating customised software for a variety of organisations.
-                We will deliver the best possible service and support. The foundation of a company's growth is its customers' trust,
-                and we have over 700 satisfied clients from all around the world who have chosen our services.
+                Our expertise is in creating customised software for a variety
+                of organisations. We will deliver the best possible service and
+                support. The foundation of a company's growth is its customers'
+                trust, and we have over 700 satisfied clients from all around
+                the world who have chosen our services.
               </p>
             </div>
           </div>
@@ -836,15 +902,22 @@ const About = () => {
               <div className="about-widget-content">
                 <div className="section-title">
                   <span className="sp-before sp-after">About Us</span>
-                  <h2>Grow Your Business With <span style={{ color: 'var(--primary-orange)' }}>PodoSphere</span></h2>
+                  <h2>
+                    Grow Your Business With{" "}
+                    <span style={{ color: "var(--primary-orange)" }}>
+                      PodoSphere
+                    </span>
+                  </h2>
                 </div>
-                <h3 style={{ color: 'var(--text-gray)' }}>
-                  We have 30 years of experience and our strategy includes consistently evolving, to
-                  ensure we are producing exceptional web and app solutions for business.
+                <h3 style={{ color: "var(--text-gray)" }}>
+                  We have 30 years of experience and our strategy includes
+                  consistently evolving, to ensure we are producing exceptional
+                  web and app solutions for business.
                 </h3>
-                <p style={{ color: 'var(--text-gray)' }}>
-                  At Podosphere Technologies, we deliver innovative web and app solutions, combining advanced technology with
-                  intuitive user experiences to drive your business forward.
+                <p style={{ color: "var(--text-gray)" }}>
+                  At Podosphere Technologies, we deliver innovative web and app
+                  solutions, combining advanced technology with intuitive user
+                  experiences to drive your business forward.
                 </p>
 
                 <div className="about-widget-list">
@@ -852,7 +925,9 @@ const About = () => {
                     {aboutWidgetList.map((item, index) => (
                       <li key={index}>
                         <i className="bx bx-check"></i>
-                        <span style={{ color: 'var(--primary-orange)' }}>{item.number}</span>
+                        <span style={{ color: "var(--primary-orange)" }}>
+                          {item.number}
+                        </span>
                         <p>{item.text}</p>
                       </li>
                     ))}
@@ -871,7 +946,9 @@ const About = () => {
             {aboutCounters.map((counter, index) => (
               <div className="col-lg-3 col-sm-6 col-md-3" key={index}>
                 <div className="counter-card">
-                  <h3 style={{ color: 'var(--primary-orange)' }}>{counter.value}</h3>
+                  <h3 style={{ color: "var(--primary-orange)" }}>
+                    {counter.value}
+                  </h3>
                   <p>{counter.label}</p>
                 </div>
               </div>
@@ -896,10 +973,15 @@ const About = () => {
             {journeyData.map((item, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
                 <div className="service-list-content">
-                  <h3 style={{ color: 'var(--text-black)' }}>{item.title}</h3>
-                  <p style={{ color: 'var(--text-gray)' }}>{item.description}</p>
+                  <h3 style={{ color: "var(--text-black)" }}>{item.title}</h3>
+                  <p style={{ color: "var(--text-gray)" }}>
+                    {item.description}
+                  </p>
                   <Link to="/service" className="service-list-btn">
-                    <span style={{ color: 'var(--primary-orange)' }}>Read More</span><i className="bx bx-plus"></i>
+                    <span style={{ color: "var(--primary-orange)" }}>
+                      Read More
+                    </span>
+                    <i className="bx bx-plus"></i>
                   </Link>
                 </div>
               </div>
@@ -911,111 +993,121 @@ const About = () => {
   );
 };
 
-
 // Data Arrays
 const coreValues = [
   {
-    icon: 'bx-diamond',
-    title: 'Excellence',
-    description: 'Striving for perfection in every line of code and pixel we craft.'
+    icon: "bx-diamond",
+    title: "Excellence",
+    description:
+      "Striving for perfection in every line of code and pixel we craft.",
   },
   {
-    icon: 'bx-bulb',
-    title: 'Innovation',
-    description: 'Pushing boundaries to create groundbreaking solutions.'
+    icon: "bx-bulb",
+    title: "Innovation",
+    description: "Pushing boundaries to create groundbreaking solutions.",
   },
   {
-    icon: 'bx-group',
-    title: 'Collaboration',
-    description: 'Working together to achieve extraordinary results.'
+    icon: "bx-group",
+    title: "Collaboration",
+    description: "Working together to achieve extraordinary results.",
   },
   {
-    icon: 'bx-shield',
-    title: 'Integrity',
-    description: 'Building trust through transparency and honesty.'
-  }
+    icon: "bx-shield",
+    title: "Integrity",
+    description: "Building trust through transparency and honesty.",
+  },
 ];
 
 const whyPartnerData = [
   {
-    icon: 'bx-check-shield',
-    title: 'Proven Expertise',
-    description: 'Years of experience delivering successful digital solutions across industries.'
+    icon: "bx-check-shield",
+    title: "Proven Expertise",
+    description:
+      "Years of experience delivering successful digital solutions across industries.",
   },
   {
-    icon: 'bx-rocket',
-    title: 'Innovation Process',
-    description: 'Pragmatic approach to solving client problems.'
+    icon: "bx-rocket",
+    title: "Innovation Process",
+    description: "Pragmatic approach to solving client problems.",
   },
   {
-    icon: 'bx-line-chart',
-    title: 'Results-Driven',
-    description: 'Focus on delivering measurable business impact and ROI.'
+    icon: "bx-line-chart",
+    title: "Results-Driven",
+    description: "Focus on delivering measurable business impact and ROI.",
   },
   {
-    icon: 'bx-time-five',
-    title: 'Timely Delivery',
-    description: 'Efficient project management ensuring on-time, within-budget delivery.'
+    icon: "bx-time-five",
+    title: "Timely Delivery",
+    description:
+      "Efficient project management ensuring on-time, within-budget delivery.",
   },
   {
-    icon: 'bx-support',
-    title: '24/7 Support',
-    description: 'Dedicated team providing round-the-clock technical assistance.'
+    icon: "bx-support",
+    title: "24/7 Support",
+    description:
+      "Dedicated team providing round-the-clock technical assistance.",
   },
   {
-    icon: 'bx-customize',
-    title: 'Custom Solutions',
-    description: 'Tailored approaches meeting your unique business requirements.'
-  }
+    icon: "bx-customize",
+    title: "Custom Solutions",
+    description:
+      "Tailored approaches meeting your unique business requirements.",
+  },
 ];
 
 const aboutWidgetList = [
   {
-    number: '01',
-    text: 'High standards of professionalism, integrity. Establishment of close working relationships.'
+    number: "01",
+    text: "High standards of professionalism, integrity. Establishment of close working relationships.",
   },
   {
-    number: '02',
-    text: 'A different way of thinking, both inside and outside the box.'
+    number: "02",
+    text: "A different way of thinking, both inside and outside the box.",
   },
   {
-    number: '03',
-    text: 'We do not have to be the best, we do have to give our best. Ability to learn. Multicultural competence.'
-  }
+    number: "03",
+    text: "We do not have to be the best, we do have to give our best. Ability to learn. Multicultural competence.",
+  },
 ];
 
 const aboutCounters = [
-  { value: '10 Years', label: 'GLORIOUS YEARS' },
-  { value: '100%', label: 'SATISFACTION RATE' },
-  { value: '₹2CR+', label: 'SPENT IN MEDIA' },
-  { value: '50+', label: 'BRAND SCALING' }
+  { value: "10 Years", label: "GLORIOUS YEARS" },
+  { value: "100%", label: "SATISFACTION RATE" },
+  { value: "₹2CR+", label: "SPENT IN MEDIA" },
+  { value: "50+", label: "BRAND SCALING" },
 ];
 
 const journeyData = [
   {
-    title: 'Our Mission',
-    description: 'Our goal is to provide the best solutions with the best quality and service. Customer satisfaction is of the utmost importance to us.'
+    title: "Our Mission",
+    description:
+      "Our goal is to provide the best solutions with the best quality and service. Customer satisfaction is of the utmost importance to us.",
   },
   {
-    title: 'Our Vision',
-    description: 'To be a leading provider of IT solutions, recognized for innovation, quality, and customer-centric approach.'
+    title: "Our Vision",
+    description:
+      "To be a leading provider of IT solutions, recognized for innovation, quality, and customer-centric approach.",
   },
   {
-    title: 'Our Values',
-    description: 'Excellence, integrity, innovation, and collaboration are the core values that guide our every action.'
+    title: "Our Values",
+    description:
+      "Excellence, integrity, innovation, and collaboration are the core values that guide our every action.",
   },
   {
-    title: 'Quality Assurance',
-    description: 'Rigorous testing and quality control processes ensure we deliver flawless products.'
+    title: "Quality Assurance",
+    description:
+      "Rigorous testing and quality control processes ensure we deliver flawless products.",
   },
   {
-    title: 'Client Focus',
-    description: 'We prioritize understanding our clients\' needs and delivering solutions that exceed expectations.'
+    title: "Client Focus",
+    description:
+      "We prioritize understanding our clients' needs and delivering solutions that exceed expectations.",
   },
   {
-    title: 'Continuous Innovation',
-    description: 'Staying ahead of technology trends to provide cutting-edge solutions to our clients.'
-  }
+    title: "Continuous Innovation",
+    description:
+      "Staying ahead of technology trends to provide cutting-edge solutions to our clients.",
+  },
 ];
 
 export default About;

@@ -109,7 +109,9 @@ const Home = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */

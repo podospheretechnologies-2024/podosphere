@@ -125,7 +125,9 @@ const Contact = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -286,9 +288,11 @@ const Contact = () => {
         /* --- CONTACT SPECIFIC STYLES (ENHANCED) ------------------------------ */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+                .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -600,40 +604,64 @@ const Contact = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Contact Us
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Get In <span style={{color: 'var(--primary-orange)'}}>Touch</span> With Us
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Get In{" "}
+              <span style={{ color: "var(--primary-orange)" }}>Touch</span> With
+              Us
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              Ready to start your next project? Let's discuss how we can help transform your ideas into reality.
+            <p style={{ color: "var(--text-gray)" }}>
+              Ready to start your next project? Let's discuss how we can help
+              transform your ideas into reality.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Quick Response</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Quick Response
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Professional Service</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Professional Service
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Expert Consultation</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Expert Consultation
+                </span>
               </span>
             </div>
             <div>
               <a
                 href="mailto:info@podospheretechnologies.com"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Email Us</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Email Us</span>{" "}
+                <i className="bx bx-plus"></i>
               </a>
               <a
                 href="tel:+918595611983"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Call Now</span> <i className="bx bx-phone"></i>
+                <span style={{ color: "var(--text-white)" }}>Call Now</span>{" "}
+                <i className="bx bx-phone"></i>
               </a>
             </div>
           </div>
@@ -645,7 +673,7 @@ const Contact = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-4 col-md-6">
-              <div className="contact-card" style={{ animationDelay: '0.1s' }}>
+              <div className="contact-card" style={{ animationDelay: "0.1s" }}>
                 <i className="flaticon-planet-earth"></i>
                 <h3>Office Location</h3>
                 <p>1st Floor, Amrapali Circle, Vaishali, Jaipur</p>
@@ -662,7 +690,7 @@ const Contact = () => {
             </div>
 
             <div className="col-lg-4 col-md-6">
-              <div className="contact-card" style={{ animationDelay: '0.2s' }}>
+              <div className="contact-card" style={{ animationDelay: "0.2s" }}>
                 <i className="flaticon-email"></i>
                 <h3>Contact</h3>
                 <p>info@podospheretechnologies.com</p>
@@ -678,7 +706,7 @@ const Contact = () => {
             </div>
 
             <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-              <div className="contact-card" style={{ animationDelay: '0.3s' }}>
+              <div className="contact-card" style={{ animationDelay: "0.3s" }}>
                 <i className="flaticon-clock"></i>
                 <h3>Hours of Operation</h3>
                 <p>Monday - Friday: 09:00 - 18:00</p>
@@ -793,7 +821,10 @@ const Contact = () => {
                       </div>
 
                       <div className="col-lg-12 col-md-12">
-                        <button type="submit" className="default-btn border-radius">
+                        <button
+                          type="submit"
+                          className="default-btn border-radius"
+                        >
                           Send Message
                           <i className="bx bx-plus"></i>
                         </button>

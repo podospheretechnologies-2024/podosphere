@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Solution = () => {
   useEffect(() => {
@@ -10,22 +10,22 @@ const Solution = () => {
 
     // Navbar scroll effect logic copied from Home.js
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar-area');
+      const navbar = document.querySelector(".navbar-area");
       if (navbar) {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Initialize Owl Carousel (for consistency and if a slider is added later)
     if (window.$ && window.$.fn.owlCarousel) {
       // General Carousel Init (can be adapted if specific sliders are added)
-      window.$('.brand-slider').owlCarousel({
+      window.$(".brand-slider").owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -36,21 +36,21 @@ const Solution = () => {
         responsive: {
           0: { items: 2 },
           600: { items: 3 },
-          1000: { items: 6 }
-        }
+          1000: { items: 6 },
+        },
       });
     }
 
     // Initialize Magnific Popup (for consistency, if popups are used)
     if (window.$ && window.$.fn.magnificPopup) {
-      window.$('.popup-btn').magnificPopup({
-        type: 'iframe'
+      window.$(".popup-btn").magnificPopup({
+        type: "iframe",
       });
     }
 
     // Cleanup function
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -97,7 +97,9 @@ const Solution = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -258,9 +260,11 @@ const Solution = () => {
         /* --- SOLUTION SPECIFIC STYLES (ENHANCED) ----------------------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+                .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -483,40 +487,67 @@ const Solution = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Our Solutions
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Tailored Solutions for <span style={{color: 'var(--primary-orange)'}}>Every Industry</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Tailored Solutions for{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Every Industry
+              </span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              We provide industry-specific solutions that address unique challenges and drive innovation across various sectors.
+            <p style={{ color: "var(--text-gray)" }}>
+              We provide industry-specific solutions that address unique
+              challenges and drive innovation across various sectors.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Innovation Driven</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Innovation Driven
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Quality Assured</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Quality Assured
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Performance Focused</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Performance Focused
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Get In Touch</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Get In Touch</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/service"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Explore Services</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>
+                  Explore Services
+                </span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -529,7 +560,10 @@ const Solution = () => {
           <div className="row pt-45">
             {solutions.map((solution, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
-                <div className="solution-card" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div
+                  className="solution-card"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="solution-icon">
                     <img src={solution.icon} alt={solution.title} />
                   </div>
@@ -551,35 +585,41 @@ const Solution = () => {
 
 const solutions = [
   {
-    icon: '/assets/img/icons/ecommerce.svg',
-    title: 'E-Commerce Solutions',
-    description: 'Complete e-commerce platforms with payment integration, inventory management, and analytics.'
+    icon: "/assets/img/icons/ecommerce.svg",
+    title: "E-Commerce Solutions",
+    description:
+      "Complete e-commerce platforms with payment integration, inventory management, and analytics.",
   },
   {
-    icon: '/assets/img/icons/education.svg',
-    title: 'Education & E-Learning',
-    description: 'Learning management systems and educational platforms for modern teaching.'
+    icon: "/assets/img/icons/education.svg",
+    title: "Education & E-Learning",
+    description:
+      "Learning management systems and educational platforms for modern teaching.",
   },
   {
-    icon: '/assets/img/icons/fitness.svg',
-    title: 'Healthcare & Fitness',
-    description: 'Digital health solutions including telemedicine, fitness tracking, and patient management.'
+    icon: "/assets/img/icons/fitness.svg",
+    title: "Healthcare & Fitness",
+    description:
+      "Digital health solutions including telemedicine, fitness tracking, and patient management.",
   },
   {
-    icon: '/assets/img/icons/on-demand.svg',
-    title: 'On-Demand Services',
-    description: 'Build on-demand service platforms like ride-sharing, food delivery, and home services.'
+    icon: "/assets/img/icons/on-demand.svg",
+    title: "On-Demand Services",
+    description:
+      "Build on-demand service platforms like ride-sharing, food delivery, and home services.",
   },
   {
-    icon: '/assets/img/icons/retail.svg',
-    title: 'Retail Solutions',
-    description: 'POS systems, inventory management, and customer relationship management for retail.'
+    icon: "/assets/img/icons/retail.svg",
+    title: "Retail Solutions",
+    description:
+      "POS systems, inventory management, and customer relationship management for retail.",
   },
   {
-    icon: '/assets/img/icons/consulting.svg',
-    title: 'Business Consulting',
-    description: 'Strategic consulting services to optimize operations and drive digital transformation.'
-  }
+    icon: "/assets/img/icons/consulting.svg",
+    title: "Business Consulting",
+    description:
+      "Strategic consulting services to optimize operations and drive digital transformation.",
+  },
 ];
 
 export default Solution;

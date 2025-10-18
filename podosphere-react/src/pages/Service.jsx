@@ -108,7 +108,9 @@ const Service = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -269,9 +271,11 @@ const Service = () => {
         /* --- SERVICE SPECIFIC STYLES (RETAINED & ENHANCED) ----------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+               .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -587,40 +591,67 @@ const Service = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Our Services
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Expert Services for <span style={{color: 'var(--primary-orange)'}}>Digital Excellence</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Expert Services for{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Digital Excellence
+              </span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              From web development to AI integration, we deliver cutting-edge solutions that drive business growth and technological innovation.
+            <p style={{ color: "var(--text-gray)" }}>
+              From web development to AI integration, we deliver cutting-edge
+              solutions that drive business growth and technological innovation.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Innovation Driven</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Innovation Driven
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Security First</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Security First
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Performance Focused</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Performance Focused
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Get In Touch</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Get In Touch</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/portfolio"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>View Portfolio</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>
+                  View Portfolio
+                </span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -635,7 +666,7 @@ const Service = () => {
             {filters.map((filter) => (
               <button
                 key={filter.value}
-                className={activeFilter === filter.value ? 'active' : ''}
+                className={activeFilter === filter.value ? "active" : ""}
                 onClick={() => setActiveFilter(filter.value)}
               >
                 {filter.label}
@@ -660,12 +691,15 @@ const Service = () => {
                   <ul className="service-features">
                     {service.features.map((feature, idx) => (
                       <li key={idx}>
-                        <i className='bx bxs-check-circle'></i> {feature}
+                        <i className="bx bxs-check-circle"></i> {feature}
                       </li>
                     ))}
                   </ul>
                   {service.detailLink && (
-                    <Link to={service.detailLink} className="service-detail-link">
+                    <Link
+                      to={service.detailLink}
+                      className="service-detail-link"
+                    >
                       Learn More <i className="bx bx-right-arrow-alt"></i>
                     </Link>
                   )}

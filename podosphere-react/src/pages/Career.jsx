@@ -97,7 +97,9 @@ const Career = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -258,9 +260,11 @@ const Career = () => {
         /* --- CAREER SPECIFIC STYLES (ENHANCED) ------------------------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+               .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -488,40 +492,65 @@ const Career = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Career Opportunities
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Join Our <span style={{color: 'var(--primary-orange)'}}>Dynamic Team</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Join Our{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Dynamic Team
+              </span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              Be part of a innovative team that values creativity, excellence, and continuous learning. Grow your career with us.
+            <p style={{ color: "var(--text-gray)" }}>
+              Be part of a innovative team that values creativity, excellence,
+              and continuous learning. Grow your career with us.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Growth Opportunities</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Growth Opportunities
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Team Collaboration</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Team Collaboration
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Innovation Culture</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Innovation Culture
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Apply Now</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Apply Now</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/about"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Learn More</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>Learn More</span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -535,18 +564,20 @@ const Career = () => {
             <div className="career-item">
               <h3>Why Work With Us?</h3>
               <p>
-                At Podosphere Technologies, we believe that our people are our greatest asset.
-                We foster a culture of innovation, collaboration, and continuous learning where
-                every team member can thrive and grow both personally and professionally.
+                At Podosphere Technologies, we believe that our people are our
+                greatest asset. We foster a culture of innovation,
+                collaboration, and continuous learning where every team member
+                can thrive and grow both personally and professionally.
               </p>
             </div>
 
             <div className="career-item">
               <h3>Our Culture</h3>
               <p>
-                We maintain a supportive and inclusive work environment that encourages creativity
-                and innovation. Our team members are empowered to take ownership of their work
-                and contribute to meaningful projects that make a real difference.
+                We maintain a supportive and inclusive work environment that
+                encourages creativity and innovation. Our team members are
+                empowered to take ownership of their work and contribute to
+                meaningful projects that make a real difference.
               </p>
               <ul>
                 <li>Flexible work arrangements and remote options</li>
@@ -560,8 +591,9 @@ const Career = () => {
             <div className="career-item">
               <h3>Current Openings</h3>
               <p>
-                We're always looking for talented individuals to join our growing team.
-                If you're passionate about technology and innovation, we'd love to hear from you.
+                We're always looking for talented individuals to join our
+                growing team. If you're passionate about technology and
+                innovation, we'd love to hear from you.
               </p>
               <div className="career-benefits">
                 <h4>Employee Benefits</h4>
@@ -578,9 +610,9 @@ const Career = () => {
             <div className="career-item">
               <h3>How to Apply</h3>
               <p>
-                Send your resume and cover letter to our HR team. We'll review your application
-                and get back to you within 2-3 business days. We look forward to potentially
-                welcoming you to our team!
+                Send your resume and cover letter to our HR team. We'll review
+                your application and get back to you within 2-3 business days.
+                We look forward to potentially welcoming you to our team!
               </p>
               <div className="pt-3">
                 <Link to="/contact" className="default-btn">

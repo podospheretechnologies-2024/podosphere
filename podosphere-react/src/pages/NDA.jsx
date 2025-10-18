@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const NDA = () => {
   useEffect(() => {
@@ -10,22 +10,22 @@ const NDA = () => {
 
     // Navbar scroll effect logic copied from Home.js
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar-area');
+      const navbar = document.querySelector(".navbar-area");
       if (navbar) {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Initialize Owl Carousel (for consistency and if a slider is added later)
     if (window.$ && window.$.fn.owlCarousel) {
       // General Carousel Init (can be adapted if specific sliders are added)
-      window.$('.brand-slider').owlCarousel({
+      window.$(".brand-slider").owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -36,21 +36,21 @@ const NDA = () => {
         responsive: {
           0: { items: 2 },
           600: { items: 3 },
-          1000: { items: 6 }
-        }
+          1000: { items: 6 },
+        },
       });
     }
 
     // Initialize Magnific Popup (for consistency, if popups are used)
     if (window.$ && window.$.fn.magnificPopup) {
-      window.$('.popup-btn').magnificPopup({
-        type: 'iframe'
+      window.$(".popup-btn").magnificPopup({
+        type: "iframe",
       });
     }
 
     // Cleanup function
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -88,7 +88,7 @@ const NDA = () => {
         }
 
         /* Enhanced Navbar Styling - Theme Aware */
-        .navbar-area {
+         .navbar-area {
           background: rgba(255, 255, 255, 0.95) !important;
           backdrop-filter: blur(10px) !important;
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
@@ -97,7 +97,9 @@ const NDA = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -258,9 +260,11 @@ const NDA = () => {
         /* --- NDA SPECIFIC STYLES (ENHANCED) --------------------------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+                .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -448,40 +452,64 @@ const NDA = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               NDA Policy
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Non-Disclosure <span style={{color: 'var(--primary-orange)'}}>Agreement</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Non-Disclosure{" "}
+              <span style={{ color: "var(--primary-orange)" }}>Agreement</span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              Your confidentiality is our priority. We ensure complete protection of your sensitive business information and intellectual property.
+            <p style={{ color: "var(--text-gray)" }}>
+              Your confidentiality is our priority. We ensure complete
+              protection of your sensitive business information and intellectual
+              property.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Secure & Confidential</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Secure & Confidential
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Data Protection</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Data Protection
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Trusted Partnership</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Trusted Partnership
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Contact Us</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Contact Us</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/about"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Learn More</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>Learn More</span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -495,18 +523,20 @@ const NDA = () => {
             <div className="privacy-item">
               <h3>Our Commitment to Confidentiality</h3>
               <p>
-                At Podosphere Technologies, we understand the critical importance of
-                protecting your confidential information. We are committed to maintaining
-                the highest standards of data security and confidentiality.
+                At Podosphere Technologies, we understand the critical
+                importance of protecting your confidential information. We are
+                committed to maintaining the highest standards of data security
+                and confidentiality.
               </p>
             </div>
 
             <div className="privacy-item">
               <h3>Information Protection</h3>
               <p>
-                We implement robust security measures to protect your sensitive business
-                information, intellectual property, and trade secrets. All team members
-                sign confidentiality agreements before accessing client data.
+                We implement robust security measures to protect your sensitive
+                business information, intellectual property, and trade secrets.
+                All team members sign confidentiality agreements before
+                accessing client data.
               </p>
             </div>
 
@@ -524,9 +554,9 @@ const NDA = () => {
             <div className="privacy-item">
               <h3>Data Security Measures</h3>
               <p>
-                We employ industry-standard security protocols including encryption,
-                secure access controls, and regular security audits to ensure your
-                information remains protected at all times.
+                We employ industry-standard security protocols including
+                encryption, secure access controls, and regular security audits
+                to ensure your information remains protected at all times.
               </p>
             </div>
 
@@ -534,8 +564,8 @@ const NDA = () => {
               <h3>Ready to Work Together?</h3>
               <p>
                 We're happy to sign your NDA before discussing your project.
-                Your trust is our priority, and we're committed to maintaining the
-                highest levels of confidentiality.
+                Your trust is our priority, and we're committed to maintaining
+                the highest levels of confidentiality.
               </p>
               <div className="pt-3">
                 <Link to="/contact" className="default-btn">

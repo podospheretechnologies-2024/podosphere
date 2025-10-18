@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
   useEffect(() => {
@@ -10,22 +10,22 @@ const Portfolio = () => {
 
     // Navbar scroll effect logic copied from Home.js
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar-area');
+      const navbar = document.querySelector(".navbar-area");
       if (navbar) {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Initialize Magnific Popup for image gallery
     if (window.$ && window.$.fn.magnificPopup) {
-      window.$('.popup-link').magnificPopup({
-        type: 'image',
+      window.$(".popup-link").magnificPopup({
+        type: "image",
         gallery: { enabled: true },
       });
     }
@@ -33,7 +33,7 @@ const Portfolio = () => {
     // Initialize Owl Carousel (for consistency and if a slider is added later)
     if (window.$ && window.$.fn.owlCarousel) {
       // General Carousel Init (can be adapted if specific sliders are added)
-      window.$('.brand-slider').owlCarousel({
+      window.$(".brand-slider").owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -44,14 +44,14 @@ const Portfolio = () => {
         responsive: {
           0: { items: 2 },
           600: { items: 3 },
-          1000: { items: 6 }
-        }
+          1000: { items: 6 },
+        },
       });
     }
 
     // Cleanup function
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -89,7 +89,7 @@ const Portfolio = () => {
         }
 
         /* Enhanced Navbar Styling - Theme Aware */
-        .navbar-area {
+         .navbar-area {
           background: rgba(255, 255, 255, 0.95) !important;
           backdrop-filter: blur(10px) !important;
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
@@ -98,7 +98,9 @@ const Portfolio = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -258,10 +260,11 @@ const Portfolio = () => {
         /* ---------------------------------------------------------------------- */
         /* --- PORTFOLIO SPECIFIC STYLES (RETAINED & ENHANCED) ----------------- */
         /* ---------------------------------------------------------------------- */
-
         .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content h1 {
@@ -403,13 +406,23 @@ const Portfolio = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{ color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600' }}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Our Portfolio
             </span>
-            <h1 className="h2-color" style={{ color: 'var(--text-black)' }}>
-              Transforming Ideas into <span style={{ color: 'var(--primary-orange)' }}>Digital Reality</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Transforming Ideas into{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Digital Reality
+              </span>
             </h1>
-            <p style={{ color: 'var(--text-gray)' }}>
+            <p style={{ color: "var(--text-gray)" }}>
               Discover our comprehensive collection of successful projects that
               showcase our expertise in delivering innovative digital solutions
               across various industries and technologies.
@@ -429,14 +442,17 @@ const Portfolio = () => {
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
                 Get In Touch <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/solution"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
                 Explore Solutions <i className="bx bx-right-arrow-alt"></i>
               </Link>
@@ -451,14 +467,8 @@ const Portfolio = () => {
             {portfolioItems.map((item, index) => (
               <div className="col-md-6 col-lg-4" key={index}>
                 <div className="card">
-                  <a
-                    href={item.image}
-                    className="popup-link"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                    />
+                  <a href={item.image} className="popup-link">
+                    <img src={item.image} alt={item.title} />
                   </a>
                   <div className="card-body">
                     <h5 className="card-title">{item.title}</h5>
@@ -481,155 +491,180 @@ const Portfolio = () => {
 
 const portfolioItems = [
   {
-    title: 'Meditate & Wellness App',
-    description: 'An app developed for a client to relieve stress, allowing users to listen to audio tailored for desired mental states like happiness, relaxation, or focus.',
-    image: '/assets/img/case-studies/case-studies1.png',
-    link: '/portfolio/meditation-wellness'
+    title: "Meditate & Wellness App",
+    description:
+      "An app developed for a client to relieve stress, allowing users to listen to audio tailored for desired mental states like happiness, relaxation, or focus.",
+    image: "/assets/img/case-studies/case-studies1.png",
+    link: "/portfolio/meditation-wellness",
   },
   {
-    title: 'Social Media App',
-    description: 'The DigiCupid social networking app enables secure sharing of audio, video, and images, with features like following, private chat, and group creation.',
-    image: '/assets/img/case-studies/case-studies2.png',
-    link: '/portfolio/social-media'
+    title: "Social Media App",
+    description:
+      "The DigiCupid social networking app enables secure sharing of audio, video, and images, with features like following, private chat, and group creation.",
+    image: "/assets/img/case-studies/case-studies2.png",
+    link: "/portfolio/social-media",
   },
   {
-    title: 'Car Bike Booking App',
-    description: 'The RideX booking application, featuring services for taxis, bikes, pickups, and deliveries, plus supplemental features like food delivery and transit.',
-    image: '/assets/img/case-studies/case-studies3.png',
-    link: '/portfolio/ride-booking'
+    title: "Car Bike Booking App",
+    description:
+      "The RideX booking application, featuring services for taxis, bikes, pickups, and deliveries, plus supplemental features like food delivery and transit.",
+    image: "/assets/img/case-studies/case-studies3.png",
+    link: "/portfolio/ride-booking",
   },
   {
-    title: 'E-learning App',
-    description: 'An innovative e-learning platform providing an interactive and enjoyable learning experience through video conferencing for users to study from home.',
-    image: '/assets/img/case-studies/case-studies4.png',
-    link: '/portfolio/elearning'
+    title: "E-learning App",
+    description:
+      "An innovative e-learning platform providing an interactive and enjoyable learning experience through video conferencing for users to study from home.",
+    image: "/assets/img/case-studies/case-studies4.png",
+    link: "/portfolio/elearning",
   },
   {
-    title: 'Event Booking App',
-    description: 'An app for booking celebrities and comedians for private parties, concerts, and events. Users can search by date, region, view reviews, and rate events.',
-    image: '/assets/img/case-studies/case-studies5.png',
-    link: '/portfolio/event-booking'
+    title: "Event Booking App",
+    description:
+      "An app for booking celebrities and comedians for private parties, concerts, and events. Users can search by date, region, view reviews, and rate events.",
+    image: "/assets/img/case-studies/case-studies5.png",
+    link: "/portfolio/event-booking",
   },
   {
-    title: 'On Demand Home Service Booking App',
-    description: 'The ultimate one-stop solution for conveniently scheduling all home services, allowing users to request services, make secure payments, and receive real-time notifications.',
-    image: '/assets/img/case-studies/case-studies6.png',
-    link: '/portfolio/home-service'
+    title: "On Demand Home Service Booking App",
+    description:
+      "The ultimate one-stop solution for conveniently scheduling all home services, allowing users to request services, make secure payments, and receive real-time notifications.",
+    image: "/assets/img/case-studies/case-studies6.png",
+    link: "/portfolio/home-service",
   },
   {
-    title: 'Video Consultation App',
-    description: 'An app enabling professional video consultations globally, featuring appointment booking and secure payment processing for users to connect with experts.',
-    image: '/assets/img/case-studies/case-studies7.png',
-    link: '/portfolio/video-consultation'
+    title: "Video Consultation App",
+    description:
+      "An app enabling professional video consultations globally, featuring appointment booking and secure payment processing for users to connect with experts.",
+    image: "/assets/img/case-studies/case-studies7.png",
+    link: "/portfolio/video-consultation",
   },
   {
-    title: 'Video KYC App',
-    description: 'Developed for a top bank, this app allows users to complete their KYC remotely via video conference, eliminating the need to visit a physical location.',
-    image: '/assets/img/case-studies/case-studies8.png',
-    link: '/portfolio/video-kyc'
+    title: "Video KYC App",
+    description:
+      "Developed for a top bank, this app allows users to complete their KYC remotely via video conference, eliminating the need to visit a physical location.",
+    image: "/assets/img/case-studies/case-studies8.png",
+    link: "/portfolio/video-kyc",
   },
   {
-    title: 'Fitness App',
-    description: 'A comprehensive wellness app that seamlessly tracks physical activity and crucial health indicators, promoting a healthy and balanced lifestyle.',
-    image: '/assets/img/case-studies/case-studies9.jpg',
-    link: '/portfolio/fitness'
+    title: "Fitness App",
+    description:
+      "A comprehensive wellness app that seamlessly tracks physical activity and crucial health indicators, promoting a healthy and balanced lifestyle.",
+    image: "/assets/img/case-studies/case-studies9.jpg",
+    link: "/portfolio/fitness",
   },
   {
-    title: 'Learning Management System',
-    description: 'A comprehensive LMS platform with course management, student tracking, assignment submission, grade management, and interactive learning modules for educational institutions.',
-    image: '/assets/img/case-studies/case-studies4.png',
-    link: '/portfolio/lms'
+    title: "Learning Management System",
+    description:
+      "A comprehensive LMS platform with course management, student tracking, assignment submission, grade management, and interactive learning modules for educational institutions.",
+    image: "/assets/img/case-studies/case-studies4.png",
+    link: "/portfolio/lms",
   },
   {
-    title: 'Content Management System',
-    description: 'A powerful CMS solution enabling easy content creation, management, and publishing with role-based access control, media library, and SEO optimization features.',
-    image: '/assets/img/case-studies/case-studies1.png',
-    link: '/portfolio/cms'
+    title: "Content Management System",
+    description:
+      "A powerful CMS solution enabling easy content creation, management, and publishing with role-based access control, media library, and SEO optimization features.",
+    image: "/assets/img/case-studies/case-studies1.png",
+    link: "/portfolio/cms",
   },
   {
-    title: 'Portfolio Website',
-    description: 'A stunning portfolio website showcasing creative work with dynamic galleries, project case studies, client testimonials, and an integrated contact system.',
-    image: '/assets/img/case-studies/case-studies2.png',
-    link: '/portfolio/portfolio-site'
+    title: "Portfolio Website",
+    description:
+      "A stunning portfolio website showcasing creative work with dynamic galleries, project case studies, client testimonials, and an integrated contact system.",
+    image: "/assets/img/case-studies/case-studies2.png",
+    link: "/portfolio/portfolio-site",
   },
   {
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce solution with product catalog, shopping cart, payment gateway integration, order management, and customer analytics dashboard.',
-    image: '/assets/img/case-studies/case-studies3.png',
-    link: '/portfolio/ecommerce'
+    title: "E-Commerce Platform",
+    description:
+      "A full-featured e-commerce solution with product catalog, shopping cart, payment gateway integration, order management, and customer analytics dashboard.",
+    image: "/assets/img/case-studies/case-studies3.png",
+    link: "/portfolio/ecommerce",
   },
   {
-    title: 'MERN Stack Application',
-    description: 'A robust full-stack web application built with MongoDB, Express.js, React, and Node.js, featuring real-time updates, RESTful APIs, and scalable architecture.',
-    image: '/assets/img/case-studies/case-studies5.png',
-    link: '/portfolio/mern-stack'
+    title: "MERN Stack Application",
+    description:
+      "A robust full-stack web application built with MongoDB, Express.js, React, and Node.js, featuring real-time updates, RESTful APIs, and scalable architecture.",
+    image: "/assets/img/case-studies/case-studies5.png",
+    link: "/portfolio/mern-stack",
   },
   {
-    title: 'React Web Application',
-    description: 'A modern, responsive single-page application built with React, featuring component-based architecture, state management with Redux, and optimized performance.',
-    image: '/assets/img/case-studies/case-studies6.png',
-    link: '/portfolio/react-app'
+    title: "React Web Application",
+    description:
+      "A modern, responsive single-page application built with React, featuring component-based architecture, state management with Redux, and optimized performance.",
+    image: "/assets/img/case-studies/case-studies6.png",
+    link: "/portfolio/react-app",
   },
   {
-    title: 'N8N Workflow Automation',
-    description: 'Custom workflow automation solution using N8N for seamless integration of business processes, API connections, data synchronization, and automated task execution.',
-    image: '/assets/img/case-studies/case-studies7.png',
-    link: '/portfolio/n8n-automation'
+    title: "N8N Workflow Automation",
+    description:
+      "Custom workflow automation solution using N8N for seamless integration of business processes, API connections, data synchronization, and automated task execution.",
+    image: "/assets/img/case-studies/case-studies7.png",
+    link: "/portfolio/n8n-automation",
   },
   {
-    title: 'AI-Powered Website',
-    description: 'An intelligent website leveraging artificial intelligence for personalized user experiences, chatbot integration, predictive analytics, and machine learning capabilities.',
-    image: '/assets/img/case-studies/case-studies8.png',
-    link: '/portfolio/ai-website'
+    title: "AI-Powered Website",
+    description:
+      "An intelligent website leveraging artificial intelligence for personalized user experiences, chatbot integration, predictive analytics, and machine learning capabilities.",
+    image: "/assets/img/case-studies/case-studies8.png",
+    link: "/portfolio/ai-website",
   },
   {
-    title: 'LMS Pro - Corporate Training',
-    description: 'Enterprise-level Learning Management System with advanced features for corporate training, certifications, and skill development programs.',
-    image: '/assets/img/case-studies/case-studies4.png',
-    link: '/portfolio/lms-pro'
+    title: "LMS Pro - Corporate Training",
+    description:
+      "Enterprise-level Learning Management System with advanced features for corporate training, certifications, and skill development programs.",
+    image: "/assets/img/case-studies/case-studies4.png",
+    link: "/portfolio/lms-pro",
   },
   {
-    title: 'Headless CMS Platform',
-    description: 'API-first headless CMS providing content delivery across web, mobile, IoT, and any other platform with flexible content modeling.',
-    image: '/assets/img/case-studies/case-studies1.png',
-    link: '/portfolio/headless-cms'
+    title: "Headless CMS Platform",
+    description:
+      "API-first headless CMS providing content delivery across web, mobile, IoT, and any other platform with flexible content modeling.",
+    image: "/assets/img/case-studies/case-studies1.png",
+    link: "/portfolio/headless-cms",
   },
   {
-    title: 'Portfolio Builder Platform',
-    description: 'SaaS platform enabling creatives to build and customize professional portfolio websites without coding knowledge.',
-    image: '/assets/img/case-studies/case-studies2.png',
-    link: '/portfolio/portfolio-builder'
+    title: "Portfolio Builder Platform",
+    description:
+      "SaaS platform enabling creatives to build and customize professional portfolio websites without coding knowledge.",
+    image: "/assets/img/case-studies/case-studies2.png",
+    link: "/portfolio/portfolio-builder",
   },
   {
-    title: 'Multi-Vendor Marketplace',
-    description: 'Complete marketplace platform with vendor management, logistics integration, split payments, and comprehensive analytics.',
-    image: '/assets/img/case-studies/case-studies3.png',
-    link: '/portfolio/multi-vendor-marketplace'
+    title: "Multi-Vendor Marketplace",
+    description:
+      "Complete marketplace platform with vendor management, logistics integration, split payments, and comprehensive analytics.",
+    image: "/assets/img/case-studies/case-studies3.png",
+    link: "/portfolio/multi-vendor-marketplace",
   },
   {
-    title: 'MERN SaaS Platform',
-    description: 'Enterprise SaaS platform with multi-tenancy, subscription billing, API integrations, and white-label capabilities.',
-    image: '/assets/img/case-studies/case-studies5.png',
-    link: '/portfolio/mern-saas'
+    title: "MERN SaaS Platform",
+    description:
+      "Enterprise SaaS platform with multi-tenancy, subscription billing, API integrations, and white-label capabilities.",
+    image: "/assets/img/case-studies/case-studies5.png",
+    link: "/portfolio/mern-saas",
   },
   {
-    title: 'React Dashboard Application',
-    description: 'Admin dashboard with real-time data visualization, advanced reporting, and business intelligence features.',
-    image: '/assets/img/case-studies/case-studies6.png',
-    link: '/portfolio/react-dashboard'
+    title: "React Dashboard Application",
+    description:
+      "Admin dashboard with real-time data visualization, advanced reporting, and business intelligence features.",
+    image: "/assets/img/case-studies/case-studies6.png",
+    link: "/portfolio/react-dashboard",
   },
   {
-    title: 'Enterprise Workflow Automation',
-    description: 'Complex business process automation connecting CRM, ERP, and 50+ business tools with custom integrations.',
-    image: '/assets/img/case-studies/case-studies7.png',
-    link: '/portfolio/enterprise-automation'
+    title: "Enterprise Workflow Automation",
+    description:
+      "Complex business process automation connecting CRM, ERP, and 50+ business tools with custom integrations.",
+    image: "/assets/img/case-studies/case-studies7.png",
+    link: "/portfolio/enterprise-automation",
   },
   {
-    title: 'AI Content Platform',
-    description: 'AI-powered content generation and optimization platform for automated marketing campaigns and SEO.',
-    image: '/assets/img/case-studies/case-studies8.png',
-    link: '/portfolio/ai-content-platform'
-  }
+    title: "AI Content Platform",
+    description:
+      "AI-powered content generation and optimization platform for automated marketing campaigns and SEO.",
+    image: "/assets/img/case-studies/case-studies8.png",
+    link: "/portfolio/ai-content-platform",
+  },
 ];
 
 export default Portfolio;

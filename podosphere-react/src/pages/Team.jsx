@@ -101,7 +101,7 @@ const Team = () => {
         }
 
         /* Enhanced Navbar Styling - Theme Aware */
-        .navbar-area {
+         .navbar-area {
           background: rgba(255, 255, 255, 0.95) !important;
           backdrop-filter: blur(10px) !important;
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
@@ -110,7 +110,9 @@ const Team = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -271,9 +273,11 @@ const Team = () => {
         /* --- TEAM SPECIFIC STYLES (ENHANCED) -------------------------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+               .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -503,40 +507,64 @@ const Team = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               Our Team
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Meet Our Experts to <span style={{color: 'var(--primary-orange)'}}>Grow Your Business</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Meet Our Experts to{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Grow Your Business
+              </span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              Our talented team of professionals brings together expertise, creativity, and dedication to deliver exceptional results for every project.
+            <p style={{ color: "var(--text-gray)" }}>
+              Our talented team of professionals brings together expertise,
+              creativity, and dedication to deliver exceptional results for
+              every project.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Expert Team</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>Expert Team</span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Quality Focus</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Quality Focus
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Innovation Driven</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Innovation Driven
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Get In Touch</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>Get In Touch</span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/about"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Learn More</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>Learn More</span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -556,18 +584,40 @@ const Team = () => {
           <div className="row pt-45">
             {teamMembers.map((member, index) => (
               <div className="col-lg-4 col-md-6" key={index}>
-                <div className={`team-card ${index === 0 ? 'active' : ''} ${index % 2 !== 0 ? 'team-rotated-2' : ''}`}>
+                <div
+                  className={`team-card ${index === 0 ? "active" : ""} ${
+                    index % 2 !== 0 ? "team-rotated-2" : ""
+                  }`}
+                >
                   <a href="#">
                     <img src={member.image} alt={member.name} />
                   </a>
                   <div className="content">
-                    <h3><Link to="/team">{member.name}</Link></h3>
+                    <h3>
+                      <Link to="/team">{member.name}</Link>
+                    </h3>
                     <span>{member.position}</span>
                     <ul className="social-link">
-                      <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="bx bxl-facebook"></i></a></li>
-                      <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="bx bxl-twitter"></i></a></li>
-                      <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="bx bxl-linkedin"></i></a></li>
-                      <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="bx bxl-instagram"></i></a></li>
+                      <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                          <i className="bx bxl-facebook"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                          <i className="bx bxl-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                          <i className="bx bxl-linkedin"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                          <i className="bx bxl-instagram"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>

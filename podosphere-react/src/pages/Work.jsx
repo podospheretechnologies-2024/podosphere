@@ -88,7 +88,7 @@ const Work = () => {
         }
 
         /* Enhanced Navbar Styling - Theme Aware */
-        .navbar-area {
+         .navbar-area {
           background: rgba(255, 255, 255, 0.95) !important;
           backdrop-filter: blur(10px) !important;
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
@@ -97,7 +97,9 @@ const Work = () => {
           top: 0 !important;
           z-index: 999 !important;
           border-bottom: 1px solid rgba(26, 27, 30, 0.1) !important;
-          padding: 8px 0 !important;
+          padding: 0 !important; /* <-- Changed from 8px 0 to 0 */
+          margin: 0 !important; /* <-- Added to remove margins */
+          min-height: auto !important; /* <-- Added to prevent default height */
         }
 
         /* Dark Mode Navbar */
@@ -258,9 +260,11 @@ const Work = () => {
         /* --- WORK SPECIFIC STYLES (ENHANCED) -------------------------------- */
         /* ---------------------------------------------------------------------- */
 
-        .page-title-area {
-          background: var(--bg-white);
-          padding: 100px 0 80px;
+                .page-title-area {
+          background: var(--bg-white) !important;
+          padding: 60px 0 80px !important;
+          margin-top: 70px !important; /* Large top margin to ensure separation */
+          margin-bottom: 0 !important; /* Added for proper section separation */
         }
 
         .page-title-content {
@@ -485,40 +489,69 @@ const Work = () => {
       <div className="page-title-area">
         <div className="container">
           <div className="page-title-content text-center">
-            <span className="sp-after" style={{color: 'var(--primary-orange)', fontSize: '1.1rem', fontWeight: '600'}}>
+            <span
+              className="sp-after"
+              style={{
+                color: "var(--primary-orange)",
+                fontSize: "1.1rem",
+                fontWeight: "600",
+              }}
+            >
               How We Work
             </span>
-            <h1 className="h2-color" style={{color: 'var(--text-black)'}}>
-              Simple & Effective <span style={{color: 'var(--primary-orange)'}}>Work Process</span>
+            <h1 className="h2-color" style={{ color: "var(--text-black)" }}>
+              Simple & Effective{" "}
+              <span style={{ color: "var(--primary-orange)" }}>
+                Work Process
+              </span>
             </h1>
-            <p style={{color: 'var(--text-gray)'}}>
-              We follow a proven methodology to deliver successful projects on time and within budget.
+            <p style={{ color: "var(--text-gray)" }}>
+              We follow a proven methodology to deliver successful projects on
+              time and within budget.
             </p>
             <div className="hero-badges">
               <span className="hero-badge">
-                <i className="bx bx-rocket"></i> <span style={{color: 'var(--text-black)'}}>Agile Approach</span>
+                <i className="bx bx-rocket"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Agile Approach
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-lock-alt"></i> <span style={{color: 'var(--text-black)'}}>Quality Assured</span>
+                <i className="bx bxs-lock-alt"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Quality Assured
+                </span>
               </span>
               <span className="hero-badge">
-                <i className="bx bxs-zap"></i> <span style={{color: 'var(--text-black)'}}>Timely Delivery</span>
+                <i className="bx bxs-zap"></i>{" "}
+                <span style={{ color: "var(--text-black)" }}>
+                  Timely Delivery
+                </span>
               </span>
             </div>
             <div>
               <Link
                 to="/contact"
                 className="default-btn"
-                style={{ marginRight: '15px' }}
+                style={{ marginRight: "15px" }}
               >
-                <span style={{color: 'var(--text-white)'}}>Start Your Project</span> <i className="bx bx-plus"></i>
+                <span style={{ color: "var(--text-white)" }}>
+                  Start Your Project
+                </span>{" "}
+                <i className="bx bx-plus"></i>
               </Link>
               <Link
                 to="/service"
                 className="default-btn"
-                style={{ background: 'var(--text-black)', color: 'var(--text-white)' }}
+                style={{
+                  background: "var(--text-black)",
+                  color: "var(--text-white)",
+                }}
               >
-                <span style={{color: 'var(--text-white)'}}>Explore Services</span> <i className="bx bx-right-arrow-alt"></i>
+                <span style={{ color: "var(--text-white)" }}>
+                  Explore Services
+                </span>{" "}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
@@ -557,19 +590,32 @@ const Work = () => {
             <div className="col-lg-6">
               <div className="work-details-content">
                 <div className="section-title">
-                  <span className="sp-before sp-after">Why Our Process Works</span>
+                  <span className="sp-before sp-after">
+                    Why Our Process Works
+                  </span>
                   <h2>Delivering Excellence Through Proven Methods</h2>
                   <p>
-                    Our systematic approach ensures that every project is executed
-                    flawlessly from conception to delivery. We believe in transparency,
-                    collaboration, and continuous improvement.
+                    Our systematic approach ensures that every project is
+                    executed flawlessly from conception to delivery. We believe
+                    in transparency, collaboration, and continuous improvement.
                   </p>
                 </div>
                 <ul className="work-details-list">
-                  <li><i className="bx bx-check"></i> Agile Development Methodology</li>
-                  <li><i className="bx bx-check"></i> Regular Progress Updates</li>
-                  <li><i className="bx bx-check"></i> Quality Assurance at Every Stage</li>
-                  <li><i className="bx bx-check"></i> Post-Launch Support & Maintenance</li>
+                  <li>
+                    <i className="bx bx-check"></i> Agile Development
+                    Methodology
+                  </li>
+                  <li>
+                    <i className="bx bx-check"></i> Regular Progress Updates
+                  </li>
+                  <li>
+                    <i className="bx bx-check"></i> Quality Assurance at Every
+                    Stage
+                  </li>
+                  <li>
+                    <i className="bx bx-check"></i> Post-Launch Support &
+                    Maintenance
+                  </li>
                 </ul>
                 <Link to="/contact" className="default-btn">
                   Start Your Project
