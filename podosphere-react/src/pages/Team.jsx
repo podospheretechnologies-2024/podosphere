@@ -1,16 +1,29 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const teamMembers = [
-  { name: 'Ajay Jain', position: 'Team Lead, Website Developer', image: '/assets/img/team/team1.jpg' },
-  { name: 'Rahul Jangid', position: 'Fullstack Developer', image: '/assets/img/team/team2.jpg' },
-  { name: 'Priya Sharma', position: 'UI/UX Designer', image: '/assets/img/team/team3.jpg' },
-  { name: 'Vikram Singh', position: 'Mobile App Developer', image: '/assets/img/team/team4.jpg' },
-  { name: 'Anjali Verma', position: 'Project Manager', image: '/assets/img/team/team5.jpg' },
-  { name: 'Rohan Kumar', position: 'DevOps Engineer', image: '/assets/img/team/team6.jpg' },
-  { name: 'Sneha Gupta', position: 'QA Lead', image: '/assets/img/team/team7.jpg' },
-  { name: 'Amit Patel', position: 'Backend Developer', image: '/assets/img/team/team8.jpg' },
-  { name: 'Neha Kapoor', position: 'Frontend Developer', image: '/assets/img/team/team9.jpg' }
+
+  { name: 'AJAY JAIN', position: 'Team Lead, Website Development', image: '/assets/img/team/ajayjain.jpeg' },
+
+  { name: 'RAHUL JANGID', position: 'Full Stack Developer', image: '/assets/img/team/team2.jpg' },
+
+  { name: 'Rahul Kumar Saini', position: 'Full Stack Developer', image: '/assets/img/team/team5.jpg' },
+
+  { name: 'DEVENDRA SINGH GAHLOT', position: 'Graphic & Frontend Developer', image: '/assets/img/team/team4.jpg' },
+
+  { name: 'JAY SHARMA', position: 'UI/UX Designer', image: '/assets/img/team/team6.jpg' },
+
+  { name: 'YUVRAJ CHAUHAN', position: 'E-Commerce Manager', image: '/assets/img/team/team7.jpg' },
+
+  { name: 'KULDEEP TANWAR', position: 'Video Editor', image: '/assets/img/team/team9.jpg' },
+
+  { name: 'GAURAV SISODIA', position: '3D Generalist & TL of Design', image: '/assets/img/team/team10.jpg' },
+
+  { name: 'TANU JANGID', position: 'Human Resource', image: '/assets/img/team/team11.jpg' },
+
+  { name: 'SURAJ BAIRWA', position: 'Senior Graphic Designer', image: '/assets/img/team/team12.jpg' }
+
 ];
 
 const Team = () => {

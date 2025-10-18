@@ -85,9 +85,9 @@ const Navbar = () => {
           onClick={toggleMobileMenu}
           type="button"
         >
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </button>
 
         <div
@@ -96,6 +96,13 @@ const Navbar = () => {
           role="navigation"
           aria-hidden={!isMobileMenuOpen}
         >
+          <button 
+            className="mobile-menu-close"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close navigation menu"
+          >
+            ×
+          </button>
           <ul className="mobile-nav-list">
             <li className="nav-item" onClick={() => setIsMobileMenuOpen(false)}>
               <Link to="/about" className={`nav-link ${isActive('/about')}`} aria-current={isActive('/about') ? 'page' : undefined}>
